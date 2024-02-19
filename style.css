@@ -77,3 +77,23 @@ button:hover {
         width: calc(33.333% - 10px); /* Adjust the width for 3 items per row */
     }
 }
+
+/* Welcome Screen Styling */
+#welcomeScreen {
+    text-align: center;
+    padding: 50px;
+}
+
+#startButton {
+    background-color: #008CBA; /* Adjust color as needed */
+    color: white;
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#startButton:hover {
+    background-color: #005f73;
+}
