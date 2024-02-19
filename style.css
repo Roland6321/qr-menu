@@ -81,7 +81,7 @@ button:hover {
 /* Welcome Screen Styling */
 #welcomeScreen {
     height: 100vh;
-    background-image: url(https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true); 
+    background-image: url('https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true'); 
     background-size: cover;
     background-position: center;
     text-align: center;
