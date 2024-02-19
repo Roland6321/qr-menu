@@ -80,20 +80,60 @@ button:hover {
 
 /* Welcome Screen Styling */
 #welcomeScreen {
+    height: 100vh;
+    background-image: url(https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true); 
+    background-size: cover;
+    background-position: center;
     text-align: center;
-    padding: 50px;
+    padding-top: 30%; /* Adjust this value based on your design */
+    box-sizing: border-box;
+    position: relative;
+}
+
+#welcomeScreen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5); /* Overlay color */
+    z-index: 0;
+}
+
+#welcomeScreen h1,
+#welcomeScreen p {
+    position: relative;
+    z-index: 1;
+    color: white;
 }
 
 #startButton {
-    background-color: #0009ba; /* Adjust color as needed */
+    background-color: #e76f51; /* Adjust the color to match your design */
     color: white;
     padding: 15px 25px;
     font-size: 18px;
     border: none;
     cursor: pointer;
     margin-top: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 #startButton:hover {
-    background-color: #00b4ba;
+    background-color: #f4a261; /* Darker shade for hover effect */
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .menu-item {
+        width: calc(50% - 10px); /* Adjust the width for 2 items per row */
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .menu-item {
+        width: calc(33.333% - 10px); /* Adjust the width for 3 items per row */
+    }
 }
