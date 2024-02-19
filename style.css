@@ -128,12 +128,12 @@ button:hover {
 @media (min-width: 768px) {
     .menu-item {
         width: calc(50% - 10px); /* Adjust the width for 2 items per row */
-        margin-bottom: 0px;
+        margin-bottom: 20px;
     }
 }
 
 @media (min-width: 1024px) {
     .menu-item {
-        width: calc(33.333% - 0px); /* Adjust the width for 3 items per row */
+        width: calc(33.333% - 10px); /* Adjust the width for 3 items per row */
     }
 }
