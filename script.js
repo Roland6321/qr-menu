@@ -15,7 +15,13 @@ function submitOptions() {
     closeOptionsModal();
 }
 
-document.getElementById('startButton').addEventListener('click', function() {
+const startButton = document.getElementById('startButton');
+startButton.addEventListener('click', function() {
     document.getElementById('welcomeScreen').style.display = 'none';
     document.getElementById('menuSection').style.display = 'block';
 });
+startButton.addEventListener('touchstart', function() {
+    document.getElementById('welcomeScreen').style.display = 'none';
+    document.getElementById('menuSection').style.display = 'block';
+}, false);
+
