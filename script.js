@@ -15,9 +15,10 @@ function submitOptions() {
     closeOptionsModal();
 }
 
-document.getElementById('startButton').addEventListener('click', function() {
-    document.getElementById('welcomeScreen').style.display = 'none';
-    document.getElementById('menuSection').style.display = 'block';
+document.getElementById('startButton').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default anchor action
+    document.getElementById('menuSection').classList.remove('hidden');
+    document.getElementById('menuSection').classList.add('visible');
 });
 
 
