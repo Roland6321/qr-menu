@@ -90,7 +90,7 @@ button:hover {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* This will push your content to the top and bottom */
+    justify-content: center; /* This will center your content horizontally */
 }
 
 #welcomeScreen::before {
