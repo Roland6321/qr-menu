@@ -117,11 +117,11 @@ button:hover {
     padding: 15px 25px;
     font-size: 18px;
     border: none;
-    border-radius: 20px;
     cursor: pointer;
     /* Removed margin-top as it's no longer necessary with flexbox positioning */
     position: relative; /* Keep if needed for z-index */
     z-index: 1; /* Keep if overlaying on other elements */
+    border-radius: 30px;
     align-self: center; /* Center the button horizontally */
     margin-bottom: 30vh; /* Space from the bottom of the screen */
 }
