@@ -80,7 +80,7 @@ button:hover {
 
 /* Welcome Screen Styling */
 #welcomeScreen {
-    height: 150vh;
+    height: 100vh;
     background-image: url('https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true'); 
     background-size: cover;
     background-position: center;
@@ -95,6 +95,7 @@ button:hover {
 }
 
 #welcomeScreen::before {
+    height: 100%;
     content: '';
     position: absolute;
     top: 0;
