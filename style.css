@@ -91,6 +91,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     justify-content: center; /* This will push your content to the center */
+    align-items: center;
 }
 
 #welcomeScreen::before {
