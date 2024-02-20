@@ -123,7 +123,6 @@ button:hover {
     z-index: 1; /* Keep if overlaying on other elements */
     border-radius: 20px;
     align-self: center; /* Center the button horizontally */
-    margin-bottom: 30vh; /* Space from the bottom of the screen */
 }
 
 #startButton:hover {
