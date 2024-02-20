@@ -87,7 +87,7 @@ button:hover {
     text-align: center;
     padding-top: 30%; /* Adjust this value based on your design */
     box-sizing: border-box;
-    position: relative;
+    position: center;
     display: flex;
     flex-direction: column;
     justify-content: center; /* This will center your content horizontally */
