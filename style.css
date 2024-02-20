@@ -88,6 +88,9 @@ button:hover {
     padding-top: 30%; /* Adjust this value based on your design */
     box-sizing: border-box;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* This will push your content to the top and bottom */
 }
 
 #welcomeScreen::before {
@@ -109,15 +112,17 @@ button:hover {
 }
 
 #startButton {
-    background-color: #e76f51; /* Adjust the color to match your design */
+    background-color: #e76f51; /* Button color */
     color: white;
     padding: 15px 25px;
     font-size: 18px;
     border: none;
     cursor: pointer;
-    margin-top: 20px;
-    position: relative;
-    z-index: 1;
+    /* Removed margin-top as it's no longer necessary with flexbox positioning */
+    position: relative; /* Keep if needed for z-index */
+    z-index: 1; /* Keep if overlaying on other elements */
+    align-self: center; /* Center the button horizontally */
+    margin-bottom: 20px; /* Space from the bottom of the screen */
 }
 
 #startButton:hover {
