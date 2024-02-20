@@ -20,8 +20,19 @@ document.getElementById('startButton').addEventListener('click', function() {
     document.getElementById('categorySection').style.display = 'block';
 });
 
-// Since each category already contains the menu items within the categorySection
-// We will bind the openOptionsModal directly to each menu item button
-// Therefore, no need for a separate showMenuItems function
+// Attach event listeners to each category button to show its menu items
+document.querySelectorAll('.category-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const menuId = button.getAttribute('data-category');
+        // Hide all menu items containers first
+        document.querySelectorAll('.menu-items-container').forEach(container => {
+            container.style.display = 'none';
+        });
+        // Show the selected category's menu items
+        document.getElementById(menuId).style.display = 'block';
+        // Optionally hide the categorySection if you want to show only the menu items
+        // document.getElementById('categorySection').style.display = 'none';
+    });
+});
 
 // Logic for dynamically adding items to cart and updating the summary would go here

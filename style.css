@@ -189,6 +189,20 @@ button:hover {
   .menu-item button:hover {
     background-color: #e65a50; /* Button hover state color */
   }
+
+  .category-btn {
+    background-color: #4CAF50; /* Green, adjust as needed */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    display: block; /* Make the button block-level to span the width of its container */
+    width: auto; /* Adjust based on your design preference */
+    margin: 10px 0; /* Spacing above and below the button */
+    border-radius: 5px; /* Rounded corners to match your design */
+    text-align: center; /* Center the button text */
+  }
+  
   
   #summarySection {
     position: fixed;
