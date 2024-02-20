@@ -144,3 +144,69 @@ button:hover {
         width: calc(33.333% - 10px); /* Adjust the width for 3 items per row */
     }
 }
+
+#categorySection {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 20px; /* Rounded corners for the section */
+  }
+  
+  .category-container {
+    background-color: #f7f7f7;
+    border-radius: 15px; /* Rounded corners for category containers */
+    margin-bottom: 20px;
+    overflow: hidden; /* Ensures the rounded corners contain the children */
+  }
+  
+  .menu-item {
+    padding: 15px; /* Padding inside each menu item */
+    border-bottom: 1px solid #ddd; /* Separator between menu items */
+  }
+  
+  .menu-item:last-child {
+    border-bottom: none; /* No border for the last item */
+  }
+  
+  .menu-item h3 {
+    margin: 0; /* Remove default margin from h3 */
+    color: #333; /* Text color for item title */
+  }
+  
+  .menu-item p {
+    margin: 5px 0 0; /* Spacing for the description paragraph */
+    color: #666; /* Text color for the description */
+  }
+  
+  .menu-item button {
+    background-color: #ff6f61; /* Button color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px; /* Rounded corners for buttons */
+    cursor: pointer;
+  }
+  
+  .menu-item button:hover {
+    background-color: #e65a50; /* Button hover state color */
+  }
+  
+  #summarySection {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Shadow to lift the summary section up */
+    border-radius: 20px 20px 0 0; /* Rounded corners at the top of summary section */
+  }
+  
+  #summarySection h2 {
+    margin: 0;
+    color: #333;
+  }
+  
+  #summarySection p {
+    margin: 5px 0;
+    color: #666;
+  }
