@@ -37,6 +37,20 @@ body, html {
 }
 
 /* Adjustments for the CTA button and hover effect remain the same */
+#startButton {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#startButton:hover {
+  background-color: #0056b3;
+}
 
 /* Second Page Styles */
 #categories { /* Renamed from userPrompt for clarity */
