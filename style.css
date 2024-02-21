@@ -2,26 +2,39 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true');
-  background-size: cover;
-  background-position: center;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
   font-family: Arial, sans-serif; /* Sets the default font for the whole page */
 }
 
 #startMenu {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true');
+  background-size: cover;
+  background-position: center;
+  position: relative; /* To position the overlay correctly */
+}
+
+/* Overlay for Start Menu */
+#startMenu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Overlay color */
+  z-index: -1; /* Ensure content is above overlay */
 }
 
 #startMenu h1 {
   margin-bottom: 20px;
   font-size: 2em;
   color: white; /* Adjust if needed to improve visibility over your background */
+  z-index: 1;
 }
 
 #startButton {
@@ -33,6 +46,7 @@ body, html {
   border-radius: 5px; /* Border radius for rounded corners, customizable */
   cursor: pointer; /* Cursor to pointer to indicate it's clickable */
   transition: background-color 0.3s; /* Smooth transition for hover effect */
+  z-index: 1;
 }
 
 #startButton:hover {
@@ -41,11 +55,12 @@ body, html {
 
 #userPrompt {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Aligns content to the top with some space */
   justify-content: center;
   height: 100vh; /* Full height of the viewport */
   text-align: center;
-  padding: 20px;
+  padding-top: 50px; /* Adds padding from the top */
+  background-color: #F5F5F5; /* Background color for the second page */
 }
 
 #userPrompt h1 {
