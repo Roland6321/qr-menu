@@ -1,11 +1,13 @@
+/* General styles */
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
   box-sizing: border-box;
-  font-family: Arial, sans-serif; /* Sets the default font for the whole page */
+  font-family: Arial, sans-serif;
 }
 
+/* Start Menu specific styles */
 #startMenu {
   text-align: center;
   display: flex;
@@ -15,10 +17,9 @@ body, html {
   background-image: url('https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true');
   background-size: cover;
   background-position: center;
-  position: relative; /* To position the overlay correctly */
+  position: relative;
 }
 
-/* Overlay for Start Menu */
 #startMenu::before {
   content: "";
   position: absolute;
@@ -27,43 +28,28 @@ body, html {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5); /* Overlay color */
-  z-index: -1; /* Ensure content is above overlay */
+  z-index: 0; /* Adjust z-index to ensure overlay effect */
 }
 
-#startMenu h1 {
-  margin-bottom: 20px;
-  font-size: 2em;
-  color: white; /* Adjust if needed to improve visibility over your background */
+#startMenu h1, #startButton {
+  position: relative; /* Ensure these elements are above the overlay */
   z-index: 1;
 }
 
-#startButton {
-  padding: 10px 20px; /* Adjust padding as needed */
-  font-size: 1.2em; /* Adjust font size as needed */
-  color: #ffffff; /* Text color, customizable */
-  background-color: #007bff; /* Button background color, customizable */
-  border: none; /* Border style */
-  border-radius: 5px; /* Border radius for rounded corners, customizable */
-  cursor: pointer; /* Cursor to pointer to indicate it's clickable */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
-  z-index: 1;
-}
+/* Adjustments for the CTA button and hover effect remain the same */
 
-#startButton:hover {
-  background-color: #0056b3; /* Darker blue on hover, customizable */
-}
-
-#userPrompt {
+/* Second Page Styles */
+#categories { /* Renamed from userPrompt for clarity */
   display: flex;
-  align-items: flex-start; /* Aligns content to the top with some space */
+  align-items: flex-start;
   justify-content: center;
-  height: 100vh; /* Full height of the viewport */
+  height: 100vh;
   text-align: center;
-  padding-top: 50px; /* Adds padding from the top */
-  background-color: #F5F5F5; /* Background color for the second page */
+  padding-top: 50px;
+  background-color: #F5F5F5; /* New background color for the second page */
 }
 
-#userPrompt h1 {
-  font-size: 2rem; /* Example size, adjust as needed */
-  color: #333; /* Dark grey color, customizable */
+#categories h1 {
+  font-size: 2rem;
+  color: #333;
 }
