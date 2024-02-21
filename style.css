@@ -30,6 +30,9 @@ body, html {
 }
 
 #startMenu h1, #startButton {
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: white; /* This changes the text color to white */
   position: relative;
   z-index: 1;
 }
