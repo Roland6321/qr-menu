@@ -1,38 +1,22 @@
-// Function to handle opening the options modal
 function openOptionsModal(itemName) {
-    // Your existing code to open modal
+    document.getElementById('menuItemName').innerText = itemName;
+    document.getElementById('optionsModal').style.display = 'block';
 }
 
-// Function to handle closing the options modal
 function closeOptionsModal() {
-    // Your existing code to close modal
+    document.getElementById('optionsModal').style.display = 'none';
 }
 
-// Function to handle submitting the options from the modal
 function submitOptions() {
-    // Your existing code to submit options
+    var itemName = document.getElementById('menuItemName').innerText;
+    var extras = document.getElementById('extraOptions').value;
+    var comment = document.getElementById('comment').value;
+    alert('You ordered ' + itemName + ' with ' + extras + '. Comment: ' + comment);
+    closeOptionsModal();
 }
 
-// Select the start button and attach an event listener to it
-document.getElementById('startButton').addEventListener('click', function() {
-    // Hide the welcome screen and show the categories section
+const startButton = document.getElementById('startButton');
+startButton.addEventListener('click', function() {
     document.getElementById('welcomeScreen').style.display = 'none';
-    document.getElementById('categorySection').style.display = 'block';
+    document.getElementById('menuSection').style.display = 'block';
 });
-
-// Attach event listeners to each category button to show its menu items
-document.querySelectorAll('.category-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        const menuId = button.getAttribute('data-category');
-        // Hide all menu items containers first
-        document.querySelectorAll('.menu-items-container').forEach(container => {
-            container.style.display = 'none';
-        });
-        // Show the selected category's menu items
-        document.getElementById(menuId).style.display = 'block';
-        // Optionally hide the categorySection if you want to show only the menu items
-        // document.getElementById('categorySection').style.display = 'none';
-    });
-});
-
-// Logic for dynamically adding items to cart and updating the summary would go here

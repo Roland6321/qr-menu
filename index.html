@@ -19,6 +19,31 @@
 </div>
 
 
+    <!-- Menu Section -->
+    <div id="menuSection" style="display:none;">
+        <h1>Welcome to Our Restaurant</h1>
+        <h2>Menu</h2>
+        <div class="menu">
+            <!-- Your existing menu items will go here -->
+            <div class="menu-item">
+                <h3>Classic Burger</h3>
+                <p>$5.99 - Beef patty, cheese, lettuce, tomato, onion, and our special sauce.</p>
+                <button onclick="openOptionsModal('Classic Burger')">Select Options</button>
+            </div>
+            <div class="menu-item">
+                <h3>Veggie Burger</h3>
+                <p>$6.99 - Plant-based patty, avocado, lettuce, tomato, onion, and vegan mayo.</p>
+                <button onclick="openOptionsModal('Veggie Burger')">Select Options</button>
+            </div>
+            <div class="menu-item">
+                <h3>Chicken Wrap</h3>
+                <p>$4.99 - Grilled chicken, lettuce, tomato, cheese, and ranch dressing.</p>
+                <button onclick="openOptionsModal('Chicken Wrap')">Select Options</button>
+            </div>
+            <!-- Add more menu items as needed -->
+        </div>
+    </div>
+
     <!-- Modal for selecting options -->
     <div id="optionsModal" style="display:none;">
         <div>
@@ -35,163 +60,7 @@
             <button onclick="closeOptionsModal()">Close</button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
-
-<!-- Categories Section -->
-<div id="categorySection" style="display:none;">
-    <h1>What’s on your mind?</h1>
-    <div class="category-container" id="category1">
-        <h2>Category 1</h2>
-        <button class="category-btn" data-category="category1Menu">View Menu</button>
-      </div>
-      <div id="category1Menu" class="menu-items-container" style="display:none;">
-        <!-- Menu items for category 1 go here -->
-        <div class="menu-item category1-Classic Burger">
-            <h3>Classic Burger</h3>
-            <p>$5.99 - Beef patty, cheese, lettuce, tomato, onion, and our special sauce.</p>
-            <button onclick="openOptionsModal('Classic Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category1-Veggie Burger">
-            <h3>Veggie Burger</h3>
-            <p>$6.99 - Plant-based patty, avocado, lettuce, tomato, onion, and vegan mayo.</p>
-            <button onclick="openOptionsModal('Veggie Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category1-hicken Wrap">
-            <h3>Chicken Wrap</h3>
-            <p>$4.99 - Grilled chicken, lettuce, tomato, cheese, and ranch dressing.</p>
-            <button onclick="openOptionsModal('Chicken Wrap')">Select Options</button>
-        </div>
-      </div>       
-    </div>
-
-    <div class="category-container" id="category2">
-        <h2>Category 2</h2>
-        <button class="category-btn" data-category="category2Menu">View Menu</button>
-      </div>
-      <div id="category2Menu" class="menu-items-container" style="display:none;">
-        <!-- Menu items for category 2 go here -->
-        <div class="menu-item category2-Classic Burger">
-            <h3>Classic Burger</h3>
-            <p>$5.99 - Beef patty, cheese, lettuce, tomato, onion, and our special sauce.</p>
-            <button onclick="openOptionsModal('Classic Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category2-Veggie Burger">
-            <h3>Veggie Burger</h3>
-            <p>$6.99 - Plant-based patty, avocado, lettuce, tomato, onion, and vegan mayo.</p>
-            <button onclick="openOptionsModal('Veggie Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category2-Chicken Wrap">
-            <h3>Chicken Wrap</h3>
-            <p>$4.99 - Grilled chicken, lettuce, tomato, cheese, and ranch dressing.</p>
-            <button onclick="openOptionsModal('Chicken Wrap')">Select Options</button>
-        </div>
-      </div>       
-    </div>
-
-    <div class="category-container" id="category3">
-        <h2>Category 3</h2>
-        <button class="category-btn" data-category="category3Menu">View Menu</button>
-      </div>
-      <div id="category3Menu" class="menu-items-container" style="display:none;">
-        <!-- Menu items for category 3 go here -->
-        <div class="menu-item category3-Classic Burger">
-            <h3>Classic Burger</h3>
-            <p>$5.99 - Beef patty, cheese, lettuce, tomato, onion, and our special sauce.</p>
-            <button onclick="openOptionsModal('Classic Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category3-Veggie Burger">
-            <h3>Veggie Burger</h3>
-            <p>$6.99 - Plant-based patty, avocado, lettuce, tomato, onion, and vegan mayo.</p>
-            <button onclick="openOptionsModal('Veggie Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category3-Chicken Wrap">
-            <h3>Chicken Wrap</h3>
-            <p>$4.99 - Grilled chicken, lettuce, tomato, cheese, and ranch dressing.</p>
-            <button onclick="openOptionsModal('Chicken Wrap')">Select Options</button>
-        </div>
-      </div>       
-    </div>
-
-    <div class="category-container" id="category4">
-        <h2>Category 4</h2>
-        <button class="category-btn" data-category="category4Menu">View Menu</button>
-      </div>
-      <div id="category4Menu" class="menu-items-container" style="display:none;">
-        <!-- Menu items for category 4 go here -->
-        <div class="menu-item category4-Classic Burger">
-            <h3>Classic Burger</h3>
-            <p>$5.99 - Beef patty, cheese, lettuce, tomato, onion, and our special sauce.</p>
-            <button onclick="openOptionsModal('Classic Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category4-Veggie Burger">
-            <h3>Veggie Burger</h3>
-            <p>$6.99 - Plant-based patty, avocado, lettuce, tomato, onion, and vegan mayo.</p>
-            <button onclick="openOptionsModal('Veggie Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category4-Chicken Wrap">
-            <h3>Chicken Wrap</h3>
-            <p>$4.99 - Grilled chicken, lettuce, tomato, cheese, and ranch dressing.</p>
-            <button onclick="openOptionsModal('Chicken Wrap')">Select Options</button>
-        </div>
-      </div>       
-    </div>
-
-    <div class="category-container" id="category5">
-        <h2>Category 5</h2>
-        <button class="category-btn" data-category="category5Menu">View Menu</button>
-      </div>
-      <div id="category5Menu" class="menu-items-container" style="display:none;">
-        <!-- Menu items for category 5 go here -->
-        <div class="menu-item category5-Classic Burger">
-            <h3>Classic Burger</h3>
-            <p>$5.99 - Beef patty, cheese, lettuce, tomato, onion, and our special sauce.</p>
-            <button onclick="openOptionsModal('Classic Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category5-Veggie Burger">
-            <h3>Veggie Burger</h3>
-            <p>$6.99 - Plant-based patty, avocado, lettuce, tomato, onion, and vegan mayo.</p>
-            <button onclick="openOptionsModal('Veggie Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category5-Veggie Burger">
-            <h3>Chicken Wrap</h3>
-            <p>$4.99 - Grilled chicken, lettuce, tomato, cheese, and ranch dressing.</p>
-            <button onclick="openOptionsModal('Chicken Wrap')">Select Options</button>
-        </div>
-      </div>       
-    </div>
-
-    <div class="category-container" id="category6">
-        <h2>Category 6</h2>
-        <button class="category-btn" data-category="category6Menu">View Menu</button>
-      </div>
-      <div id="category6Menu" class="menu-items-container" style="display:none;">
-        <!-- Menu items for category 6 go here -->
-        <div class="menu-item category6-Classic Burger">
-            <h3>Classic Burger</h3>
-            <p>$5.99 - Beef patty, cheese, lettuce, tomato, onion, and our special sauce.</p>
-            <button onclick="openOptionsModal('Classic Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category6-Veggie Burger">
-            <h3>Veggie Burger</h3>
-            <p>$6.99 - Plant-based patty, avocado, lettuce, tomato, onion, and vegan mayo.</p>
-            <button onclick="openOptionsModal('Veggie Burger')">Select Options</button>
-        </div>
-        <div class="menu-item category6-Chicken Wrap">
-            <h3>Chicken Wrap</h3>
-            <p>$4.99 - Grilled chicken, lettuce, tomato, cheese, and ranch dressing.</p>
-            <button onclick="openOptionsModal('Chicken Wrap')">Select Options</button>
-        </div>
-      </div>       
-    </div>
-
-    <!-- Repeat the above block for categories 2-6 -->
-</div>
-
-<!-- Summary Section -->
-<div id="summarySection">
-    <h2>Order Summary</h2>
-    <p>Items selected: <span id="itemCount">0</span></p>
-    <p>Total cost: <span id="totalCost">$0.00</span></p>
-</div>

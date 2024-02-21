@@ -1,226 +1,146 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0px;
-    padding: 0px;
-    background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0px;
+  background-color: #f0f0f0;
 }
 
 h1, h2 {
-    color: #333;
+  color: #333;
 }
 
 .menu-item {
-    background-color: #fff;
-    padding: 15px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .menu-item h3 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 /* Button styling */
 button {
-    background-color: #4CAF50; /* Green */
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 button:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 /* Modal styles */
 #optionsModal {
-    position: fixed;
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #optionsModal div {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px; /* Could be more or less, depending on screen size */
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px; /* Could be more or less, depending on screen size */
 }
 
 /* Responsive Styles */
 @media (min-width: 768px) {
-    .menu {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    .menu-item {
-        width: calc(50% - 10px); /* Adjust the width for 2 items per row */
-        margin-bottom: 20px;
-    }
+  .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+  }
+  .menu-item {
+      width: calc(50% - 10px); /* Adjust the width for 2 items per row */
+      margin-bottom: 20px;
+  }
 }
 
 @media (min-width: 1024px) {
-    .menu-item {
-        width: calc(33.333% - 10px); /* Adjust the width for 3 items per row */
-    }
+  .menu-item {
+      width: calc(33.333% - 10px); /* Adjust the width for 3 items per row */
+  }
 }
 
 /* Welcome Screen Styling */
 #welcomeScreen {
-    height: 100vh;
-    background-image: url('https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true'); 
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    padding-top: 30%; /* Adjust this value based on your design */
-    box-sizing: border-box;
-    position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* This will push your content to the center */
-    align-items: center;
+  height: 100vh;
+  background-image: url('https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true'); 
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding-top: 30%; /* Adjust this value based on your design */
+  box-sizing: border-box;
+  position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* This will push your content to the center */
+  align-items: center;
 }
 
 #welcomeScreen::before {
-    height: 100%;
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.5); /* Overlay color */
-    z-index: 0;
+  height: 100%;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5); /* Overlay color */
+  z-index: 0;
 }
 
 #welcomeScreen h1,
 #welcomeScreen p {
-    position: relative;
-    z-index: 1;
-    color: white;
+  position: relative;
+  z-index: 1;
+  color: white;
 }
 
 #startButton {
-    background-color: #e76f51; /* Button color */
-    color: white;
-    padding: 15px 25px;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    /* Removed margin-top as it's no longer necessary with flexbox positioning */
-    position: relative; /* Keep if needed for z-index */
-    z-index: 1; /* Keep if overlaying on other elements */
-    border-radius: 20px;
-    align-self: center; /* Center the button horizontally */
+  background-color: #e76f51; /* Button color */
+  color: white;
+  padding: 15px 25px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  /* Removed margin-top as it's no longer necessary with flexbox positioning */
+  position: relative; /* Keep if needed for z-index */
+  z-index: 1; /* Keep if overlaying on other elements */
+  border-radius: 20px;
+  align-self: center; /* Center the button horizontally */
 }
 
 #startButton:hover {
-    background-color: #f4a261; /* Darker shade for hover effect */
+  background-color: #f4a261; /* Darker shade for hover effect */
 }
 
 /* Responsive Styles */
 @media (min-width: 768px) {
-    .menu-item {
-        width: calc(50% - 10px); /* Adjust the width for 2 items per row */
-        margin-bottom: 20px;
-    }
+  .menu-item {
+      width: calc(50% - 10px); /* Adjust the width for 2 items per row */
+      margin-bottom: 20px;
+  }
 }
 
 @media (min-width: 1024px) {
-    .menu-item {
-        width: calc(33.333% - 10px); /* Adjust the width for 3 items per row */
-    }
-}
-
-#categorySection {
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 20px; /* Rounded corners for the section */
-  }
-  
-  .category-container {
-    background-color: #f7f7f7;
-    border-radius: 15px; /* Rounded corners for category containers */
-    margin-bottom: 20px;
-    overflow: hidden; /* Ensures the rounded corners contain the children */
-  }
-  
   .menu-item {
-    padding: 15px; /* Padding inside each menu item */
-    border-bottom: 1px solid #ddd; /* Separator between menu items */
+      width: calc(33.333% - 10px); /* Adjust the width for 3 items per row */
   }
-  
-  .menu-item:last-child {
-    border-bottom: none; /* No border for the last item */
-  }
-  
-  .menu-item h3 {
-    margin: 0; /* Remove default margin from h3 */
-    color: #333; /* Text color for item title */
-  }
-  
-  .menu-item p {
-    margin: 5px 0 0; /* Spacing for the description paragraph */
-    color: #666; /* Text color for the description */
-  }
-  
-  .menu-item button {
-    background-color: #ff6f61; /* Button color */
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px; /* Rounded corners for buttons */
-    cursor: pointer;
-  }
-  
-  .menu-item button:hover {
-    background-color: #e65a50; /* Button hover state color */
-  }
-
-  .category-btn {
-    background-color: #4CAF50; /* Green, adjust as needed */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    display: block; /* Make the button block-level to span the width of its container */
-    width: auto; /* Adjust based on your design preference */
-    margin: 10px 0; /* Spacing above and below the button */
-    border-radius: 5px; /* Rounded corners to match your design */
-    text-align: center; /* Center the button text */
-  }
-  
-  
-  #summarySection {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #fff;
-    padding: 15px;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Shadow to lift the summary section up */
-    border-radius: 20px 20px 0 0; /* Rounded corners at the top of summary section */
-  }
-  
-  #summarySection h2 {
-    margin: 0;
-    color: #333;
-  }
-  
-  #summarySection p {
-    margin: 5px 0;
-    color: #666;
-  }
+}
