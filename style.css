@@ -1,146 +1,51 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0px;
-  padding: 0px;
-  background-color: #f0f0f0;
-}
-
-h1, h2 {
-  color: #333;
-}
-
-.menu-item {
-  background-color: #fff;
-  padding: 15px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.menu-item h3 {
-  margin-top: 0;
-}
-
-/* Button styling */
-button {
-  background-color: #4CAF50; /* Green */
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-/* Modal styles */
-#optionsModal {
-  position: fixed;
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-}
-
-#optionsModal div {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 500px; /* Could be more or less, depending on screen size */
-}
-
-/* Responsive Styles */
-@media (min-width: 768px) {
-  .menu {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-  }
-  .menu-item {
-      width: calc(50% - 10px); /* Adjust the width for 2 items per row */
-      margin-bottom: 20px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .menu-item {
-      width: calc(33.333% - 10px); /* Adjust the width for 3 items per row */
-  }
-}
-
-/* Welcome Screen Styling */
-#welcomeScreen {
-  height: 100vh;
-  background-image: url('https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true'); 
+  align-items: center;
+  background-image: url('https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true');
   background-size: cover;
   background-position: center;
+  font-family: Arial, sans-serif; /* Sets the default font for the whole page */
+}
+
+#startMenu {
   text-align: center;
-  padding-top: 30%; /* Adjust this value based on your design */
-  box-sizing: border-box;
-  position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* This will push your content to the center */
-  align-items: center;
 }
 
-#welcomeScreen::before {
-  height: 100%;
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5); /* Overlay color */
-  z-index: 0;
-}
-
-#welcomeScreen h1,
-#welcomeScreen p {
-  position: relative;
-  z-index: 1;
-  color: white;
+#startMenu h1 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: white; /* Adjust if needed to improve visibility over your background */
 }
 
 #startButton {
-  background-color: #e76f51; /* Button color */
-  color: white;
-  padding: 15px 25px;
-  font-size: 18px;
-  border: none;
-  cursor: pointer;
-  /* Removed margin-top as it's no longer necessary with flexbox positioning */
-  position: relative; /* Keep if needed for z-index */
-  z-index: 1; /* Keep if overlaying on other elements */
-  border-radius: 20px;
-  align-self: center; /* Center the button horizontally */
+  padding: 10px 20px; /* Adjust padding as needed */
+  font-size: 1.2em; /* Adjust font size as needed */
+  color: #ffffff; /* Text color, customizable */
+  background-color: #007bff; /* Button background color, customizable */
+  border: none; /* Border style */
+  border-radius: 5px; /* Border radius for rounded corners, customizable */
+  cursor: pointer; /* Cursor to pointer to indicate it's clickable */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
 #startButton:hover {
-  background-color: #f4a261; /* Darker shade for hover effect */
+  background-color: #0056b3; /* Darker blue on hover, customizable */
 }
 
-/* Responsive Styles */
-@media (min-width: 768px) {
-  .menu-item {
-      width: calc(50% - 10px); /* Adjust the width for 2 items per row */
-      margin-bottom: 20px;
-  }
+#userPrompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full height of the viewport */
+  text-align: center;
+  padding: 20px;
 }
 
-@media (min-width: 1024px) {
-  .menu-item {
-      width: calc(33.333% - 10px); /* Adjust the width for 3 items per row */
-  }
+#userPrompt h1 {
+  font-size: 2rem; /* Example size, adjust as needed */
+  color: #333; /* Dark grey color, customizable */
 }
