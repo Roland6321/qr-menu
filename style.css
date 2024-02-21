@@ -8,6 +8,9 @@ body, html {
   background-image: url('https://github.com/Roland6321/qr-menu/blob/main/start%20menu_background.jpg?raw=true');
   background-size: cover;
   background-position: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   font-family: Arial, sans-serif; /* Sets the default font for the whole page */
 }
 
