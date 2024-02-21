@@ -66,3 +66,27 @@ body, html {
   font-size: 2rem;
   color: #333;
 }
+.category {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc; /* Light grey border */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.category h2 {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.category-btn {
+  padding: 10px 20px;
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.category-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}

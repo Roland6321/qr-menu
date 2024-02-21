@@ -9,3 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
         categories.style.display = 'block';
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.category-btn');
+    buttons.forEach(function(button, index) {
+        button.addEventListener('click', function() {
+            console.log('Category ' + (index + 1) + ' button clicked');
+            // Here you can add functionality to navigate to the category's menu page
+        });
+    });
+});
