@@ -41,7 +41,7 @@ body, html {
   padding: 10px 20px;
   font-size: 1.2em;
   color: #ffffff;
-  background-color: #007bff;
+  background-color: #ff8410;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -49,7 +49,7 @@ body, html {
 }
 
 #startButton:hover {
-  background-color: #0056b3;
+  background-color: #dfa55e;
 }
 
 #categories {
