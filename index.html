@@ -3,62 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Menu</title>
+    <title>Welcome to Aktuel</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <!-- Welcome Screen -->
-<div id="welcomeScreen">
-    <div id="welcomeText">
+    <!-- Page 1: Start Menu -->
+    <div id="startMenu">
         <h1>Welcome to Aktuel</h1>
-    </div>
-    <div id="welcomeCTA">
         <button id="startButton">Let's Get Started</button>
     </div>
-</div>
 
-
-    <!-- Menu Section -->
-    <div id="menuSection" style="display:none;">
-        <h1>Welcome to Our Restaurant</h1>
-        <h2>Menu</h2>
-        <div class="menu">
-            <!-- Your existing menu items will go here -->
-            <div class="menu-item">
-                <h3>Classic Burger</h3>
-                <p>$5.99 - Beef patty, cheese, lettuce, tomato, onion, and our special sauce.</p>
-                <button onclick="openOptionsModal('Classic Burger')">Select Options</button>
-            </div>
-            <div class="menu-item">
-                <h3>Veggie Burger</h3>
-                <p>$6.99 - Plant-based patty, avocado, lettuce, tomato, onion, and vegan mayo.</p>
-                <button onclick="openOptionsModal('Veggie Burger')">Select Options</button>
-            </div>
-            <div class="menu-item">
-                <h3>Chicken Wrap</h3>
-                <p>$4.99 - Grilled chicken, lettuce, tomato, cheese, and ranch dressing.</p>
-                <button onclick="openOptionsModal('Chicken Wrap')">Select Options</button>
-            </div>
-            <!-- Add more menu items as needed -->
-        </div>
-    </div>
-
-    <!-- Modal for selecting options -->
-    <div id="optionsModal" style="display:none;">
-        <div>
-            <h2 id="menuItemName"></h2>
-            <label for="extraOptions">Choose extras:</label>
-            <select id="extraOptions">
-                <option value="cheese">Extra Cheese</option>
-                <option value="bacon">Bacon</option>
-                <!-- Consider adding more options relevant to all items or specific to the new item -->
-            </select>
-            <label for="comment">Leave a comment:</label>
-            <input type="text" id="comment">
-            <button onclick="submitOptions()">Submit</button>
-            <button onclick="closeOptionsModal()">Close</button>
-        </div>
+    <!-- Page 2: User Prompt (Initially hidden) -->
+    <div id="userPrompt" style="display: none;">
+        <h1>What's on your mind?</h1>
     </div>
 
     <script src="script.js"></script>
