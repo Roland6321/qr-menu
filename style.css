@@ -1,4 +1,3 @@
-/* General styles */
 body, html {
   margin: 0;
   padding: 0;
@@ -7,7 +6,6 @@ body, html {
   font-family: Arial, sans-serif;
 }
 
-/* Start Menu specific styles */
 #startMenu {
   text-align: center;
   display: flex;
@@ -27,16 +25,15 @@ body, html {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Overlay color */
-  z-index: 0; /* Adjust z-index to ensure overlay effect */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
 }
 
 #startMenu h1, #startButton {
-  position: relative; /* Ensure these elements are above the overlay */
+  position: relative;
   z-index: 1;
 }
 
-/* Adjustments for the CTA button and hover effect remain the same */
 #startButton {
   padding: 10px 20px;
   font-size: 1.2em;
@@ -52,18 +49,18 @@ body, html {
   background-color: #0056b3;
 }
 
-/* Second Page Styles */
-#categories { /* Renamed from userPrompt for clarity */
+#categories {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   height: 100vh;
   text-align: center;
   padding-top: 50px;
-  background-color: #F5F5F5; /* New background color for the second page */
+  background-color: #F5F5F5;
 }
 
 #categories h1 {
   font-size: 2rem;
   color: #333;
 }
+
