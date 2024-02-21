@@ -58,6 +58,11 @@ body, html {
   margin-top: 20px; /* or any value you prefer */
 }
 
+#categories {
+  background-color: #F5F5F5; /* This sets the background color to light grey */
+  /* ...other styles... */
+}
+
 .category {
   display: flex;
   align-items: center;
@@ -94,7 +99,7 @@ body, html {
 
 .category-btn {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #ff8410;
   color: white;
   border: none;
   border-radius: 5px;
@@ -104,6 +109,6 @@ body, html {
 }
 
 .category-btn:hover {
-  background-color: #0056b3;
+  background-color: #dfa55e;
 }
 
