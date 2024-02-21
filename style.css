@@ -52,6 +52,12 @@ body, html {
   background-color: #dfa55e;
 }
 
+#categories h1 {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px; /* or any value you prefer */
+}
+
 .category {
   display: flex;
   align-items: center;
