@@ -162,3 +162,20 @@ body, html {
 .category-btn, .menu-items {
   margin-top: 10px;
 }
+
+.menu-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item-title {
+  font-weight: bold;
+}
+
+.menu-item:hover {
+  background-color: #e9e9e9;
+}
