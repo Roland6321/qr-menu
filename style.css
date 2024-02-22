@@ -74,59 +74,59 @@ body, html {
 
 .category {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
   margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   background-color: #fff;
+  height: 200px; /* Adjust based on your design */
+}
+
+.category-content, .category-image {
+  width: 100%; /* Take the full width of the category box */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0; /* Add margin for spacing */
 }
 
 .category-image {
-  width: 25%;
   height: 100px; /* Adjust the height as needed */
   background-size: cover;
   background-position: center;
   border-radius: 5px;
-  margin-right: 10px;
-}
-
-.category-content {
-  display: flex;
-  flex-direction: column; /* Stack items vertically */
-  justify-content: center; /* Center items vertically */
-  align-items: center; /* Center items horizontally */
-  height: 100%; /* Full height of the category container */
 }
 
 .category h2 {
-  white-space: normal; /* Allow text wrapping */
-  text-align: center; /* Center the text horizontally */
-  overflow-wrap: break-word; /* Ensure long words do not overflow */
-  margin: 0 10px; /* Add horizontal margin if needed */
+  font-size: 1.5rem; /* Adjust the size as needed */
+  color: #333;
+  margin: 0;
+  text-align: center;
+  white-space: normal; /* Wrap text as needed */
+  overflow-wrap: break-word;
 }
 
 .category-btn {
+  padding: 8px 10px;
   background-color: #ff8410;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-left: auto; /* Keep the button to the right */
-  padding: 8px 10px; /* Adjust padding to ensure text fits comfortably */
-  width: 100%; /* Make button full width of its container */
-  white-space: normal; /* Allow text wrapping */
-  line-height: 1.1; /* Adjust line height for readability */
-  height: auto; /* Adjust height automatically to fit content */
   font-size: 1rem;
-  text-align: center; /* Ensure text is centered */
+  width: auto; /* Allow the button to size to its content */
+  margin: 5px;
 }
 
 .category-btn:hover {
   background-color: #dfa55e;
 }
+
+/* Adjust your .back-btn styles if necessary */
 
 /* Back Button Styling */
 .back-btn {
