@@ -126,3 +126,37 @@ body, html {
   background-color: #dfa55e;
 }
 
+/* Back Button Styling */
+.back-btn {
+  padding: 10px 20px;
+  font-size: 1em;
+  color: #ffffff;
+  background-color: #ff8410;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px; /* Space above the button */
+}
+
+.back-btn:hover {
+  background-color: #dfa55e;
+}
+
+/* Menu Item Styling */
+.menu-items p {
+  padding: 5px 0; /* Adds padding above and below each menu item */
+  color: #333; /* Dark text color for readability */
+  margin-left: 20px; /* Indents menu items for clarity */
+}
+
+/* Adjustments for better visibility of category content */
+.category-content {
+  flex-direction: column; /* Stacks items vertically within each category */
+  align-items: flex-start; /* Aligns items to the start of the container */
+}
+
+/* Ensures that the category buttons and menu items are well spaced */
+.category-btn, .menu-items {
+  margin-top: 10px;
+}
