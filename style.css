@@ -162,3 +162,16 @@ body, html {
 .category-btn, .menu-items {
   margin-top: 10px;
 }
+
+.menu-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-item-button {
+  margin-left: auto;
+  cursor: pointer;
+}
