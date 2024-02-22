@@ -107,17 +107,19 @@ body, html {
 }
 
 .category-btn {
-  padding: 8px 20px; /* Adjusted padding */
   background-color: #ff8410;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
   margin-left: auto; /* Keep the button to the right */
-  white-space: normal; /* Allow the text to wrap to the next line */
-  line-height: 1.1; /* Ensure the text is spaced nicely */
-  height: 50px; /* Ensure there's enough space for two lines of text */
+  padding: 8px 10px; /* Adjust padding to ensure text fits comfortably */
+  width: 80px; /* Set a specific width to force text wrapping */
+  white-space: normal; /* Allow text wrapping */
+  line-height: 1.1; /* Adjust line height for readability */
+  height: auto; /* Adjust height automatically to fit content */
+  font-size: 1rem;
+  text-align: center; /* Ensure text is centered */
 }
 
 .category-btn:hover {
