@@ -95,15 +95,17 @@ body, html {
 
 .category-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 75%;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  height: 100%; /* Full height of the category container */
 }
 
 .category h2 {
-  margin: 0;
-  font-size: 1.5rem; /* Adjust the size as needed */
-  color: #333;
+  white-space: normal; /* Allow text wrapping */
+  text-align: center; /* Center the text horizontally */
+  overflow-wrap: break-word; /* Ensure long words do not overflow */
+  margin: 0 10px; /* Add horizontal margin if needed */
 }
 
 .category-btn {
@@ -114,7 +116,7 @@ body, html {
   cursor: pointer;
   margin-left: auto; /* Keep the button to the right */
   padding: 8px 10px; /* Adjust padding to ensure text fits comfortably */
-  width: 80px; /* Set a specific width to force text wrapping */
+  width: 100%; /* Make button full width of its container */
   white-space: normal; /* Allow text wrapping */
   line-height: 1.1; /* Adjust line height for readability */
   height: auto; /* Adjust height automatically to fit content */
