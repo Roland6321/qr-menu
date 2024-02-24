@@ -162,3 +162,17 @@ body, html {
 .category-btn, .menu-items {
   margin-top: 10px;
 }
+
+.menu-items a {
+  display: block; /* Makes each link take up its own line */
+  margin: 10px 0; /* Adds some space above and below each link */
+  color: #007bff; /* Standard link color */
+  text-decoration: none; /* Removes underline from links */
+  font-weight: bold; /* Makes the text stand out */
+  transition: color 0.2s ease-in-out; /* Smooth color transition for hover effect */
+}
+
+.menu-items a:hover {
+  color: #0056b3; /* Darker shade on hover for better interaction feedback */
+  text-decoration: underline; /* Adds underline on hover for clarity */
+}
