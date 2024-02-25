@@ -67,18 +67,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Example function to fetch item details
     function fetchItemDetails(itemId) {
-        // Placeholder: Replace with actual data fetching logic
-        return {
-            name: "Example Item Name",
-            image: "url_to_image.jpg",
-            description: "This is an example description for the item.",
-            price: 10, // Base price of the item
-            extraIngredients: [
-                {name: "Extra Cheese", price: 2},
-                {name: "Bacon", price: 3},
-                // Add more extras as needed
-            ]
-        };
+        // This is a simplified example. In a real application, you might fetch this data from a server.
+        if (itemId === "sild01") {
+            return {
+                name: "Rugbrød med Sild - Traditional rye bread with pickled herring",
+                image: "url_to_image_of_sild.jpg",
+                description: "A detailed description of Rugbrød med Sild...",
+                price: 10, // Base price of the item
+                extraIngredients: [
+                    {name: "Extra Cheese", price: 2},
+                    {name: "Bacon", price: 3},
+                    // Add more extras as needed
+                ]
+            };
+        } else if (itemId === "kartoffel02") {
+            return {
+                name: "Rugbrød med Kartoffel - Rye bread with potato and fresh chives",
+                image: "url_to_image_of_kartoffel.jpg",
+                description: "A detailed description of Rugbrød med Kartoffel...",
+                price: 9, // Base price of the item
+                extraIngredients: [
+                    {name: "Sour Cream", price: 1.5},
+                    {name: "Chive", price: 1},
+                    // Add more extras as needed
+                ]
+            };
+        }
+        // Add more conditions for other items or a default return
     }
 
     // Function to add item to the basket
