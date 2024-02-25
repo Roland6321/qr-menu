@@ -34,6 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
             showCategories();
         });
     });
+
+  // Attaching event listeners to item CTA buttons
+  menuItemsSections.forEach(menuSection => {
+    menuSection.addEventListener('click', event => {
+        const ctaButton = event.target.closest('.item-cta');
+        if (ctaButton) {
+            const itemId = ctaButton.closest('.menu-item').getAttribute('data-item-id');
+            displayItemDetailsPopup(itemId);
+        }
+
+    });
+});
 });
 
     // Updated part for displaying item details with additional features
