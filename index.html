@@ -70,18 +70,42 @@
     <!-- Category Menu Item Sections (Initially hidden) -->
     <!-- Each category will have its own section here, similar to the existing 'menu-items' divs -->
     <!-- Example for Category 1 "Smørrebrød" -->
-<!-- Example for Category 1 "Smørrebrød" -->
-    <div id="smorrebrodMenu" class="menu-items" style="display: none;">
-        <h2>Smørrebrød</h2>
-        <div class="menu-item" data-item-id="sild01">
-            <p>Rugbrød med Sild - Traditional rye bread with pickled herring.</p>
-            <button class="item-cta">View Details</button>
+    <!-- Example for Category 1 "Smørrebrød" -->
+    <div id="sild01DetailsPage" class="menu-item-details" style="display: none;">
+        <h2>Rugbrød med Sild</h2>
+        <img src="url_to_image_of_sild.jpg" alt="Rugbrød med Sild">
+        <p>Description of Rugbrød med Sild... </p>
+        <p>Price: $10</p>
+        <label for="extra-ingredients-sild01">Choose extra ingredients:</label>
+        <select id="extra-ingredients-sild01" multiple>
+            <option value="Extra Cheese" data-price="2">Extra Cheese - $2</option>
+            <option value="Bacon" data-price="3">Bacon - $3</option>
+            <!-- More extra ingredients as needed -->
+        </select>
+        <label for="comments-sild01">Comments:</label>
+        <input type="text" id="comments-sild01" name="comments">
+        <div>
+            <button class="backToMenu">Back to Menu</button>
+            <button class="addToBasket" data-item-id="sild01">Add to Basket</button>
         </div>
-        <div class="menu-item" data-item-id="kartoffel02">
-            <p>Rugbrød med Kartoffel - Rye bread with potato and fresh chives.</p>
-            <button class="item-cta">View Details</button>
+    </div>
+    <div id="kartoffel02DetailsPage" class="menu-item-details" style="display: none;">
+        <h2>Rugbrød med Kartoffel</h2>
+        <img src="url_to_image_of_sild.jpg" alt="Rugbrød med Kartoffel">
+        <p>Description of Rugbrød med Kartoffel... </p>
+        <p>Price: $10</p>
+        <label for="extra-ingredients-kartoffel02">Choose extra ingredients:</label>
+        <select id="extra-ingredients-kartoffel02" multiple>
+            <option value="Extra Cheese" data-price="2">Extra Cheese - $2</option>
+            <option value="Bacon" data-price="3">Bacon - $3</option>
+            <!-- More extra ingredients as needed -->
+        </select>
+        <label for="comments-kartoffel02">Comments:</label>
+        <input type="text" id="comments-kartoffel02" name="comments">
+        <div>
+            <button class="backToMenu">Back to Menu</button>
+            <button class="addToBasket" data-item-id="kartoffel02">Add to Basket</button>
         </div>
-        <button class="backToCategories">Back to Categories</button>
     </div>
 
     <div id="luksussmorrebrodMenu" class="menu-items" style="display: none;">
