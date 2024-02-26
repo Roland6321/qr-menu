@@ -162,3 +162,25 @@ body, html {
 .category-btn, .menu-items {
   margin-top: 10px;
 }
+
+.menu-item {
+  display: flex;
+  border: 1px solid #ccc; /* Thin border */
+  align-items: center;
+}
+
+.menu-item img {
+  height: 100%;
+  width: 20%;
+  object-fit: cover; /* Ensures the image covers the allotted space without distortion */
+}
+
+.menu-item span {
+  flex-grow: 1; /* Allows the name to take up available space */
+  text-align: center;
+}
+
+.menu-item button {
+  width: 20%;
+  height: 100%;
+}
