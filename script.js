@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('detailPageItem2').innerHTML = `<h2>Detail Page for Rugbrød med Kartoffel</h2><button class="backToMenu">Back to Menu</button>`;
     });
 
-    // Using event delegation for Back to Menu buttons
-    document.addEventListener('click', (event) => {
+    // Corrected Event Delegation for "Back to Menu" buttons
+    document.body.addEventListener('click', (event) => {
         if (event.target.matches('.backToMenu')) {
             document.querySelectorAll('.detail-page').forEach(page => {
                 page.style.display = 'none';
@@ -59,5 +59,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
 
