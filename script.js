@@ -49,14 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('detailPageItem2').innerHTML = `<h2>Detail Page for Rugbrød med Kartoffel</h2><button class="backToMenu">Back to Menu</button>`;
     });
 
-    // Back to Menu from Detail Page
-    document.querySelectorAll('.backToMenu').forEach(button => {
-        button.addEventListener('click', () => {
+    // Using event delegation for Back to Menu buttons
+    document.addEventListener('click', (event) => {
+        if (event.target.matches('.backToMenu')) {
             document.querySelectorAll('.detail-page').forEach(page => {
                 page.style.display = 'none';
             });
             document.getElementById('smorrebrodMenu').style.display = 'block';
-        });
+        }
     });
 });
+
 
