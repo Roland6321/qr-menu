@@ -36,8 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Menu items on new pages
 document.addEventListener('DOMContentLoaded', () => {
+    // Consolidate your existing code here
+
     // Show detail page for Menu Item 1
     document.querySelector('.selectItem1').addEventListener('click', () => {
         document.getElementById('smorrebrodMenu').style.display = 'none';
@@ -53,8 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Back to Menu from Detail Page
     document.querySelectorAll('.backToMenu').forEach(button => {
         button.addEventListener('click', () => {
-            document.querySelector('.detail-page').style.display = 'none';
-            document.getElementById('smorrebrodMenu').style.display = 'block';
+            document.querySelectorAll('.detail-page').forEach(page => {
+                page.style.display = 'none'; // Hide all detail pages
+            });
+            document.getElementById('smorrebrodMenu').style.display = 'block'; // Show the menu items again
         });
     });
 });
+
