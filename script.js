@@ -35,3 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Menu items on new pages
+document.addEventListener('DOMContentLoaded', () => {
+    // Show detail page for Menu Item 1
+    document.querySelector('.selectItem1').addEventListener('click', () => {
+        document.getElementById('smorrebrodMenu').style.display = 'none';
+        document.getElementById('detailPageItem1').style.display = 'block';
+    });
+
+    // Show detail page for Menu Item 2
+    document.querySelector('.selectItem2').addEventListener('click', () => {
+        document.getElementById('smorrebrodMenu').style.display = 'none';
+        document.getElementById('detailPageItem2').style.display = 'block';
+    });
+
+    // Back to Menu from Detail Page
+    document.querySelectorAll('.backToMenu').forEach(button => {
+        button.addEventListener('click', () => {
+            document.querySelector('.detail-page').style.display = 'none';
+            document.getElementById('smorrebrodMenu').style.display = 'block';
+        });
+    });
+});
