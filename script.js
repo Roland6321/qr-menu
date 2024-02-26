@@ -34,29 +34,5 @@ document.addEventListener('DOMContentLoaded', () => {
             showCategories();
         });
     });
-
-    // Show detail page for Menu Item 1
-    document.querySelector('.selectItem1').addEventListener('click', () => {
-        document.getElementById('smorrebrodMenu').style.display = 'none';
-        document.getElementById('detailPageItem1').style.display = 'block';
-        document.getElementById('detailPageItem1').innerHTML = `<h2>Detail Page for Rugbrød med Sild</h2><button class="backToMenu">Back to Menu</button>`;
-    });
-
-    // Show detail page for Menu Item 2
-    document.querySelector('.selectItem2').addEventListener('click', () => {
-        document.getElementById('smorrebrodMenu').style.display = 'none';
-        document.getElementById('detailPageItem2').style.display = 'block';
-        document.getElementById('detailPageItem2').innerHTML = `<h2>Detail Page for Rugbrød med Kartoffel</h2><button class="backToMenu">Back to Menu</button>`;
-    });
-
-    // Corrected Event Delegation for "Back to Menu" buttons
-    document.body.addEventListener('click', (event) => {
-        if (event.target.matches('.backToMenu')) {
-            document.querySelectorAll('.detail-page').forEach(page => {
-                page.style.display = 'none';
-            });
-            document.getElementById('smorrebrodMenu').style.display = 'block';
-        }
-    });
 });
 
