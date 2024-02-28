@@ -189,7 +189,7 @@ border-radius: 5px; /* Rounded corners */
 cursor: pointer; /* Pointer cursor on hover */
 font-size: 1rem; /* Font size 1rem */
 height: 100%; /* Make the button take full height of its container */
-width: 25%; /* Set the width to 25% of its container */
+width: auto; /* Set the width to 25% of its container */
 margin: 5px; /* Add margin if needed */
 }
 
@@ -206,7 +206,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
   cursor: pointer; /* Pointer cursor on hover */
   font-size: 1rem; /* Font size 1rem */
   height: 100%; /* Make the button take full height of its container */
-  width: 25%; /* Set the width to 25% of its container */
+  width: auto; /* Set the width to 25% of its container */
   margin: 5px; /* Add margin if needed */
   }
   
