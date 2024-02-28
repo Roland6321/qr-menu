@@ -7,9 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <img src="https://github.com/Roland6321/qr-menu/blob/main/category2_image.jpg?raw=true" alt="Dish Image" style="width:100%; height:20vh;">
     <h1>Rugbrød med Sild</h1>
     <p>Ingredients: [List the ingredients here]</p>
-    <!-- Add more information or an option to add to basket -->
+    <div>
+        <h2>Extra Ingredients:</h2>
+        <div><input type="checkbox" id="extra1" name="extra1"><label for="extra1">Ingredient Name (Cost)</label></div>
+        <!-- Repeat for other ingredients -->
+    </div>
+    <div>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1">
+    </div>
+    <div>
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment"></textarea>
+    </div>
+    <button id="submit">Submit</button>
 </body>
 </html>
-
