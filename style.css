@@ -184,3 +184,26 @@ body, html {
   width: 20%;
   height: 100%;
 }
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.select-btn {
+padding: 8px 10px; /* Adjust padding as needed */
+background-color: #ff8410; /* Orange background */
+color: white; /* White text */
+border: none; /* No border */
+border-radius: 5px; /* Rounded corners */
+cursor: pointer; /* Pointer cursor on hover */
+font-size: 1rem; /* Font size 1rem */
+height: 100%; /* Make the button take full height of its container */
+width: 25%; /* Set the width to 25% of its container */
+margin: 5px; /* Add margin if needed */
+}
+
+.select-btn:hover {
+background-color: #dfa55e; /* Darker orange background on hover */
+}
