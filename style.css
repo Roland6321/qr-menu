@@ -145,6 +145,14 @@ body, html {
   background-color: #dfa55e;
 }
 
+#menuitemlist h2 {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px; /* or any value you prefer */
+  padding-top: 15px; /* This adds padding above your h1 text */
+}
+
+
 /* Menu Item Styling */
 .menu-items p {
   padding: 5px 0; /* Adds padding above and below each menu item */
