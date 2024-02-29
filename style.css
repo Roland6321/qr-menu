@@ -158,6 +158,15 @@ body, html {
   align-items: flex-start; /* Aligns items to the start of the container */
 }
 
+.category-content h2 {
+  color: grey; /* Replace #desiredColor with the actual hex color code you want */
+  padding-top: 10px;
+}
+
+#categories {
+background-color: #fff; /* Replace #backgroundColor with your desired color code */
+}
+
 /* Ensures that the category buttons and menu items are well spaced */
 .category-btn, .menu-items {
   margin-top: 10px;
@@ -215,3 +224,5 @@ background-color: #dfa55e; /* Darker orange background on hover */
   .backToCategories:hover {
   background-color: #dfa55e; /* Darker orange background on hover */
   }
+
+
