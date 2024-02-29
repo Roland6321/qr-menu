@@ -167,6 +167,7 @@ body, html {
   display: flex;
   border: 1px solid #ccc; /* Thin border */
   align-items: center;
+  background-color: #fff;
 }
 
 .menu-item img {
