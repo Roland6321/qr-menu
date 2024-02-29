@@ -167,7 +167,6 @@ body, html {
   display: flex;
   border: 1px solid #ccc; /* Thin border */
   align-items: center;
-  background-color: #fff;
 }
 
 .menu-item img {
@@ -193,6 +192,8 @@ width: auto; /* Allow the button to size to its content */
 margin: 5px;
 }
 
+
+
 .select-btn:hover {
 background-color: #dfa55e; /* Darker orange background on hover */
 }
@@ -213,5 +214,4 @@ background-color: #dfa55e; /* Darker orange background on hover */
   .backToCategories:hover {
   background-color: #dfa55e; /* Darker orange background on hover */
   }
-
 
