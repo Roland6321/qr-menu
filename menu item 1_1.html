@@ -9,21 +9,22 @@
 <body>
     <body style="background-color: #fff;">
     <img src="https://github.com/Roland6321/qr-menu/blob/main/category2_image.jpg?raw=true" alt="Dish Image" style="width:100%; height:40vh;">
-    <h1>Rugbrød med Sild</h1>
-    <p>Ingredients: [List the ingredients here]</p>
-    <div>
-        <h2>Extra Ingredients:</h2>
+    <h1 class="menu-item-name">Rugbrød med Sild</h1>
+    <p class="ingredients">Ingredients: [List the ingredients here]</p>
+    <div class="extra-ingredients-section">
+        <h2 class="extra-ingredients-title">Extra Ingredients:</h2>
         <div><input type="checkbox" id="extra1" name="extra1" data-cost="0.5"><label for="extra1">Ingredient Name ($0.5)</label></div>
         <!-- Repeat for other ingredients -->
     </div>
     <div>
+    <div class="quantity-section">
         <label for="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" min="1">
     </div>
-    <div>
+    <div class="comment-section">
         <label for="comment">Comment:</label>
         <textarea id="comment" name="comment"></textarea>
     </div>
-    <button id="Add to cart">Add to cart</button>
+    <button class="Add to cart">Add to cart</button>
 </body>
 </html>
