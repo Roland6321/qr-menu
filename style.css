@@ -229,11 +229,11 @@ background-color: #dfa55e; /* Darker orange background on hover */
 }
 
 .quantity-section {
-  margin-bottom: 50px; /* Adds space below the quantity section */
+  padding-bottom: 50px; /* Adds space below the quantity section */
 }
 
 .extra-ingredients-section div {
-  margin-bottom: 50px; /* Adds space below each ingredient checkbox */
+  padding-bottom: 50px; /* Adds space below each ingredient checkbox */
 }
 
 .add-to-cart {
