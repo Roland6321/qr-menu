@@ -177,8 +177,8 @@ body, html {
   border: 1px solid #ccc; /* Thin border */
   align-items: center; /* Existing style */
   margin-bottom: 10px; /* Adds vertical separation between menu items */
-  border: 5px 5px; /* Adds padding on the left and right */
-  padding: 5px 5px; /* Adds padding on the left and right */
+  margin-left: 5px;
+  margin-right: 5px;
   border-radius: 5px; /* Rounded corners */
 }
 
