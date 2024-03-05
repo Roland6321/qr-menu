@@ -175,18 +175,24 @@ body, html {
 .menu-item {
   display: flex;
   border: 1px solid #ccc; /* Thin border */
-  align-items: center;
+  align-items: center; /* Existing style */
+  margin-bottom: 10px; /* Adds vertical separation between menu items */
+  padding: 0 5px; /* Adds padding on the left and right */
+}
+
+.menu-item:last-child {
+  margin-bottom: 0; /* Removes the margin from the last menu item to avoid extra space at the bottom */
 }
 
 .menu-item img {
-  height: 100%;
-  width: 20%;
+  height: 100%; /* Existing style */
+  width: 20%; /* Existing style */
   object-fit: cover; /* Ensures the image covers the allotted space without distortion */
 }
 
 .menu-item span {
   flex-grow: 1; /* Allows the name to take up available space */
-  text-align: center;
+  text-align: center; /* Existing style */
 }
 
 .select-btn {
