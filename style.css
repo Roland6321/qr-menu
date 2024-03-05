@@ -181,10 +181,6 @@ body, html {
   border-radius: 5px; /* Rounded corners */
 }
 
-.menu-item:last-child {
-  margin-bottom: 0; /* Removes the margin from the last menu item to avoid extra space at the bottom */
-}
-
 .menu-item img {
   height: 100%; /* Existing style */
   width: 20%; /* Existing style */
