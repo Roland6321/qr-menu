@@ -257,8 +257,8 @@ background-color: #dfa55e; /* Darker orange background on hover */
 }
 
 .menu-item-price {
-  font-size: 1.2rem; /* Adjust the font size as needed */
-  color: #333; /* Adjust the color to fit your design */
+  font-size: 1.8rem; /* Adjust the font size as needed */
+  color: #ff8410; /* Adjust the color to fit your design */
   margin-top: 8px; /* Provides space between the item name and price */
   margin-bottom: 20px; /* Space before the next section starts */
 }
