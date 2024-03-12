@@ -228,7 +228,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
   background-color: #dfa55e; /* Darker orange background on hover */
   }
 
-  .menu-item-name, .ingredients, .extra-ingredients-section, .extra-ingredients-title, .quantity-section, .comment-section {
+  .menu-item-name, .ingredients, .extra-ingredients-section, .extra-ingredients-title, .quantity-section, .comment-section, .menu-item-price {
     padding-left: 10px;
 }
 
