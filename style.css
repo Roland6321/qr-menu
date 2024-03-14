@@ -150,6 +150,12 @@ body, html {
   /* ...other styles... */
 }
 
+.menu-item {
+  background-color: #fff; /* This sets the background color to light grey */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  /* ...other styles... */
+}
+
 #menuitemlist h2 {
   text-align: center;
   width: 100%;
