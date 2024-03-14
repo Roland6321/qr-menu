@@ -288,3 +288,24 @@ background-color: #dfa55e; /* Darker orange background on hover */
 .price-value {
   font-weight: bold; /* Makes the price stand out */
 }
+
+.custom-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f5f5f5; /* Example background color, adjust as needed */
+}
+
+.home-btn, .cart-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff; /* Example button color, adjust as needed */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.home-btn:hover, .cart-btn:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+}

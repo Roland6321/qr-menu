@@ -34,5 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
             showCategories();
         });
     });
+
+    const homeButtons = document.querySelectorAll('.home-btn');
+    homeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            showCategories();
+        });
+    });
 });
 
