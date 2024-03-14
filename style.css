@@ -194,12 +194,20 @@ body, html {
   margin-left: 3px;
 }
 
-.menu-item .price {
-  display: block; /* Ensure the price is on a new line */
-  margin-left: 3px; /* Maintain consistency with the gap from the image */
-  font-size: 0.9em; /* Example size, adjust as needed */
-  color: #000; /* Adjust color as needed */
+.item-details {
+  flex-grow: 1; /* Allows the container to take up remaining space */
+  margin-left: 2px; /* Adjusted to ensure gap from the image */
 }
+
+.item-details span, .item-details .price {
+  display: block; /* Makes each span stack vertically */
+}
+
+.menu-item .price {
+  font-size: 0.9em;
+  color: #000;
+}
+
 
 .select-btn {
 padding: 8px 10px;
