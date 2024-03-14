@@ -208,6 +208,9 @@ body, html {
   color: #000;
 }
 
+.menu-item a {
+  margin-left: auto; /* Pushes the button to the right */
+}
 
 .select-btn {
 padding: 8px 10px;
@@ -221,7 +224,9 @@ width: auto; /* Allow the button to size to its content */
 margin: 5px;
 }
 
-
+.select-btn-anchor {
+  margin-left: auto; /* Pushes the button to the right */
+}
 
 .select-btn:hover {
 background-color: #dfa55e; /* Darker orange background on hover */
