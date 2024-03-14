@@ -145,7 +145,7 @@ body, html {
   background-color: #dfa55e;
 }
 
-#menuitemlist {
+.menu-items {
   background-color: #F5F5F5; /* This sets the background color to light grey */
   /* ...other styles... */
 }
