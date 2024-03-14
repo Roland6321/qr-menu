@@ -191,6 +191,7 @@ body, html {
 .menu-item span {
   flex-grow: 1; /* Allows the name to take up available space */
   text-align: left; /* Existing style */
+  margin-left: 3px;
 }
 
 .select-btn {
