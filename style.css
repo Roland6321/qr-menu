@@ -205,7 +205,8 @@ body, html {
 
 .menu-item .price {
   font-size: 0.9em;
-  color: #000;
+  color: #ff8410; /* Change color to orange */
+  font-weight: bold; /* Make the text bold */
 }
 
 .menu-item a {
