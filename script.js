@@ -4,12 +4,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoryButtons = document.querySelectorAll('.category-btn');
     const menuItemsSections = document.querySelectorAll('.menu-items');
     const backToCategoriesButtons = document.querySelectorAll('.backToCategories');
+    const counterContainer = document.querySelector('.order-total-counter'); // Counter container
+
+    // Initially hide the counter
+    counterContainer.style.display = 'none';
+
+    // Function to toggle counter display
+    function toggleCounterDisplay(show) {
+        counterContainer.style.display = show ? 'block' : 'none';
+    }
 
     // Function to show the categories page
     function showCategories() {
         categories.style.display = 'block';
         menuItemsSections.forEach(item => item.style.display = 'none');
         document.getElementById('startMenu').style.display = 'none';
+        toggleCounterDisplay(true); // Show the counter when categories are displayed
     }
 
     // Function to show menu items for a specific category
@@ -17,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         categories.style.display = 'none';
         document.getElementById('startMenu').style.display = 'none';
         menuItemsSections[index].style.display = 'block';
+        toggleCounterDisplay(true); // Ensure the counter is visible when viewing menu items
     }
 
     startButton.addEventListener('click', () => {
@@ -42,4 +53,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
 
