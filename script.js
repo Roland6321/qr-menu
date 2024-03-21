@@ -46,41 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     homeButtons.forEach(button => {
         button.addEventListener('click', showCategories);
     });
-
-        // Clear the stored total on page refresh to start fresh
-    localStorage.setItem('totalCost', '0');
-    updateCounterDisplay();
-
-     // Event delegation for dynamically loaded "Add to Cart" buttons
-    document.body.addEventListener('click', function(event) {
-        if (event.target.matches('.add-to-cart')) {
-                handleAddToCart.call(event.target, event);
-         }
-    });
-
-    function handleAddToCart() {
-        // Since this button is directly within the body and not deeply nested,
-        // we don't need to use .closest() to find the nearest .menu-item ancestor.
-        // Instead, directly query the relevant elements.
-        let itemPrice = parseFloat(document.querySelector('.menu-item-price .price-value').getAttribute('data-price'));
-        let quantity = parseInt(document.querySelector('.quantity-section input[type="number"]').value || '1');
-        let extraCosts = Array.from(document.querySelectorAll('.extra-ingredients-section input[type="checkbox"]:checked'))
-                              .reduce((acc, curr) => acc + parseFloat(curr.getAttribute('data-cost')), 0);
-        
-        let totalCost = parseFloat(localStorage.getItem('totalCost') || '0');
-        totalCost += (itemPrice + extraCosts) * quantity;
-    
-        // Update LocalStorage and the counter
-        localStorage.setItem('totalCost', totalCost.toString());
-        updateCounterDisplay();
-    }
-
-    function updateCounterDisplay() {
-        let totalCost = parseFloat(localStorage.getItem('totalCost') || '0');
-        document.getElementById('totalCounter').textContent = `$${totalCost.toFixed(2)}`;
-    }
 });
-
 
 
 
