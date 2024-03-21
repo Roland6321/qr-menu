@@ -47,6 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCategories);
     });
 
+    // Add this new section for handling the cart button click
+    const cartButtons = document.querySelectorAll('.cart-btn');
+    cartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            window.location.href = 'cart.html';
+        });
+    });
+
     // New code to handle adding items to cart
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function() {
