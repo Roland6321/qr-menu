@@ -51,9 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('totalCost', '0');
     updateCounterDisplay();
 
-    // Add event listeners to each "Add to cart" button
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', handleAddToCart);
+     // Event delegation for dynamically loaded "Add to Cart" buttons
+    document.body.addEventListener('click', function(event) {
+        if (event.target.matches('.add-to-cart')) {
+                handleAddToCart.call(event.target, event);
+         }
     });
 
     function handleAddToCart() {
