@@ -66,10 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    // New code to handle adding items to cart
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const menuItem = this.closest('body'); 
+            const menuItem = this.closest('body'); // Simplified for this example
             const itemName = menuItem.querySelector('.menu-item-name').innerText;
             const basePrice = parseFloat(menuItem.querySelector('.price-value').getAttribute('data-price'));
             const quantity = parseInt(menuItem.querySelector('#quantity').value) || 1;
@@ -104,9 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             localStorage.setItem('orders', JSON.stringify(orders));
     
-            updateCounter(orderTotal); // Update the counter with the new total
+            updateCounter(orderTotal);
         });
-    });
+    }); 
 });
 
 
