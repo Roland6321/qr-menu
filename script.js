@@ -1,10 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize orderTotal at the beginning
+    let orderTotal = parseFloat(localStorage.getItem('orderTotal')) || 0;
+    
     const startButton = document.getElementById('startButton');
     const categories = document.getElementById('categories');
     const categoryButtons = document.querySelectorAll('.category-btn');
     const menuItemsSections = document.querySelectorAll('.menu-items');
     const backToCategoriesButtons = document.querySelectorAll('.backToCategories');
     const counterContainer = document.querySelector('.order-total-counter'); // Counter container
+
+    // Update counter function
+    function updateCounter(total) {
+        const counterContainer = document.querySelector('#totalCounter');
+        if (counterContainer) counterContainer.textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Call updateCounter at the start to reflect any saved total
+    updateCounter(orderTotal);
 
     // Function to toggle counter display
     function toggleCounterDisplay(show) {
@@ -47,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCategories);
     });
 
-    // Add this new section for handling the cart button click
     const cartButtons = document.querySelectorAll('.cart-btn');
     cartButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -55,10 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // New code to handle adding items to cart
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const menuItem = this.closest('body'); // Simplified for this example
+            const menuItem = this.closest('body'); 
             const itemName = menuItem.querySelector('.menu-item-name').innerText;
             const basePrice = parseFloat(menuItem.querySelector('.price-value').getAttribute('data-price'));
             const quantity = parseInt(menuItem.querySelector('#quantity').value) || 1;
@@ -93,10 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             localStorage.setItem('orders', JSON.stringify(orders));
     
-            updateCounter(orderTotal);
+            updateCounter(orderTotal); // Update the counter with the new total
         });
-    });    
+    });
 });
+
 
 
 
