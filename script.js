@@ -69,27 +69,32 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCart);
     });
 
-    // Quantity Selector Logic
+    // Enhanced Quantity Selector Logic
     const decreaseButton = document.querySelector('.quantity-btn.decrease');
     const increaseButton = document.querySelector('.quantity-btn.increase');
-    const quantityValue = document.getElementById('quantity-value');
-    
-    decreaseButton.addEventListener('click', function() {
-        let currentValue = parseInt(quantityValue.innerText, 10);
-        if (currentValue > 0) {
-            currentValue -= 1;
-            quantityValue.innerText = currentValue.toString();
-        }
-    });
-    
-    increaseButton.addEventListener('click', function() {
-        let currentValue = parseInt(quantityValue.innerText, 10);
-        if (currentValue < 25) {
-            currentValue += 1;
-            quantityValue.innerText = currentValue.toString();
-        }
-    });
+    if (!decreaseButton || !increaseButton) {
+        console.log('Decrease or increase buttons not found.');
+    } else {
+        const quantityValue = document.getElementById('quantity-value');
+        
+        decreaseButton.addEventListener('click', function() {
+            let currentValue = parseInt(quantityValue.textContent, 10);
+            if (currentValue > 0) {
+                currentValue -= 1;
+                quantityValue.textContent = currentValue.toString();
+            }
+        });
+        
+        increaseButton.addEventListener('click', function() {
+            let currentValue = parseInt(quantityValue.textContent, 10);
+            if (currentValue < 25) {
+                currentValue += 1;
+                quantityValue.textContent = currentValue.toString();
+            }
+        });
+    }
 });
+
 
 
 
