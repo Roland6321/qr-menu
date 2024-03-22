@@ -53,12 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCategories);
     });
 
-        // Function to show the cart section
+    // Function to show the cart section
     function showCart() {
         // Hide all sections that should not be visible when the cart is shown
         document.getElementById('startMenu').style.display = 'none';
         document.getElementById('categories').style.display = 'none';
-        // Assuming 'menu-items' class is used for all menu item sections
         document.querySelectorAll('.menu-items').forEach(item => item.style.display = 'none');
 
         // Show the cart section
@@ -70,6 +69,26 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCart);
     });
 
+    // Quantity Selector Logic
+    const decreaseButton = document.querySelector('.quantity-btn.decrease');
+    const increaseButton = document.querySelector('.quantity-btn.increase');
+    const quantityValue = document.getElementById('quantity-value');
+    
+    decreaseButton.addEventListener('click', function() {
+        let currentValue = parseInt(quantityValue.innerText, 10);
+        if (currentValue > 0) {
+            currentValue -= 1;
+            quantityValue.innerText = currentValue.toString();
+        }
+    });
+    
+    increaseButton.addEventListener('click', function() {
+        let currentValue = parseInt(quantityValue.innerText, 10);
+        if (currentValue < 25) {
+            currentValue += 1;
+            quantityValue.innerText = currentValue.toString();
+        }
+    });
 });
 
 
