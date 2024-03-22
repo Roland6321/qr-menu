@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToCategoriesButtons = document.querySelectorAll('.backToCategories');
     const counterContainer = document.querySelector('.order-total-counter'); // Counter container
 
-     // Check URL parameters to see if the cart should be shown
+    // Check URL parameters to see if the cart should be shown
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('showCart') === 'true') {
-            showCart();
+        showCart();
     }
 
     // Function to toggle counter display
@@ -69,31 +69,33 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCart);
     });
 
-    // Enhanced Quantity Selector Logic
-    const decreaseButton = document.querySelector('.quantity-btn.decrease');
-    const increaseButton = document.querySelector('.quantity-btn.increase');
-    if (!decreaseButton || !increaseButton) {
-        console.log('Decrease or increase buttons not found.');
-    } else {
-        const quantityValue = document.getElementById('quantity-value');
-        
-        decreaseButton.addEventListener('click', function() {
+    // Updated Quantity Selector Logic
+    const decreaseButtons = document.querySelectorAll('.quantity-btn.decrease');
+    const increaseButtons = document.querySelectorAll('.quantity-btn.increase');
+
+    decreaseButtons.forEach((button) => {
+        button.addEventListener('click', function() {
+            const quantityValue = button.nextElementSibling; // Assuming the quantity value span is immediately after the decrease button
             let currentValue = parseInt(quantityValue.textContent, 10);
             if (currentValue > 0) {
-                currentValue -= 1;
+                currentValue--;
                 quantityValue.textContent = currentValue.toString();
             }
         });
-        
-        increaseButton.addEventListener('click', function() {
+    });
+
+    increaseButtons.forEach((button) => {
+        button.addEventListener('click', function() {
+            const quantityValue = button.previousElementSibling; // Assuming the quantity value span is immediately before the increase button
             let currentValue = parseInt(quantityValue.textContent, 10);
             if (currentValue < 25) {
-                currentValue += 1;
+                currentValue++;
                 quantityValue.textContent = currentValue.toString();
             }
         });
-    }
+    });
 });
+
 
 
 
