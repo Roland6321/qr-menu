@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add event listener to Cart button(s)
-    document.querySelectorAll('.cart-btn').forEach(button => {
+    document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', showCart);
     });
 
