@@ -1,22 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize orderTotal at the beginning
-    let orderTotal = parseFloat(localStorage.getItem('orderTotal')) || 0;
-    
     const startButton = document.getElementById('startButton');
     const categories = document.getElementById('categories');
     const categoryButtons = document.querySelectorAll('.category-btn');
     const menuItemsSections = document.querySelectorAll('.menu-items');
     const backToCategoriesButtons = document.querySelectorAll('.backToCategories');
     const counterContainer = document.querySelector('.order-total-counter'); // Counter container
-
-    // Update counter function
-    function updateCounter(total) {
-        const counterContainer = document.querySelector('#totalCounter');
-        if (counterContainer) counterContainer.textContent = `$${total.toFixed(2)}`;
-    }
-
-    // Call updateCounter at the start to reflect any saved total
-    updateCounter(orderTotal);
 
     // Function to toggle counter display
     function toggleCounterDisplay(show) {
@@ -58,66 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     homeButtons.forEach(button => {
         button.addEventListener('click', showCategories);
     });
-
-    const cartButtons = document.querySelectorAll('.cart-btn');
-    cartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            window.location.href = 'cart.html';
-        });
-    });
-
-    // New code to handle adding items to cart
-    function initializeAddToCartButtons() {
-        let addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const menuItem = this.closest('body'); // Simplified for this example
-                const itemName = menuItem.querySelector('.menu-item-name').innerText;
-                const basePrice = parseFloat(menuItem.querySelector('.price-value').getAttribute('data-price'));
-                const quantity = parseInt(menuItem.querySelector('#quantity').value) || 1;
-                const extraIngredients = menuItem.querySelectorAll('input[type="checkbox"]:checked');
-                let extras = [];
-                
-                extraIngredients.forEach(ingredient => {
-                    extras.push({
-                        name: ingredient.nextSibling.textContent.trim(),
-                        cost: parseFloat(ingredient.getAttribute('data-cost'))
-                    });
-                });
-
-                const comment = menuItem.querySelector('#comment').value;
-                
-                let itemTotal = basePrice * quantity;
-                extras.forEach(extra => itemTotal += extra.cost * quantity);
-                
-                orderTotal += itemTotal;
-                localStorage.setItem('orderTotal', orderTotal.toString());
-        
-                // Storing detailed order info
-                let orders = JSON.parse(localStorage.getItem('orders')) || [];
-                orders.push({
-                    itemName,
-                    basePrice,
-                    quantity,
-                    extras,
-                    comment,
-                    itemTotal
-                });
-                localStorage.setItem('orders', JSON.stringify(orders));
-
-                // Update counter
-                updateCounter(orderTotal);
-            });
-        });
-    }
-
-    // Call the function to initialize the Add to Cart buttons
-    initializeAddToCartButtons();
 });
-
-
-
 
 
 
