@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToCategoriesButtons = document.querySelectorAll('.backToCategories');
     const counterContainer = document.querySelector('.order-total-counter'); // Counter container
 
+     // Check URL parameters to see if the cart should be shown
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('showCart') === 'true') {
+            showCart();
+    }
+
     // Function to toggle counter display
     function toggleCounterDisplay(show) {
         counterContainer.style.display = show ? 'block' : 'none';
@@ -63,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.cart-btn').forEach(button => {
         button.addEventListener('click', showCart);
     });
+
 });
 
 
