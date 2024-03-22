@@ -69,28 +69,27 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCart);
     });
 
-    // Updated Quantity Selector Logic
-    const decreaseButtons = document.querySelectorAll('.quantity-btn.decrease');
-    const increaseButtons = document.querySelectorAll('.quantity-btn.increase');
-
-    decreaseButtons.forEach((button) => {
-        button.addEventListener('click', function() {
-            const quantityValue = button.nextElementSibling; // Assuming the quantity value span is immediately after the decrease button
+    document.addEventListener('DOMContentLoaded', () => {
+        // Define the increase and decrease buttons
+        const decreaseButton = document.querySelector('.quantity-btn.decrease');
+        const increaseButton = document.querySelector('.quantity-btn.increase');
+        const quantityValue = document.getElementById('quantity-value');
+    
+        // Event listener for the decrease button
+        decreaseButton.addEventListener('click', () => {
             let currentValue = parseInt(quantityValue.textContent, 10);
             if (currentValue > 0) {
                 currentValue--;
-                quantityValue.textContent = currentValue.toString();
+                quantityValue.textContent = currentValue;
             }
         });
-    });
-
-    increaseButtons.forEach((button) => {
-        button.addEventListener('click', function() {
-            const quantityValue = button.previousElementSibling; // Assuming the quantity value span is immediately before the increase button
+    
+        // Event listener for the increase button
+        increaseButton.addEventListener('click', () => {
             let currentValue = parseInt(quantityValue.textContent, 10);
             if (currentValue < 25) {
                 currentValue++;
-                quantityValue.textContent = currentValue.toString();
+                quantityValue.textContent = currentValue;
             }
         });
     });
