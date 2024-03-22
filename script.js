@@ -65,48 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'cart.html';
         });
     });
-
-    // New code to handle adding items to cart
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const menuItem = this.closest('body'); // Simplified for this example
-            const itemName = menuItem.querySelector('.menu-item-name').innerText;
-            const basePrice = parseFloat(menuItem.querySelector('.price-value').getAttribute('data-price'));
-            const quantity = parseInt(menuItem.querySelector('#quantity').value) || 1;
-            const extraIngredients = menuItem.querySelectorAll('input[type="checkbox"]:checked');
-            let extras = [];
-            
-            extraIngredients.forEach(ingredient => {
-                extras.push({
-                    name: ingredient.nextSibling.textContent.trim(),
-                    cost: parseFloat(ingredient.getAttribute('data-cost'))
-                });
-            });
-    
-            const comment = menuItem.querySelector('#comment').value;
-            
-            let itemTotal = basePrice;
-            extras.forEach(extra => itemTotal += extra.cost);
-            itemTotal *= quantity;
-    
-            orderTotal += itemTotal;
-            localStorage.setItem('orderTotal', orderTotal.toString());
-    
-            // Storing detailed order info
-            let orders = JSON.parse(localStorage.getItem('orders')) || [];
-            orders.push({
-                itemName,
-                basePrice,
-                quantity,
-                extras,
-                comment,
-                itemTotal
-            });
-            localStorage.setItem('orders', JSON.stringify(orders));
-    
-            updateCounter(orderTotal);
-        });
-    }); 
 });
 
 
