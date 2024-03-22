@@ -29,27 +29,11 @@
         <label for="comment">Comment:</label>
         <textarea id="comment" name="comment"></textarea>
     </div>
+    <button class="add-to-cart">Add to cart</button>
 
     <div class="order-total-counter">
         Total: <span id="totalCounter">$0.00</span>
     </div>
-
-    <script src="script.js"></script>
-    <script>
-        function handleAddToCart() {
-            const name = document.querySelector('.menu-item-name').innerText;
-            const quantity = parseInt(document.getElementById('quantity').value, 10);
-            const comment = document.getElementById('comment').value;
-            const price = parseFloat(document.querySelector('.price-value').dataset.price);
-            const extraCost = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
-                                   .reduce((total, checkbox) => total + parseFloat(checkbox.dataset.cost), 0);
-            const finalPrice = (price + extraCost) * quantity;
-        
-            const cartItem = { name, quantity, comment, finalPrice };
-            addToCart(cartItem); // This function is defined in script.js
-        }
-        </script>
-        <button class="add-to-cart" onclick="handleAddToCart()">Add to cart</button>
 
 </body>
 </html>

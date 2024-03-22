@@ -5,10 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuItemsSections = document.querySelectorAll('.menu-items');
     const backToCategoriesButtons = document.querySelectorAll('.backToCategories');
     const counterContainer = document.querySelector('.order-total-counter'); // Counter container
-    const addToCartButton = document.querySelector('.add-to-cart');
-    if(addToCartButton) {
-        addToCartButton.addEventListener('click', handleAddToCart);
-    }
 
      // Check URL parameters to see if the cart should be shown
     const urlParams = new URLSearchParams(window.location.search);
@@ -70,62 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add event listener to Cart button(s)
-    document.querySelectorAll('.add-to-cart').forEach(button => {
+    document.querySelectorAll('.cart-btn').forEach(button => {
         button.addEventListener('click', showCart);
     });
 
-    // Load cart from localStorage and render on the cart page
-    function renderCart() {
-        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartContainer = document.getElementById('cartItems');
-
-        // Clear existing cart contents
-        cartContainer.innerHTML = '';
-
-        // Check if cart is empty
-        if (cartItems.length === 0) {
-            cartContainer.innerHTML = '<p>Your cart is empty.</p>';
-            return;
-        }
-
-        // Generate HTML for cart items
-        cartItems.forEach((item, index) => {
-            const itemElement = document.createElement('div');
-            itemElement.innerHTML = `
-                <h3>${item.name} x${item.quantity}</h3>
-                <p>Price: $${item.finalPrice}</p>
-                <p>Comment: ${item.comment || "None"}</p>
-                <button onclick="removeFromCart(${index})">Remove</button>
-            `;
-            cartContainer.appendChild(itemElement);
-        });
-    }
-
-    // Add item to cart
-    function addToCart(item) {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(item);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert('Item added to cart');
-    }
-
-    // Remove item from cart
-    window.removeFromCart = (index) => {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        renderCart();
-    };
-
-    // Initial render of the cart
-    if (window.location.search.includes('showCart=true')) {
-        renderCart();
-    }
-
-    // Reset cart on page refresh
-    window.addEventListener('beforeunload', () => {
-        localStorage.removeItem('cart');
-    });
 });
 
 
