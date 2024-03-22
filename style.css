@@ -332,12 +332,11 @@ background-color: #dfa55e; /* Darker orange background on hover */
 }
 
 /* New styles for Cart Section */
-#cartSection, .custom-header {
-  width: 100%;
-  margin: 20;
-  padding: 10;
-}
+#cartSection {
+  margin: 20px;
+  padding: 10px;
   /* Add more styles to match your design */
+}
 
 #cartItems p {
   color: #333;
