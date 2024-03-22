@@ -330,3 +330,15 @@ background-color: #dfa55e; /* Darker orange background on hover */
 .order-total-counter span {
   font-weight: bold;
 }
+
+/* New styles for Cart Section */
+#cartSection {
+  margin: 20px;
+  padding: 10px;
+  /* Add more styles to match your design */
+}
+
+#cartItems p {
+  color: #333;
+  /* Additional styling for cart items */
+}

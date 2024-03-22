@@ -46,6 +46,23 @@ document.addEventListener('DOMContentLoaded', () => {
     homeButtons.forEach(button => {
         button.addEventListener('click', showCategories);
     });
+
+        // Function to show the cart section
+    function showCart() {
+        // Hide all sections that should not be visible when the cart is shown
+        document.getElementById('startMenu').style.display = 'none';
+        document.getElementById('categories').style.display = 'none';
+        // Assuming 'menu-items' class is used for all menu item sections
+        document.querySelectorAll('.menu-items').forEach(item => item.style.display = 'none');
+
+        // Show the cart section
+        document.getElementById('cartSection').style.display = 'block';
+    }
+
+    // Add event listener to Cart button(s)
+    document.querySelectorAll('.cart-btn').forEach(button => {
+        button.addEventListener('click', showCart);
+    });
 });
 
 
