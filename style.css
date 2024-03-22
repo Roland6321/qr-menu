@@ -342,3 +342,9 @@ background-color: #dfa55e; /* Darker orange background on hover */
   color: #333;
   /* Additional styling for cart items */
 }
+
+#cartSection, .custom-header {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
