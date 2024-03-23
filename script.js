@@ -65,49 +65,47 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('cartSection').style.display = 'block';
     }
 
-    // Add event listener to Cart button(s)
-    document.querySelectorAll('.cart-btn').forEach(button => {
-        button.addEventListener('click', showCart);
-    });
-        // Add click event listener for "Add to cart" buttons
+    // Add click event listener for "Add to cart" buttons only if they exist
+    if (document.querySelector('.add-to-cart')) {
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', event => {
-                // Assuming the menu item's name is contained within an element with the class 'menu-item-name'
-                const itemName = document.querySelector('.menu-item-name').innerText;
+                const itemName = document.querySelector('.menu-item-name') ? document.querySelector('.menu-item-name').innerText : 'Unknown Item';
                 addItemToCart(itemName);
                 showPopupNotification(`"${itemName}" is added to your cart.`);
             });
         });
-    
-        // Load cart items on the cart page
-        if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) {
-            loadCartItems();
-        }
-    });
-    
-    // Function to add item to local storage cart
-    function addItemToCart(itemName) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(itemName);
-        localStorage.setItem('cart', JSON.stringify(cart));
     }
-    
-    // Function to show popup notification
-    function showPopupNotification(message) {
-        const notification = document.createElement('div');
-        notification.className = 'popup-notification';
-        notification.innerText = message;
-        document.body.appendChild(notification);
-        // Automatically hide after 3 seconds
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 3000);
+
+    // Load cart items on the cart page if the cartSection exists
+    if (document.getElementById('cartSection')) {
+        loadCartItems();
     }
-    
-    // Function to load cart items
-    function loadCartItems() {
-        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartItemsContainer = document.getElementById('cartItems');
+});
+
+// Function to add item to local storage cart
+function addItemToCart(itemName) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(itemName);
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// Function to show popup notification
+function showPopupNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'popup-notification';
+    notification.innerText = message;
+    document.body.appendChild(notification);
+    // Automatically hide after 3 seconds
+    setTimeout(() => {
+        document.body.removeChild(notification);
+    }, 3000);
+}
+
+// Function to load cart items
+function loadCartItems() {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItemsContainer = document.getElementById('cartItems');
+    if (cartItemsContainer) { // Check if the cartItemsContainer exists
         cartItemsContainer.innerHTML = ''; // Clear current content
         cartItems.forEach(item => {
             const itemElement = document.createElement('p');
@@ -115,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItemsContainer.appendChild(itemElement);
         });
     }
+}
 
 
 
