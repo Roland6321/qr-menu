@@ -56,6 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCart);
     });
 
+    const homeButtons = document.querySelectorAll('.home-btn');
+    homeButtons.forEach(button => {
+        button.addEventListener('click', showCategories);
+    });
+
     // Check if we're on a menu item page and bind the Add to Cart button click event
     if (document.querySelector('.add-to-cart')) {
         document.querySelector('.add-to-cart').addEventListener('click', function() {
