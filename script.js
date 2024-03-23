@@ -70,6 +70,57 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCart);
     });
 
+    // Function to extract the menu item identifier from the URL
+    function getMenuItemIdentifier() {
+        const pathArray = window.location.pathname.split('/');
+        const pageName = pathArray[pathArray.length - 1];
+        return pageName.replace('.html', '');
+    }
+
+    // Function to add item to cart (store in localStorage)
+    function addToCart(itemName) {
+        // Retrieve the current cart from localStorage, parse it into an array
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Add the new item
+        cart.push(itemName);
+        
+        // Save the updated cart back to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    // Event listener for the Add to Cart button
+    document.addEventListener('DOMContentLoaded', () => {
+        const addToCartButton = document.querySelector('.add-to-cart');
+        if (addToCartButton) {
+            addToCartButton.addEventListener('click', () => {
+                const menuItemName = getMenuItemIdentifier(); // Get the menu item name from the URL
+                addToCart(menuItemName); // Add to cart
+                alert(`${menuItemName} added to cart`); // Feedback to user
+            });
+        }
+    });
+
+    // This function is called when the Cart page is loaded to display items in the cart
+    function displayCartItems() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsContainer = document.getElementById('cartItems');
+        
+        if (cart.length > 0) {
+            cartItemsContainer.innerHTML = ''; // Clear the "Your cart is empty" message
+            cart.forEach(item => {
+                const itemElement = document.createElement('p');
+                itemElement.textContent = item;
+                cartItemsContainer.appendChild(itemElement);
+            });
+        }
+    }
+
+    // Add this to the DOMContentLoaded event listener in script.js
+    if (urlParams.get('showCart') === 'true') {
+        showCart();
+        displayCartItems(); // Call this function when the cart is to be shown
+    }
 });
 
 
