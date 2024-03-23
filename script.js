@@ -5,11 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuItemsSections = document.querySelectorAll('.menu-items');
     const backToCategoriesButtons = document.querySelectorAll('.backToCategories');
     const counterContainer = document.querySelector('.order-total-counter'); // Counter container
+    const addToCartButton = document.querySelector('.add-to-cart'); // Reference to the Add to Cart button
 
      // Check URL parameters to see if the cart should be shown
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('showCart') === 'true') {
-            showCart();
+        showCart();
+        displayCartItems(); // Ensure this function call is here to display cart items
     }
 
     // Function to toggle counter display
@@ -53,12 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCategories);
     });
 
-        // Function to show the cart section
+    // Function to show the cart section
     function showCart() {
         // Hide all sections that should not be visible when the cart is shown
         document.getElementById('startMenu').style.display = 'none';
         document.getElementById('categories').style.display = 'none';
-        // Assuming 'menu-items' class is used for all menu item sections
         document.querySelectorAll('.menu-items').forEach(item => item.style.display = 'none');
 
         // Show the cart section
@@ -70,6 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCart);
     });
 
+    // Add to Cart button functionality
+    if (addToCartButton) {
+        addToCartButton.addEventListener('click', () => {
+            const menuItemName = getMenuItemIdentifier(); // Get the menu item name from the URL
+            addToCart(menuItemName); // Add to cart
+            alert(`${menuItemName} added to cart`); // Feedback to user
+        });
+    }
+
     // Function to extract the menu item identifier from the URL
     function getMenuItemIdentifier() {
         const pathArray = window.location.pathname.split('/');
@@ -79,29 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to add item to cart (store in localStorage)
     function addToCart(itemName) {
-        // Retrieve the current cart from localStorage, parse it into an array
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        // Add the new item
         cart.push(itemName);
-        
-        // Save the updated cart back to localStorage
         localStorage.setItem('cart', JSON.stringify(cart));
     }
 
-    // Event listener for the Add to Cart button
-    document.addEventListener('DOMContentLoaded', () => {
-        const addToCartButton = document.querySelector('.add-to-cart');
-        if (addToCartButton) {
-            addToCartButton.addEventListener('click', () => {
-                const menuItemName = getMenuItemIdentifier(); // Get the menu item name from the URL
-                addToCart(menuItemName); // Add to cart
-                alert(`${menuItemName} added to cart`); // Feedback to user
-            });
-        }
-    });
-
-    // This function is called when the Cart page is loaded to display items in the cart
+    // Function to display items in the cart
     function displayCartItems() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartItemsContainer = document.getElementById('cartItems');
@@ -115,13 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-
-    // Add this to the DOMContentLoaded event listener in script.js
-    if (urlParams.get('showCart') === 'true') {
-        showCart();
-        displayCartItems(); // Call this function when the cart is to be shown
-    }
 });
+
 
 
 
