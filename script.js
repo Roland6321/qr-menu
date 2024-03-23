@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    localStorage.setItem('cart', JSON.stringify([]));  // Empty the cart on page load
     const startButton = document.getElementById('startButton');
     const categories = document.getElementById('categories');
     const categoryButtons = document.querySelectorAll('.category-btn');
