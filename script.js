@@ -69,8 +69,53 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.cart-btn').forEach(button => {
         button.addEventListener('click', showCart);
     });
+        // Add click event listener for "Add to cart" buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', event => {
+                // Assuming the menu item's name is contained within an element with the class 'menu-item-name'
+                const itemName = document.querySelector('.menu-item-name').innerText;
+                addItemToCart(itemName);
+                showPopupNotification(`"${itemName}" is added to your cart.`);
+            });
+        });
+    
+        // Load cart items on the cart page
+        if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/')) {
+            loadCartItems();
+        }
+    });
+    
+    // Function to add item to local storage cart
+    function addItemToCart(itemName) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(itemName);
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    
+    // Function to show popup notification
+    function showPopupNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'popup-notification';
+        notification.innerText = message;
+        document.body.appendChild(notification);
+        // Automatically hide after 3 seconds
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 3000);
+    }
+    
+    // Function to load cart items
+    function loadCartItems() {
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsContainer = document.getElementById('cartItems');
+        cartItemsContainer.innerHTML = ''; // Clear current content
+        cartItems.forEach(item => {
+            const itemElement = document.createElement('p');
+            itemElement.innerText = item;
+            cartItemsContainer.appendChild(itemElement);
+        });
+    }
 
-});
 
 
 
