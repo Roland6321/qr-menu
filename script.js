@@ -5,12 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuItemsSections = document.querySelectorAll('.menu-items');
     const backToCategoriesButtons = document.querySelectorAll('.backToCategories');
     const counterContainer = document.querySelector('.order-total-counter'); // Counter container
-
-     // Check URL parameters to see if the cart should be shown
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('showCart') === 'true') {
-            showCart();
-    }
 
     // Function to toggle counter display
     function toggleCounterDisplay(show) {
@@ -36,6 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleCounterDisplay(true); // Ensure the counter is visible when viewing menu items
     }
 
+    // Function to show the cart section
+    function showCart() {
+        document.getElementById('startMenu').style.display = 'none';
+        categories.style.display = 'none';
+        menuItemsSections.forEach(item => item.style.display = 'none');
+        document.getElementById('cartSection').style.display = 'block';
+    }
+
+    // Event listeners for buttons
     startButton.addEventListener('click', showCategories);
 
     categoryButtons.forEach((button, index) => {
@@ -48,29 +52,68 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCategories);
     });
 
-    const homeButtons = document.querySelectorAll('.home-btn');
-    homeButtons.forEach(button => {
-        button.addEventListener('click', showCategories);
-    });
-
-        // Function to show the cart section
-    function showCart() {
-        // Hide all sections that should not be visible when the cart is shown
-        document.getElementById('startMenu').style.display = 'none';
-        document.getElementById('categories').style.display = 'none';
-        // Assuming 'menu-items' class is used for all menu item sections
-        document.querySelectorAll('.menu-items').forEach(item => item.style.display = 'none');
-
-        // Show the cart section
-        document.getElementById('cartSection').style.display = 'block';
-    }
-
-    // Add event listener to Cart button(s)
     document.querySelectorAll('.cart-btn').forEach(button => {
         button.addEventListener('click', showCart);
     });
 
+    // Check if we're on a menu item page and bind the Add to Cart button click event
+    if (document.querySelector('.add-to-cart')) {
+        document.querySelector('.add-to-cart').addEventListener('click', function() {
+            const itemName = document.querySelector('.menu-item-name').innerText;
+            const itemPrice = parseFloat(document.querySelector('.price-value').getAttribute('data-price'));
+            const quantity = parseInt(document.querySelector('#quantity').value || 1);
+            const comments = document.querySelector('#comment').value;
+            let extraIngredients = [];
+            document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(function(checkbox) {
+                extraIngredients.push(checkbox.nextElementSibling.innerText);
+            });
+
+            const itemDetails = {
+                name: itemName,
+                price: itemPrice,
+                quantity: quantity,
+                extraIngredients: extraIngredients,
+                comments: comments
+            };
+
+            addToCart(itemDetails);
+        });
+    }
+
+    function addToCart(itemDetails) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(itemDetails);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert('Item added to cart!');
+    }
+
+    // Display cart items if the cart page is requested
+    if (urlParams.get('showCart') === 'true') {
+        showCart();
+        displayCartItems();
+    }
+
+    function displayCartItems() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartItemsContainer = document.getElementById('cartItems');
+        cartItemsContainer.innerHTML = ''; // Clear current cart items
+        cart.forEach(item => {
+            let itemElement = document.createElement('div');
+            itemElement.innerHTML = `
+                <h3>${item.name}</h3>
+                <p>Price: $${item.price}</p>
+                <p>Quantity: ${item.quantity}</p>
+                <p>Extras: ${item.extraIngredients.join(', ')}</p>
+                <p>Comments: ${item.comments}</p>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+        });
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        }
+    }
 });
+
 
 
 
