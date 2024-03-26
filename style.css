@@ -342,3 +342,23 @@ background-color: #dfa55e; /* Darker orange background on hover */
   color: #333;
   /* Additional styling for cart items */
 }
+
+.quantity-modify {
+  background-color: #ddd;
+  border: none;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.quantity-modify:hover {
+  background-color: #ccc;
+}
+
+#quantity {
+  text-align: center;
+  background-color: #f0f0f0;
+  border: none;
+  padding: 5px 10px;
+  width: 40px;
+}

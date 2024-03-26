@@ -126,6 +126,21 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCartItems();
     }
 
+    // Quantity increase and decrease
+    document.querySelectorAll('.quantity-modify').forEach(button => {
+        button.addEventListener('click', function() {
+            const isIncrease = this.classList.contains('increase');
+            const quantityInput = document.getElementById('quantity');
+            let quantityValue = parseInt(quantityInput.value);
+            if (isIncrease) {
+                 quantityValue++;
+            } else if (quantityValue > 0) {
+                 quantityValue--;
+            }
+            quantityInput.value = quantityValue;
+        });
+    });
+
      // Automatically display cart items on page load
     displayCartItems();
  });
