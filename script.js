@@ -126,22 +126,25 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCartItems();
     }
 
-    document.querySelectorAll('.quantity-modify').forEach(button => {
-        button.addEventListener('click', function() {
-            const quantityInput = document.getElementById('quantity');
-            let quantity = parseInt(quantityInput.value, 10);
-            if (this.classList.contains('increase')) {
-                quantity++;
-            } else if (this.classList.contains('decrease') && quantity > 0) {
-                quantity--;
-            }
-            quantityInput.value = quantity;
+    // Function to adjust item quantity
+    function attachQuantityEventListeners() {
+        document.querySelectorAll('.quantity-modify').forEach(button => {
+            button.addEventListener('click', function() {
+                const quantityInput = this.parentElement.querySelector('#quantity');
+                let quantity = parseInt(quantityInput.value, 10);
+                if (this.classList.contains('increase')) {
+                    quantity++;
+                } else if (this.classList.contains('decrease') && quantity > 0) {
+                    quantity--;
+                }
+                quantityInput.value = quantity;
+            });
         });
-    });
+    }
 
-     // Automatically display cart items on page load
+    // Automatically display cart items on page load
     displayCartItems();
- });
+});
 
 
 
