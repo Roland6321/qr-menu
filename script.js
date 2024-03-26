@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         categories.style.display = 'none';
         menuItemsSections.forEach(item => item.style.display = 'none');
         document.getElementById('cartSection').style.display = 'block';
+        displayCartItems(); // Ensure cart items are displayed whenever the cart is shown.
     }
 
     startButton.addEventListener('click', showCategories);
@@ -50,8 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCategories);
     });
 
-    if (document.querySelector('.add-to-cart')) {
-        document.querySelector('.add-to-cart').addEventListener('click', function() {
+    // Handle add to cart action
+    document.addEventListener('click', function(e) {
+        if (e.target && e.target.classList.contains('add-to-cart')) {
             const itemName = document.querySelector('.menu-item-name').innerText;
             const itemPrice = parseFloat(document.querySelector('.price-value').getAttribute('data-price'));
             const quantity = parseInt(document.querySelector('#quantity').value || 1);
@@ -70,8 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             addToCart(itemDetails);
-        });
-    }
+        }
+    });
 
     function addToCart(itemDetails) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -85,26 +87,29 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCartItems();
     }
 
+    // This function displays cart items.
     function displayCartItems() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartItemsContainer = document.getElementById('cartItems');
-        cartItemsContainer.innerHTML = '';
+        if (cartItemsContainer) { // Only proceed if the cartItemsContainer exists
+            cartItemsContainer.innerHTML = '';
 
-        cart.forEach((item, index) => {
-            let itemElement = document.createElement('div');
-            itemElement.innerHTML = `
-                <h3>${item.name}</h3>
-                <p>Price: $${item.price}</p>
-                <p>Quantity: ${item.quantity}</p>
-                <p>Extras: ${item.extraIngredients.join(', ')}</p>
-                <p>Comments: ${item.comments}</p>
-                <button class="remove-item" data-index="${index}">Remove item</button>
-            `;
-            cartItemsContainer.appendChild(itemElement);
-        });
+            cart.forEach((item, index) => {
+                let itemElement = document.createElement('div');
+                itemElement.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <p>Price: $${item.price}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                    <p>Extras: ${item.extraIngredients.join(', ')}</p>
+                    <p>Comments: ${item.comments}</p>
+                    <button class="remove-item" data-index="${index}">Remove item</button>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
 
-        if (cart.length === 0) {
-            cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            }
         }
 
         document.querySelectorAll('.remove-item').forEach(button => {
@@ -120,7 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('cart', JSON.stringify(cart));
         displayCartItems();
     }
-});
+
+     // Automatically display cart items on page load
+    displayCartItems();
+ });
 
 
 
