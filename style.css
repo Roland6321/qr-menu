@@ -342,23 +342,3 @@ background-color: #dfa55e; /* Darker orange background on hover */
   color: #333;
   /* Additional styling for cart items */
 }
-
-.quantity-selector {
-  display: flex;
-  align-items: center;
-}
-
-.quantity-selector button {
-  padding: 5px 10px;
-  margin: 0 5px;
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
-
-.quantity-selector input {
-  width: 50px;
-  text-align: center;
-  border: 1px solid #ccc;
-}
-

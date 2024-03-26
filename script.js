@@ -128,22 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
      // Automatically display cart items on page load
     displayCartItems();
-
-    document.addEventListener('click', function(e) {
-        if (e.target && e.target.classList.contains('quantity-change')) {
-            const action = e.target.getAttribute('data-action');
-            const quantityInput = document.querySelector('#quantity');
-            let currentValue = parseInt(quantityInput.value);
-    
-            if (action === 'increase') {
-                currentValue += 1;
-            } else if (action === 'decrease' && currentValue > 0) {
-                currentValue -= 1;
-            }
-    
-            quantityInput.value = currentValue;
-        }
-    });
  });
 
 

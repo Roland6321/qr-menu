@@ -21,10 +21,9 @@
         <div><input type="checkbox" id="extra1" name="extra1" data-cost="0.5"><label for="extra1">Ingredient Name ($0.5)</label></div>
         <!-- Repeat for other ingredients -->
     </div>
-    <div class="quantity-selector">
-        <button class="quantity-change" data-action="decrease">-</button>
-        <input type="text" id="quantity" name="quantity" value="0" readonly>
-        <button class="quantity-change" data-action="increase">+</button>
+    <div class="quantity-section">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1">
     </div>
     <div class="comment-section">
         <label for="comment">Comment:</label>
