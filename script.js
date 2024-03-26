@@ -126,18 +126,16 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCartItems();
     }
 
-    // Quantity increase and decrease
     document.querySelectorAll('.quantity-modify').forEach(button => {
         button.addEventListener('click', function() {
-            const isIncrease = this.classList.contains('increase');
             const quantityInput = document.getElementById('quantity');
-            let quantityValue = parseInt(quantityInput.value);
-            if (isIncrease) {
-                 quantityValue++;
-            } else if (quantityValue > 0) {
-                 quantityValue--;
+            let quantity = parseInt(quantityInput.value, 10);
+            if (this.classList.contains('increase')) {
+                quantity++;
+            } else if (this.classList.contains('decrease') && quantity > 0) {
+                quantity--;
             }
-            quantityInput.value = quantityValue;
+            quantityInput.value = quantity;
         });
     });
 
