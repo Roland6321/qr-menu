@@ -315,6 +315,19 @@ background-color: #dfa55e; /* Darker orange background on hover */
   background-color: #0056b3; /* Darker shade for hover effect */
 }
 
+.cart-btn {
+  height: 40px; /* Adjust as needed */
+  padding: 0 10px; /* Adjust as needed */
+  line-height: 40px; /* Adjust to button height if you want a single line of text */
+  box-sizing: border-box;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff; /* Example button color, adjust as needed */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .order-total-counter {
   position: fixed; /* Change this to 'static' if you prefer it to move with the page content */
   left: 50%;
