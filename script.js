@@ -60,9 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const comments = document.querySelector('#comment').value;
             let extraIngredients = [];
             document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
-                const extraCost = checkbox.getAttribute('data-cost');
-                const extraName = checkbox.nextElementSibling.innerText;
-                extraIngredients.push({name: extraName, cost: extraCost});
+                extraIngredients.push(checkbox.nextElementSibling.innerText);
             });
 
             const itemDetails = {
@@ -89,45 +87,31 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCartItems();
     }
 
+    // This function displays cart items.
     function displayCartItems() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartItemsContainer = document.getElementById('cartItems');
-        let totalAmount = 0; // Initialize total amount
-    
-        cartItemsContainer.innerHTML = '';
-    
-        cart.forEach((item, index) => {
-            let itemTotal = parseFloat(item.price) * item.quantity; // Ensure item price is parsed as a float
-    
-            item.extraIngredients.forEach(extra => {
-                let extraCost = parseFloat(extra.cost); // Parse extra ingredient cost as a float
-                if (!isNaN(extraCost)) { // Check if extraCost is a valid number
-                    itemTotal += extraCost * item.quantity;
-                }
+        if (cartItemsContainer) { // Only proceed if the cartItemsContainer exists
+            cartItemsContainer.innerHTML = '';
+
+            cart.forEach((item, index) => {
+                let itemElement = document.createElement('div');
+                itemElement.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <p>Price: $${item.price}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                    <p>Extras: ${item.extraIngredients.join(', ')}</p>
+                    <p>Comments: ${item.comments}</p>
+                    <button class="remove-item" data-index="${index}">Remove item</button>
+                `;
+                cartItemsContainer.appendChild(itemElement);
             });
-    
-            let itemElement = document.createElement('div');
-            itemElement.innerHTML = `
-                <h3>${item.name}</h3>
-                <p>Price: $${item.price.toFixed(2)}</p>
-                <p>Quantity: ${item.quantity}</p>
-                <p>Extras: ${item.extraIngredients.map(ing => ing.name).join(', ')}</p>
-                <p>Comments: ${item.comments}</p>
-                <button class="remove-item" data-index="${index}">Remove item</button>
-            `;
-            cartItemsContainer.appendChild(itemElement);
-    
-            totalAmount += itemTotal; // Add to the total
-        });
-    
-        if (cart.length === 0) {
-            cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
-        } else {
-            // Ensure the total is displayed as a fixed-point number, avoiding NaN
-            document.getElementById('totalCounter').textContent = `Total: $${totalAmount.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            }
         }
-    
-        // Attach event listeners for remove-item buttons
+
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', function() {
                 removeFromCart(parseInt(this.getAttribute('data-index')));
@@ -139,11 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
-        displayCartItems(); // This will recalculate and update the total
+        displayCartItems();
     }
 
-    displayCartItems(); // Automatically display cart items on page load
-});
+     // Automatically display cart items on page load
+    displayCartItems();
+ });
 
 
 
