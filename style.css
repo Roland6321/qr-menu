@@ -294,6 +294,31 @@ background-color: #dfa55e; /* Darker orange background on hover */
   font-weight: bold; /* Makes the price stand out */
 }
 
+.menu-item-header-overlay {
+  position: relative;
+}
+
+.custom-header-menu-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent; /* Set to transparent */
+  z-index: 2; /* Ensure the header is above the image */
+}
+
+.menu-item-image {
+  display: block;
+  width: 100%; /* Ensure it takes the full width */
+  margin-top: -60px; /* Adjust so the image overlays under the header */
+  z-index: 1; /* Lower z-index than the header */
+}
+
 .custom-header {
   display: flex;
   justify-content: space-between;
