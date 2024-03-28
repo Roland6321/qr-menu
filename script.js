@@ -92,43 +92,49 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayCartItems() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartItemsContainer = document.getElementById('cartItems');
-        let totalAmount = 0;
-
+        let totalAmount = 0; // Initialize total amount
+    
         cartItemsContainer.innerHTML = '';
-
+    
         cart.forEach((item, index) => {
-            let itemTotal = item.price * item.quantity;
+            let itemTotal = parseFloat(item.price) * item.quantity; // Ensure item price is parsed as a float
+    
             item.extraIngredients.forEach(extra => {
-                itemTotal += parseFloat(extra.cost) * item.quantity;
+                let extraCost = parseFloat(extra.cost); // Parse extra ingredient cost as a float
+                if (!isNaN(extraCost)) { // Check if extraCost is a valid number
+                    itemTotal += extraCost * item.quantity;
+                }
             });
-
+    
             let itemElement = document.createElement('div');
             itemElement.innerHTML = `
                 <h3>${item.name}</h3>
-                <p>Price: $${item.price}</p>
+                <p>Price: $${item.price.toFixed(2)}</p>
                 <p>Quantity: ${item.quantity}</p>
                 <p>Extras: ${item.extraIngredients.map(ing => ing.name).join(', ')}</p>
                 <p>Comments: ${item.comments}</p>
                 <button class="remove-item" data-index="${index}">Remove item</button>
             `;
             cartItemsContainer.appendChild(itemElement);
-
-            totalAmount += itemTotal;
+    
+            totalAmount += itemTotal; // Add to the total
         });
-
+    
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
         } else {
-            document.getElementById('totalCounter').textContent = `$${totalAmount.toFixed(2)}`;
+            // Ensure the total is displayed as a fixed-point number, avoiding NaN
+            document.getElementById('totalCounter').textContent = `Total: $${totalAmount.toFixed(2)}`;
         }
-
+    
+        // Attach event listeners for remove-item buttons
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', function() {
                 removeFromCart(parseInt(this.getAttribute('data-index')));
             });
         });
     }
-    
+
     function removeFromCart(index) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.splice(index, 1);
