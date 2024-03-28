@@ -307,7 +307,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 10px;
+  padding: 10px 10px;
   background-color: transparent; /* Set to transparent */
   z-index: 2; /* Ensure the header is above the image */
 }
