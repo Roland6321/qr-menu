@@ -338,7 +338,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
 
 .cart-btn {
   /* ...other styles... */
-  margin-right: 10px; /* Add some margin to the right of the cart button */
+  margin-right: 20px; /* Add some margin to the right of the cart button */
 }
 
 .home-btn:hover, .cart-btn:hover, .return-btn:hover {
