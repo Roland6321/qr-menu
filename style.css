@@ -317,7 +317,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
 
 .cart-btn {
   height: 40px; /* Adjust as needed */
-  padding: 0 10px; /* Adjust as needed */
+  padding: 10 20px; /* Adjust as needed */
   line-height: 40px; /* Adjust to button height if you want a single line of text */
   box-sizing: border-box;
   font-size: 16px;
