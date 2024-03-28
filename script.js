@@ -91,10 +91,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayCartItems() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartItemsContainer = document.getElementById('cartItems');
-        if (cartItemsContainer) { // Only proceed if the cartItemsContainer exists
+        let totalAmount = 0; // Initialize total amount
+
+        if (cartItemsContainer) {
             cartItemsContainer.innerHTML = '';
 
             cart.forEach((item, index) => {
+                let itemTotal = item.price * item.quantity;
+
+                item.extraIngredients.forEach(extraIngredientName => {
+                    const extraElement = document.querySelector(`input[name="${extraIngredientName}"]`);
+                    if (extraElement) {
+                        itemTotal += parseFloat(extraElement.getAttribute('data-cost')) * item.quantity;
+                    }
+                });
+
                 let itemElement = document.createElement('div');
                 itemElement.innerHTML = `
                     <h3>${item.name}</h3>
@@ -105,10 +116,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="remove-item" data-index="${index}">Remove item</button>
                 `;
                 cartItemsContainer.appendChild(itemElement);
+
+                totalAmount += itemTotal; // Add to total
             });
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                // Update the totalCounter element with the calculated total
+                document.getElementById('totalCounter').textContent = `$${totalAmount.toFixed(2)}`;
             }
         }
 
@@ -119,11 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Modified removeFromCart function to also update the total
     function removeFromCart(index) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
-        displayCartItems();
+        displayCartItems(); // This will recalculate and update the total
     }
 
      // Automatically display cart items on page load
