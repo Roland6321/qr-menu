@@ -26,7 +26,7 @@
     </div>
     <div class="quantity-section">
         <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1">
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
     </div>
     <div class="comment-section">
         <label for="comment">Comment:</label>
@@ -40,26 +40,45 @@
 
     <script src="script.js"></script>
     <script>
-        document.querySelector('.add-to-cart').addEventListener('click', function() {
-            const itemName = document.querySelector('.menu-item-name').innerText;
-            const itemPrice = parseFloat(document.querySelector('.price-value').getAttribute('data-price'));
-            const quantity = parseInt(document.querySelector('#quantity').value || 1);
-            const comments = document.querySelector('#comment').value;
-            let extraIngredients = [];
-            document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(function(checkbox) {
-                extraIngredients.push(checkbox.nextElementSibling.innerText);
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTotalCost(); // Initial update
+
+            document.querySelector('#quantity').addEventListener('change', updateTotalCost);
+            document.querySelectorAll('.extra-ingredients-section input[type=checkbox]').forEach(function(checkbox) {
+                checkbox.addEventListener('change', updateTotalCost);
             });
 
-            const itemDetails = {
-                name: itemName,
-                price: itemPrice,
-                quantity: quantity,
-                extraIngredients: extraIngredients,
-                comments: comments
-            };
+            document.querySelector('.add-to-cart').addEventListener('click', function() {
+                const itemName = document.querySelector('.menu-item-name').innerText;
+                const itemPrice = parseFloat(document.querySelector('.price-value').getAttribute('data-price'));
+                const quantity = parseInt(document.querySelector('#quantity').value || 1);
+                const comments = document.querySelector('#comment').value;
+                let extraIngredients = [];
+                document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(function(checkbox) {
+                    extraIngredients.push(checkbox.nextElementSibling.innerText);
+                });
 
-            // Assuming the addToCart function is defined within script.js
-            addToCart(itemDetails);
+                const itemDetails = {
+                    name: itemName,
+                    price: itemPrice,
+                    quantity: quantity,
+                    extraIngredients: extraIngredients,
+                    comments: comments
+                };
+
+                addToCart(itemDetails);
+            });
+
+            function updateTotalCost() {
+                const itemPrice = parseFloat(document.querySelector('.price-value').getAttribute('data-price'));
+                const quantity = parseInt(document.querySelector('#quantity').value || 1);
+                let extraCost = 0;
+                document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(function(checkbox) {
+                    extraCost += parseFloat(checkbox.getAttribute('data-cost'));
+                });
+                const totalCost = (itemPrice + extraCost) * quantity;
+                document.querySelector('#totalCounter').innerText = `$${totalCost.toFixed(2)}`;
+            }
         });
 
         function addToCart(itemDetails) {
@@ -69,7 +88,7 @@
             alert('Item added to cart!');
         }
     </script>
-
 </body>
 </html>
+
 
