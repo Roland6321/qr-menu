@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let cartItemsContainer = document.getElementById('cartItems');
         if (cartItemsContainer) {
             cartItemsContainer.innerHTML = '';
-
+    
             cart.forEach((item, index) => {
                 let itemElement = document.createElement('div');
                 itemElement.innerHTML = `
@@ -104,20 +104,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 cartItemsContainer.appendChild(itemElement);
             });
-
+    
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
             } else {
                 calculateAndDisplayTotalCost(cart);
+                displaySumTotal(); // Call to display the sum total on the Cart page
             }
         }
-
+    
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', function() {
                 removeFromCart(parseInt(this.getAttribute('data-index')));
             });
         });
     }
+    
+    function displaySumTotal() {
+        let totalCostContainer = document.getElementById('totalCounter');
+        let cartPageTotalContainer = document.createElement('div');
+        cartPageTotalContainer.setAttribute('id', 'cartPageTotalContainer');
+        cartPageTotalContainer.style.marginTop = '20px'; // Add a little space above the total for clarity
+        cartPageTotalContainer.innerHTML = `<strong>Sum total: ${totalCostContainer.innerText}</strong>`;
+    
+        let cartSection = document.getElementById('cartSection');
+        cartSection.appendChild(cartPageTotalContainer); // Append the total sum container to the Cart page
+    }    
 
     function removeFromCart(index) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
