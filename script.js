@@ -60,7 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const comments = document.querySelector('#comment').value;
             let extraIngredients = [];
             document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
-                extraIngredients.push(checkbox.nextElementSibling.innerText);
+                const extraCost = checkbox.getAttribute('data-cost');
+                const extraName = checkbox.nextElementSibling.innerText;
+                extraIngredients.push({name: extraName, cost: extraCost});
             });
 
             const itemDetails = {
@@ -87,45 +89,37 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCartItems();
     }
 
-    // This function displays cart items.
     function displayCartItems() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartItemsContainer = document.getElementById('cartItems');
-        let totalAmount = 0; // Initialize total amount
+        let totalAmount = 0;
 
-        if (cartItemsContainer) {
-            cartItemsContainer.innerHTML = '';
+        cartItemsContainer.innerHTML = '';
 
-            cart.forEach((item, index) => {
-                let itemTotal = item.price * item.quantity;
-
-                item.extraIngredients.forEach(extraIngredientName => {
-                    const extraElement = document.querySelector(`input[name="${extraIngredientName}"]`);
-                    if (extraElement) {
-                        itemTotal += parseFloat(extraElement.getAttribute('data-cost')) * item.quantity;
-                    }
-                });
-
-                let itemElement = document.createElement('div');
-                itemElement.innerHTML = `
-                    <h3>${item.name}</h3>
-                    <p>Price: $${item.price}</p>
-                    <p>Quantity: ${item.quantity}</p>
-                    <p>Extras: ${item.extraIngredients.join(', ')}</p>
-                    <p>Comments: ${item.comments}</p>
-                    <button class="remove-item" data-index="${index}">Remove item</button>
-                `;
-                cartItemsContainer.appendChild(itemElement);
-
-                totalAmount += itemTotal; // Add to total
+        cart.forEach((item, index) => {
+            let itemTotal = item.price * item.quantity;
+            item.extraIngredients.forEach(extra => {
+                itemTotal += parseFloat(extra.cost) * item.quantity;
             });
 
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
-            } else {
-                // Update the totalCounter element with the calculated total
-                document.getElementById('totalCounter').textContent = `$${totalAmount.toFixed(2)}`;
-            }
+            let itemElement = document.createElement('div');
+            itemElement.innerHTML = `
+                <h3>${item.name}</h3>
+                <p>Price: $${item.price}</p>
+                <p>Quantity: ${item.quantity}</p>
+                <p>Extras: ${item.extraIngredients.map(ing => ing.name).join(', ')}</p>
+                <p>Comments: ${item.comments}</p>
+                <button class="remove-item" data-index="${index}">Remove item</button>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+
+            totalAmount += itemTotal;
+        });
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
+            document.getElementById('totalCounter').textContent = `$${totalAmount.toFixed(2)}`;
         }
 
         document.querySelectorAll('.remove-item').forEach(button => {
@@ -134,8 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
-    // Modified removeFromCart function to also update the total
+    
     function removeFromCart(index) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.splice(index, 1);
@@ -143,9 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCartItems(); // This will recalculate and update the total
     }
 
-     // Automatically display cart items on page load
-    displayCartItems();
- });
+    displayCartItems(); // Automatically display cart items on page load
+});
+
 
 
 
