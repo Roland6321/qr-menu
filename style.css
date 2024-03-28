@@ -315,6 +315,20 @@ background-color: #dfa55e; /* Darker orange background on hover */
   background-color: #0056b3; /* Darker shade for hover effect */
 }
 
+.home-btn, .back-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff; /* Example button color, adjust as needed */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.home-btn:hover, .back-btn:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+}
+
 .order-total-counter {
   position: fixed; /* Change this to 'static' if you prefer it to move with the page content */
   left: 50%;
