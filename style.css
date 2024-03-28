@@ -301,7 +301,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
   background-color: #f5f5f5; /* Example background color, adjust as needed */
 }
 
-.home-btn, .cart-btn, .back-btn{
+.home-btn, .back-btn{
   padding: 10px 20px;
   font-size: 16px;
   color: white;
@@ -311,7 +311,24 @@ background-color: #dfa55e; /* Darker orange background on hover */
   cursor: pointer;
 }
 
-.home-btn:hover, .cart-btn:hover, .back-btn:hover {
+.home-btn:hover, .back-btn:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+.cart-btn {
+  height: 40px; /* Adjust as needed */
+  padding: 0 10px; /* Adjust as needed */
+  line-height: 40px; /* Adjust to button height if you want a single line of text */
+  box-sizing: border-box;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff; /* Example button color, adjust as needed */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-btn:hover {
   background-color: #0056b3; /* Darker shade for hover effect */
 }
 
