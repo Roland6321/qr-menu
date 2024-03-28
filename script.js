@@ -121,15 +121,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function displaySumTotal() {
-        let totalCostContainer = document.getElementById('totalCounter');
-        let cartPageTotalContainer = document.createElement('div');
-        cartPageTotalContainer.setAttribute('id', 'cartPageTotalContainer');
-        cartPageTotalContainer.style.marginTop = '20px'; // Add a little space above the total for clarity
-        cartPageTotalContainer.innerHTML = `<strong>Sum total: ${totalCostContainer.innerText}</strong>`;
-    
+        let totalCost = document.getElementById('totalCounter').innerText; // Get the total cost
         let cartSection = document.getElementById('cartSection');
-        cartSection.appendChild(cartPageTotalContainer); // Append the total sum container to the Cart page
-    }    
+        let existingTotalContainer = document.getElementById('cartPageTotalContainer');
+    
+        if (existingTotalContainer) {
+            // If it exists, just update the text
+            existingTotalContainer.innerHTML = `<strong>Sum total: ${totalCost}</strong>`;
+        } else {
+            // If not, create it and append to the cart section
+            let cartPageTotalContainer = document.createElement('div');
+            cartPageTotalContainer.setAttribute('id', 'cartPageTotalContainer');
+            cartPageTotalContainer.style.marginTop = '20px'; // Add a little space above the total for clarity
+            cartPageTotalContainer.innerHTML = `<strong>Sum total: ${totalCost}</strong>`;
+            cartSection.appendChild(cartPageTotalContainer);
+        }
+    }   
 
     function removeFromCart(index) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
