@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCategories);
     });
 
-    // Handle add to cart action
     document.addEventListener('click', function(e) {
         if (e.target && e.target.classList.contains('add-to-cart')) {
             const itemName = document.querySelector('.menu-item-name').innerText;
@@ -87,11 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCartItems();
     }
 
-    // This function displays cart items.
     function displayCartItems() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartItemsContainer = document.getElementById('cartItems');
-        if (cartItemsContainer) { // Only proceed if the cartItemsContainer exists
+        if (cartItemsContainer) {
             cartItemsContainer.innerHTML = '';
 
             cart.forEach((item, index) => {
@@ -109,6 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                calculateAndDisplayTotalCost(cart);
             }
         }
 
@@ -126,9 +126,25 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCartItems();
     }
 
-     // Automatically display cart items on page load
+    function calculateAndDisplayTotalCost(cart) {
+        let totalCost = 0;
+
+        cart.forEach(item => {
+            let itemTotal = item.price * item.quantity;
+            let extrasTotal = item.extraIngredients.length * 0.5; // Assuming each extra ingredient costs $0.5
+            itemTotal += extrasTotal;
+            totalCost += itemTotal;
+        });
+
+        let totalCostContainer = document.getElementById('totalCounter');
+        if (totalCostContainer) {
+            totalCostContainer.innerText = `$${totalCost.toFixed(2)}`;
+        }
+    }
+
     displayCartItems();
- });
+});
+
 
 
 
