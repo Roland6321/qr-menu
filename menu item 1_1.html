@@ -70,11 +70,34 @@
             alert('Item added to cart!');
         }
 
-                document.addEventListener('DOMContentLoaded', function() {
-            // This assumes you have a function like calculateAndDisplayTotalCost(cart) in script.js
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            calculateAndDisplayTotalCost(cart); // Updates the total cost based on the cart
+        function updateTotalCostDisplay() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalCost = 0;
+        cart.forEach(item => {
+            let itemTotal = item.price * item.quantity;
+            // Assuming each extra ingredient costs $0.5, adjust as necessary
+            let extrasTotal = item.extraIngredients ? item.extraIngredients.length * 0.5 : 0;
+            itemTotal += extrasTotal;
+            totalCost += itemTotal;
         });
+        const totalCostElement = document.getElementById('menuPageTotalCounter');
+        if (totalCostElement) {
+            totalCostElement.innerText = `$${totalCost.toFixed(2)}`;
+        }
+    }
+
+    // Update the total cost when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        updateTotalCostDisplay();
+    });
+
+    // Example function to add an item to the cart (simplified version)
+    function addToCartExample(item) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(item);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateTotalCostDisplay(); // Update the counter every time an item is added
+    }
 
     </script>
 
