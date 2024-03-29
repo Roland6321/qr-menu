@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
 
     function toggleCounterDisplay(show) {
-        console.log("toggleCounterDisplay called with show = ", show);
         counterContainer.style.display = show ? 'block' : 'none';
     }
 
