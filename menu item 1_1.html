@@ -12,10 +12,7 @@
     </div>
     <title>Rugbrød med Sild</title>
     <link rel="stylesheet" href="style.css">
-    <div class="order-total-counter">
-        Total: <span id="totalCounter">$0.00</span>
-    </div> 
-    
+
 </head>
 <body style="background-color: #F5F5F5;">
     <h1 class="menu-item-name">Rugbrød med Sild</h1>
@@ -67,49 +64,6 @@
             cart.push(itemDetails);
             localStorage.setItem('cart', JSON.stringify(cart));
             alert('Item added to cart!');
-        }
-
-        // Function to calculate and display the total cost
-        function updateTotalCost() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let totalCost = 0;
-
-            cart.forEach(item => {
-                totalCost += item.price * item.quantity;
-
-                // Add the cost of extra ingredients, if any
-                if (item.extraIngredients) {
-                    item.extraIngredients.forEach(() => {
-                        totalCost += 0.5; // Assuming each extra ingredient costs $0.5
-                    });
-                }
-            });
-
-            // Update the total cost display
-            const totalCostDisplay = document.getElementById('totalCounter');
-            if (totalCostDisplay) {
-                totalCostDisplay.innerText = `$${totalCost.toFixed(2)}`;
-            }
-        }
-
-        // Event listener for DOMContentLoaded to update total cost when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            updateTotalCost();
-        });
-
-        // Updating the addToCart function to call updateTotalCost
-        function addToCart(itemDetails) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push(itemDetails);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert('Item added to cart!');
-            updateTotalCost(); // Update the total cost whenever an item is added
-        }
-
-                // Ensure the counter is visible
-        const totalCostCounter = document.querySelector('.order-total-counter');
-        if (totalCostCounter) {
-            totalCostCounter.style.display = 'block'; // Make sure it's visible
         }
     </script>
 </body>
