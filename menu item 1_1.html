@@ -69,6 +69,13 @@
             localStorage.setItem('cart', JSON.stringify(cart));
             alert('Item added to cart!');
         }
+
+                document.addEventListener('DOMContentLoaded', function() {
+            // This assumes you have a function like calculateAndDisplayTotalCost(cart) in script.js
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            calculateAndDisplayTotalCost(cart); // Updates the total cost based on the cart
+        });
+
     </script>
 
 </body>
