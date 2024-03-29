@@ -32,11 +32,10 @@
         <label for="comment">Comment:</label>
         <textarea id="comment" name="comment"></textarea>
     </div>
-
     <button class="add-to-cart">Add to cart</button>
-    
-    <div class="order-total-counter" style="margin-top: 20px;">
-        Cart Total: <span id="menuPageTotalCounter">$0.00</span>
+
+    <div class="order-total-counter">
+        Total: <span id="totalCounter">$0.00</span>
     </div>
 
     <script src="script.js"></script>
@@ -69,39 +68,10 @@
             localStorage.setItem('cart', JSON.stringify(cart));
             alert('Item added to cart!');
         }
-
-        function updateTotalCostDisplay() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let totalCost = 0;
-        cart.forEach(item => {
-            let itemTotal = item.price * item.quantity;
-            // Assuming each extra ingredient costs $0.5, adjust as necessary
-            let extrasTotal = item.extraIngredients ? item.extraIngredients.length * 0.5 : 0;
-            itemTotal += extrasTotal;
-            totalCost += itemTotal;
-        });
-        const totalCostElement = document.getElementById('menuPageTotalCounter');
-        if (totalCostElement) {
-            totalCostElement.innerText = `$${totalCost.toFixed(2)}`;
-        }
-    }
-
-    // Update the total cost when the page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        updateTotalCostDisplay();
-    });
-
-    // Example function to add an item to the cart (simplified version)
-    function addToCartExample(item) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push(item);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateTotalCostDisplay(); // Update the counter every time an item is added
-    }
-
     </script>
-
 </body>
 </html>
+
+
 
 

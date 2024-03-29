@@ -159,16 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (totalCostContainer) {
             totalCostContainer.innerText = `$${totalCost.toFixed(2)}`;
         }
-       
-        // Update the total cost in the menu item page counter
-        let menuPageTotalCostContainer = document.getElementById('menuPageTotalCounter');
-        if (menuPageTotalCostContainer) {
-            menuPageTotalCostContainer.innerText = `$${totalCost.toFixed(2)}`;
-        }
     }
 
     displayCartItems();
 });
+
 
 
 
