@@ -34,9 +34,9 @@
     </div>
     <button class="add-to-cart">Add to cart</button>
 
-<div class="order-total-counter">
-    Total: <span id="totalCounter">$0.00</span>
-</div>     
+    <div class="order-total-counter">
+        Total: <span id="totalCounter">$0.00</span>
+    </div>     
 
     <script src="script.js"></script>
     <script>
@@ -106,6 +106,11 @@
             updateTotalCost(); // Update the total cost whenever an item is added
         }
 
+                // Ensure the counter is visible
+        const totalCostCounter = document.querySelector('.order-total-counter');
+        if (totalCostCounter) {
+            totalCostCounter.style.display = 'block'; // Make sure it's visible
+        }
     </script>
 </body>
 </html>
