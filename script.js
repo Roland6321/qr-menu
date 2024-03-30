@@ -168,6 +168,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // This new section is added just before the closing of the DOMContentLoaded event listener
+    // It ensures the counter is immediately updated on page load, including when coming back from another page
+    window.onpageshow = function(event) {
+        // This checks if the page is loaded from cache (a back/forward navigation)
+        if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+            calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
+        }
+    };
+
     // Ensures the counter is immediately updated on page load.
     calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
 });
