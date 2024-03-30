@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (document.getElementById('startMenu')) document.getElementById('startMenu').style.display = 'none';
         if (document.getElementById('cartSection')) document.getElementById('cartSection').style.display = 'none';
         toggleCounterDisplay(true);
+        updateTotalOnNav(); // Ensure the counter updates when showing categories
     }
 
     function showMenuItems(index) {
