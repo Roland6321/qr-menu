@@ -35,7 +35,7 @@
     <button class="add-to-cart">Add to cart</button>  
     
     <div class="order-total-counter">
-        Total: <span id="totalCounter">$0.00</span>
+        Total: <span id="costdisplay">$0.00</span>
     </div>
 
     <script src="script.js"></script>
@@ -69,7 +69,6 @@
             calculateAndDisplayTotalForCurrentItem(); // Update the total when an item is added
         }
 
-        // New JavaScript code to calculate and display the total cost
         function calculateAndDisplayTotalForCurrentItem() {
             const basePrice = parseFloat(document.querySelector('.price-value').dataset.price);
             const quantity = parseInt(document.querySelector('#quantity').value || 1);
@@ -90,20 +89,19 @@
             });
 
             const newTotal = existingCartTotal + currentItemTotal;
-            document.getElementById('totalCounter').innerText = `$${newTotal.toFixed(2)}`;
+            document.getElementById('costdisplay').innerText = `$${newTotal.toFixed(2)}`;
         }
 
-        // Attach event listeners
         document.querySelector('#quantity').addEventListener('change', calculateAndDisplayTotalForCurrentItem);
         document.querySelectorAll('.extra-ingredients-section input[type=checkbox]').forEach(checkbox => {
             checkbox.addEventListener('change', calculateAndDisplayTotalForCurrentItem);
         });
 
-        // Call at the end to ensure total is correct on page load
         calculateAndDisplayTotalForCurrentItem();
     </script>
 </body>
 </html>
+
 
 
 
