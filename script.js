@@ -7,36 +7,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const counterContainer = document.querySelector('.order-total-counter');
     const urlParams = new URLSearchParams(window.location.search);
 
+    // Adjusted function to toggle the display of the counter based on page context.
     function toggleCounterDisplay(show) {
-        counterContainer.style.display = show ? 'block' : 'none';
+        if (counterContainer) { // Check if the container exists to avoid null reference errors.
+            counterContainer.style.display = show ? 'block' : 'none';
+        }
     }
 
-    toggleCounterDisplay(false);
+    // Determine if we are on a main page that requires the counter to be hidden initially.
+    const isMainPage = startButton !== null && categories !== null;
+    toggleCounterDisplay(!isMainPage); // Show the counter on individual menu item pages by default.
 
     function showCategories() {
-        categories.style.display = 'block';
+        if (categories) categories.style.display = 'block';
         menuItemsSections.forEach(item => item.style.display = 'none');
-        document.getElementById('startMenu').style.display = 'none';
-        document.getElementById('cartSection').style.display = 'none';
+        if (document.getElementById('startMenu')) document.getElementById('startMenu').style.display = 'none';
+        if (document.getElementById('cartSection')) document.getElementById('cartSection').style.display = 'none';
         toggleCounterDisplay(true);
     }
 
     function showMenuItems(index) {
-        categories.style.display = 'none';
-        document.getElementById('startMenu').style.display = 'none';
-        menuItemsSections[index].style.display = 'block';
+        if (categories) categories.style.display = 'none';
+        if (document.getElementById('startMenu')) document.getElementById('startMenu').style.display = 'none';
+        if (menuItemsSections[index]) menuItemsSections[index].style.display = 'block';
         toggleCounterDisplay(true);
     }
 
     function showCart() {
         document.getElementById('startMenu').style.display = 'none';
-        categories.style.display = 'none';
+        if (categories) categories.style.display = 'none';
         menuItemsSections.forEach(item => item.style.display = 'none');
         document.getElementById('cartSection').style.display = 'block';
         displayCartItems(); // Ensure cart items are displayed whenever the cart is shown.
     }
 
-    startButton.addEventListener('click', showCategories);
+    if (startButton) startButton.addEventListener('click', showCategories);
     categoryButtons.forEach((button, index) => {
         button.addEventListener('click', () => showMenuItems(index));
     });
@@ -163,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     displayCartItems();
 });
+
 
 
 
