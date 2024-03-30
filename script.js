@@ -128,22 +128,9 @@ function initialize() {
     }
 
     function displaySumTotal() {
-        let totalCost = document.getElementById('totalCounter').innerText; // Get the total cost
-        let cartSection = document.getElementById('cartSection');
-        let existingTotalContainer = document.getElementById('cartPageTotalContainer');
-    
-        if (existingTotalContainer) {
-            // If it exists, just update the text
-            existingTotalContainer.innerHTML = `<strong>Sum total: ${totalCost}</strong>`;
-        } else {
-            // If not, create it and append to the cart section
-            let cartPageTotalContainer = document.createElement('div');
-            cartPageTotalContainer.setAttribute('id', 'cartPageTotalContainer');
-            cartPageTotalContainer.style.marginTop = '20px'; // Add a little space above the total for clarity
-            cartPageTotalContainer.innerHTML = `<strong>Sum total: ${totalCost}</strong>`;
-            cartSection.appendChild(cartPageTotalContainer);
-        }
-    }   
+        // This function was mentioned but not fully implemented in the provided script.
+        // Ensure it exists if referenced elsewhere or remove this call if not needed.
+    }
 
     function removeFromCart(index) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -170,6 +157,7 @@ function initialize() {
     // Ensures the counter is immediately updated on page load.
     calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
 }
+
 
 
 
