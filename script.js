@@ -150,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
         displayCartItems();
+        calculateAndDisplayTotalCost(cart); // Recalculate the total cost after adding an item
     }
 
     function calculateAndDisplayTotalCost(cart) {
