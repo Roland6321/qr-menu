@@ -7,16 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const counterContainer = document.querySelector('.order-total-counter');
     const urlParams = new URLSearchParams(window.location.search);
 
-    // Adjusted function to toggle the display of the counter based on page context.
     function toggleCounterDisplay(show) {
-        if (counterContainer) { // Check if the container exists to avoid null reference errors.
+        if (counterContainer) {
             counterContainer.style.display = show ? 'block' : 'none';
         }
     }
 
-    // Determine if we are on a main page that requires the counter to be hidden initially.
     const isMainPage = startButton !== null && categories !== null;
-    toggleCounterDisplay(!isMainPage); // Show the counter on individual menu item pages by default.
+    toggleCounterDisplay(!isMainPage);
+
+    function updateTotalOnNav() {
+        calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
+    }
 
     function showCategories() {
         if (categories) categories.style.display = 'block';
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (document.getElementById('startMenu')) document.getElementById('startMenu').style.display = 'none';
         if (document.getElementById('cartSection')) document.getElementById('cartSection').style.display = 'none';
         toggleCounterDisplay(true);
-        updateTotalOnNav(); // Ensure the counter updates when showing categories
+        updateTotalOnNav();
     }
 
     function showMenuItems(index) {
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (document.getElementById('startMenu')) document.getElementById('startMenu').style.display = 'none';
         if (menuItemsSections[index]) menuItemsSections[index].style.display = 'block';
         toggleCounterDisplay(true);
-        updateTotalOnNav(); // Ensure the counter updates when showing categories
+        updateTotalOnNav();
     }
 
     function showCart() {
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (categories) categories.style.display = 'none';
         menuItemsSections.forEach(item => item.style.display = 'none');
         document.getElementById('cartSection').style.display = 'block';
-        displayCartItems(); // Ensure cart items are displayed whenever the cart is shown.
+        displayCartItems();
     }
 
     if (startButton) startButton.addEventListener('click', showCategories);
@@ -86,9 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.push(itemDetails);
         localStorage.setItem('cart', JSON.stringify(cart));
         alert('Item added to cart!');
-        calculateAndDisplayTotalCost(cart); // Recalculate the total cost after adding an item
+        updateTotalOnNav(); // This ensures the counter updates immediately after adding an item.
     }
-    
 
     if (urlParams.get('showCart') === 'true') {
         showCart();
@@ -100,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let cartItemsContainer = document.getElementById('cartItems');
         if (cartItemsContainer) {
             cartItemsContainer.innerHTML = '';
-    
+
             cart.forEach((item, index) => {
                 let itemElement = document.createElement('div');
                 itemElement.innerHTML = `
@@ -113,45 +114,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 cartItemsContainer.appendChild(itemElement);
             });
-    
+
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
             } else {
-                calculateAndDisplayTotalCost(cart);
-                displaySumTotal(); // Call to display the sum total on the Cart page
+                updateTotalOnNav(); // Update the counter when displaying cart items.
             }
         }
-    
+
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', function() {
                 removeFromCart(parseInt(this.getAttribute('data-index')));
             });
         });
     }
-    
-    function displaySumTotal() {
-        let totalCost = document.getElementById('totalCounter').innerText; // Get the total cost
-        let cartSection = document.getElementById('cartSection');
-        let existingTotalContainer = document.getElementById('cartPageTotalContainer');
-    
-        if (existingTotalContainer) {
-            // If it exists, just update the text
-            existingTotalContainer.innerHTML = `<strong>Sum total: ${totalCost}</strong>`;
-        } else {
-            // If not, create it and append to the cart section
-            let cartPageTotalContainer = document.createElement('div');
-            cartPageTotalContainer.setAttribute('id', 'cartPageTotalContainer');
-            cartPageTotalContainer.style.marginTop = '20px'; // Add a little space above the total for clarity
-            cartPageTotalContainer.innerHTML = `<strong>Sum total: ${totalCost}</strong>`;
-            cartSection.appendChild(cartPageTotalContainer);
-        }
-    }   
 
     function removeFromCart(index) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
-        displayCartItems();
+        displayCartItems(); // Update the display after an item is removed.
     }
 
     function calculateAndDisplayTotalCost(cart) {
@@ -159,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cart.forEach(item => {
             let itemTotal = item.price * item.quantity;
-            let extrasTotal = item.extraIngredients.length * 0.5; // Assuming each extra ingredient costs $0.5
+            let extrasTotal = item.extraIngredients.length * 0.5;
             itemTotal += extrasTotal;
             totalCost += itemTotal;
         });
@@ -170,19 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Function to update the total cost on navigation
-    function updateTotalOnNav() {
-        calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
-    }
-
-    // Attaching the updateTotalOnNav function to return-btn elements
-    document.querySelectorAll('.return-btn').forEach(button => {
-        button.addEventListener('click', updateTotalOnNav);
-    });
-    
-    // Then force the counter update
+    // This ensures the counter updates immediately when the page is loaded.
     updateTotalOnNav();
 });
+
 
 
 
