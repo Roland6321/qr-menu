@@ -84,7 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.push(itemDetails);
         localStorage.setItem('cart', JSON.stringify(cart));
         alert('Item added to cart!');
+        calculateAndDisplayTotalCost(cart); // Recalculate the total cost after adding an item
     }
+    
 
     if (urlParams.get('showCart') === 'true') {
         showCart();
