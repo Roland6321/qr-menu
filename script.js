@@ -168,9 +168,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Ensures the counter is immediately updated on page load.
-    calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
+    // Function to update the total cost on navigation
+    function updateTotalOnNav() {
+        calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
+    }
+
+    // Attaching the updateTotalOnNav function to return-btn elements
+    document.querySelectorAll('.return-btn').forEach(button => {
+        button.addEventListener('click', updateTotalOnNav);
+    });
+    
+    // Then force the counter update
+    updateTotalOnNav();
 });
+
 
 
 
