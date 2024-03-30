@@ -39,35 +39,6 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-        document.querySelector('.add-to-cart').addEventListener('click', function() {
-            const itemName = document.querySelector('.menu-item-name').innerText;
-            const itemPrice = parseFloat(document.querySelector('.price-value').getAttribute('data-price'));
-            const quantity = parseInt(document.querySelector('#quantity').value || 1);
-            const comments = document.querySelector('#comment').value;
-            let extraIngredients = [];
-            document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(function(checkbox) {
-                extraIngredients.push(checkbox.nextElementSibling.innerText);
-            });
-
-            const itemDetails = {
-                name: itemName,
-                price: itemPrice,
-                quantity: quantity,
-                extraIngredients: extraIngredients,
-                comments: comments
-            };
-
-            // Assuming the addToCart function is defined within script.js
-            addToCart(itemDetails);
-        });
-
-        function addToCart(itemDetails) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push(itemDetails);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert('Item added to cart!');
-        }
-    </script>
+ 
 </body>
 </html>
