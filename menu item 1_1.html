@@ -12,7 +12,6 @@
     </div>
     <title>Rugbrød med Sild</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body style="background-color: #F5F5F5;">
     <h1 class="menu-item-name">Rugbrød med Sild</h1>
@@ -27,7 +26,7 @@
     </div>
     <div class="quantity-section">
         <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity" min="1">
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
     </div>
     <div class="comment-section">
         <label for="comment">Comment:</label>
@@ -59,7 +58,6 @@
                 comments: comments
             };
 
-            // Assuming the addToCart function is defined within script.js
             addToCart(itemDetails);
         });
 
@@ -68,7 +66,41 @@
             cart.push(itemDetails);
             localStorage.setItem('cart', JSON.stringify(cart));
             alert('Item added to cart!');
+            calculateAndDisplayTotalForCurrentItem(); // Update the total when an item is added
         }
+
+        // New JavaScript code to calculate and display the total cost
+        function calculateAndDisplayTotalForCurrentItem() {
+            const basePrice = parseFloat(document.querySelector('.price-value').dataset.price);
+            const quantity = parseInt(document.querySelector('#quantity').value || 1);
+            let extraIngredientsCost = 0;
+            document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
+                extraIngredientsCost += parseFloat(checkbox.dataset.cost);
+            });
+
+            const currentItemTotal = (basePrice + extraIngredientsCost) * quantity;
+            updateTotalCounter(currentItemTotal);
+        }
+
+        function updateTotalCounter(currentItemTotal) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let existingCartTotal = 0;
+            cart.forEach(item => {
+                existingCartTotal += (item.price + (item.extraIngredientsCost || 0)) * item.quantity;
+            });
+
+            const newTotal = existingCartTotal + currentItemTotal;
+            document.getElementById('totalCounter').innerText = `$${newTotal.toFixed(2)}`;
+        }
+
+        // Attach event listeners
+        document.querySelector('#quantity').addEventListener('change', calculateAndDisplayTotalForCurrentItem);
+        document.querySelectorAll('.extra-ingredients-section input[type=checkbox]').forEach(checkbox => {
+            checkbox.addEventListener('change', calculateAndDisplayTotalForCurrentItem);
+        });
+
+        // Call at the end to ensure total is correct on page load
+        calculateAndDisplayTotalForCurrentItem();
     </script>
 </body>
 </html>
