@@ -1,4 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', initialize);
+window.addEventListener('pageshow', initialize); // Added to handle page loads from cache
+
+function initialize() {
     const startButton = document.getElementById('startButton');
     const categories = document.getElementById('categories');
     const categoryButtons = document.querySelectorAll('.category-btn');
@@ -7,16 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const counterContainer = document.querySelector('.order-total-counter');
     const urlParams = new URLSearchParams(window.location.search);
 
-    // Adjusted function to toggle the display of the counter based on page context.
     function toggleCounterDisplay(show) {
-        if (counterContainer) { // Check if the container exists to avoid null reference errors.
+        if (counterContainer) {
             counterContainer.style.display = show ? 'block' : 'none';
         }
     }
 
-    // Determine if we are on a main page that requires the counter to be hidden initially.
     const isMainPage = startButton !== null && categories !== null;
-    toggleCounterDisplay(!isMainPage); // Show the counter on individual menu item pages by default.
+    toggleCounterDisplay(!isMainPage);
 
     function showCategories() {
         if (categories) categories.style.display = 'block';
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (categories) categories.style.display = 'none';
         menuItemsSections.forEach(item => item.style.display = 'none');
         document.getElementById('cartSection').style.display = 'block';
-        displayCartItems(); // Ensure cart items are displayed whenever the cart is shown.
+        displayCartItems();
     }
 
     if (startButton) startButton.addEventListener('click', showCategories);
@@ -86,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Item added to cart!');
         calculateAndDisplayTotalCost(cart); // Recalculate the total cost after adding an item
     }
-    
 
     if (urlParams.get('showCart') === 'true') {
         showCart();
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let cartItemsContainer = document.getElementById('cartItems');
         if (cartItemsContainer) {
             cartItemsContainer.innerHTML = '';
-    
+
             cart.forEach((item, index) => {
                 let itemElement = document.createElement('div');
                 itemElement.innerHTML = `
@@ -111,22 +111,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 `;
                 cartItemsContainer.appendChild(itemElement);
             });
-    
+
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
             } else {
                 calculateAndDisplayTotalCost(cart);
-                displaySumTotal(); // Call to display the sum total on the Cart page
             }
         }
-    
+
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', function() {
                 removeFromCart(parseInt(this.getAttribute('data-index')));
+                displayCartItems();
             });
         });
     }
-    
+
     function displaySumTotal() {
         let totalCost = document.getElementById('totalCounter').innerText; // Get the total cost
         let cartSection = document.getElementById('cartSection');
@@ -154,10 +154,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function calculateAndDisplayTotalCost(cart) {
         let totalCost = 0;
-
         cart.forEach(item => {
             let itemTotal = item.price * item.quantity;
-            let extrasTotal = item.extraIngredients.length * 0.5; // Assuming each extra ingredient costs $0.5
+            let extrasTotal = item.extraIngredients.length * 0.5;
             itemTotal += extrasTotal;
             totalCost += itemTotal;
         });
@@ -170,7 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ensures the counter is immediately updated on page load.
     calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
-});
+}
+
 
 
 
