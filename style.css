@@ -268,6 +268,14 @@ background-color: #dfa55e; /* Darker orange background on hover */
   padding-bottom: 15px; /* Adds space below each ingredient checkbox */
 }
 
+#cartSection h2 {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px; /* or any value you prefer */
+  padding-top: 15px; /* This adds padding above your h1 text */
+  font-size: 1rem;
+}
+
 .add-to-cart {
   padding: 8px 10px;
   background-color: #ff8410;
