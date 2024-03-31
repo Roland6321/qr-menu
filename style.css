@@ -388,8 +388,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
   margin: 10px 10px;
   cursor: pointer;
   border-radius: 4px;
-  width: 80%;
-  position: center;
+  width: auto;
 }
 
 #totalSumCounter {
