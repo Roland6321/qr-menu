@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Session-based logic for clearing the cart
+    if (!sessionStorage.getItem('sessionTimestamp')) {
+        localStorage.setItem('cart', JSON.stringify([]));
+        sessionStorage.setItem('sessionTimestamp', new Date().getTime());
+    }
+
     const startButton = document.getElementById('startButton');
     const categories = document.getElementById('categories');
     const categoryButtons = document.querySelectorAll('.category-btn');
