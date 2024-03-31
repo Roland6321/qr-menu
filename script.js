@@ -138,9 +138,16 @@ document.addEventListener('DOMContentLoaded', () => {
             totalCost += itemTotal;
         });
 
+        // Update the total cost in both the counter container and the new total sum counter
         let totalCostContainer = document.getElementById('totalCounter');
+        let totalSumCounter = document.getElementById('totalSumCounter'); // The new Total Sum Counter
+
         if (totalCostContainer) {
             totalCostContainer.innerText = `$${totalCost.toFixed(2)}`;
+        }
+
+        if (totalSumCounter) {
+            totalSumCounter.innerText = `Total: $${totalCost.toFixed(2)}`;
         }
     }
 
