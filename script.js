@@ -55,6 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
     homeButtons.forEach(button => {
         button.addEventListener('click', showCategories);
     });
+    // Place this code at the end of the DOMContentLoaded event listener in script.js
+    document.querySelector('.proceed-to-payment-btn').addEventListener('click', function() {
+        document.getElementById('cartSection').style.display = 'none';
+        document.getElementById('paymentSection').style.display = 'block';
+    });
 
     document.addEventListener('click', function(e) {
         if (e.target && e.target.classList.contains('add-to-cart')) {
