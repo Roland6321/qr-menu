@@ -68,7 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const comments = document.querySelector('#comment').value;
             let extraIngredients = [];
             document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
-                extraIngredients.push(checkbox.nextElementSibling.innerText);
+                extraIngredients.push({
+                    name: checkbox.nextElementSibling.innerText,
+                    dataCost: parseFloat(checkbox.getAttribute('data-cost'))
+                });
             });
 
             const itemDetails = {
@@ -107,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h3>${item.name}</h3>
                     <p>Price: $${item.price}</p>
                     <p>Quantity: ${item.quantity}</p>
-                    <p>Extras: ${item.extraIngredients.join(', ')}</p>
+                    <p>Extras: ${item.extraIngredients.map(extra => extra.name + " ($" + extra.dataCost.toFixed(2) + ")").join(', ')}</p>
                     <p>Comments: ${item.comments}</p>
                     <button class="remove-item" data-index="${index}">Remove item</button>
                 `;
@@ -120,33 +123,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 calculateAndDisplayTotalCost(cart);
             }
         }
-    
-        document.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', function() {
-                removeFromCart(parseInt(this.getAttribute('data-index')));
-            });
-        });
-    }
-
-    function removeFromCart(index) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        displayCartItems();
     }
 
     function calculateAndDisplayTotalCost(cart) {
         let totalCost = 0;
         cart.forEach(item => {
             let itemTotal = item.price * item.quantity;
-            let extrasTotal = item.extraIngredients.length * 0.5; // Assuming each extra ingredient costs $0.5
+            let extrasTotal = item.extraIngredients.reduce((total, extra) => {
+                return total + (extra.dataCost * item.quantity);
+            }, 0);
             itemTotal += extrasTotal;
             totalCost += itemTotal;
         });
 
-        // Update the total cost in both the counter container and the new total sum counter
         let totalCostContainer = document.getElementById('totalCounter');
-        let totalSumCounter = document.getElementById('totalSumCounter'); // The new Total Sum Counter
+        let totalSumCounter = document.getElementById('totalSumCounter');
 
         if (totalCostContainer) {
             totalCostContainer.innerText = `$${totalCost.toFixed(2)}`;
@@ -158,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.onpageshow = function(event) {
-        if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
             calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
         }
     };
@@ -175,6 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('paymentSection').style.display = 'block';
     });
 });
+
+
 
 
 
