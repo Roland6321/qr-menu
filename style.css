@@ -391,8 +391,11 @@ background-color: #dfa55e; /* Darker orange background on hover */
 #totalSumCounter {
   padding: 10px;
   background-color: transparent;
-  border: #333;
   margin-bottom: 10px;
-  text-align: center; /* Example alignment */
+  text-align: center;
+  border: 1px solid #ccc; /* Thin grey border */
+  /* Optionally, add more styles for better appearance */
+  border-radius: 5px; /* Adds rounded corners */
+  color: #333; /* Text color */
+  font-size: 16px; /* Adjust text size as needed */
 }
-
