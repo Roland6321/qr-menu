@@ -375,33 +375,31 @@ background-color: #dfa55e; /* Darker orange background on hover */
   /* Additional styling for cart items */
 }
 
-/* Inside style.css */
+/* Style for the Proceed to Payment button */
 .proceed-to-payment-btn {
   background-color: #4CAF50; /* Green */
-  border: none;
   color: white;
   padding: 15px 32px;
-  text-align: center; /* Aligns text inside the button */
-  text-decoration: none;
-  display: block; /* Changed from inline-block to block */
+  display: block; /* Makes the button a block-level element */
   font-size: 16px;
-  margin: 0 auto; /* Centers the button */
+  margin: 20px auto; /* Centers the button with auto margins */
   cursor: pointer;
   border-radius: 4px;
-  width: 99%; /* Width is necessary for margin: auto to work */
+  width: 95%; /* Adjust the width as needed */
+  text-align: center; /* Ensures text inside the button is centered */
+  border: none; /* No border */
 }
 
+/* Style for the Total Sum Counter */
 #totalSumCounter {
   padding: 10px;
-  background-color: transparent;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  text-align: center;
-  border: 1px solid #ccc; /* Thin grey border */
-  /* Optionally, add more styles for better appearance */
-  border-radius: 5px; /* Adds rounded corners */
+  background-color: lightgrey; /* Background color for visibility */
   color: #333; /* Text color */
-  font-size: 16px; /* Adjust text size as needed */
+  font-size: 16px; /* Ensures text size matches the button */
+  display: block; /* Block display for proper alignment */
+  margin: 20px auto; /* Aligns center with auto margins, consistent with the button */
+  width: 95%; /* Matches the width of the button */
+  text-align: center; /* Centers the text within the counter */
+  border: 1px solid #ccc; /* Thin grey border */
+  border-radius: 4px; /* Rounded corners to match the button */
 }
