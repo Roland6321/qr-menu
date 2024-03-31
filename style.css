@@ -397,8 +397,8 @@ background-color: #dfa55e; /* Darker orange background on hover */
   color: #333; /* Text color */
   font-size: 16px; /* Ensures text size matches the button */
   display: block; /* Block display for proper alignment */
-  margin: 20px; /* Aligns center with auto margins, consistent with the button */
-  width: 95%; /* Matches the width of the button */
+  margin: 20px auto; /* Aligns center with auto margins, consistent with the button */
+  width: 80%; /* Matches the width of the button */
   text-align: center; /* Centers the text within the counter */
   border: 1px solid #ccc; /* Thin grey border */
   border-radius: 4px; /* Rounded corners to match the button */
