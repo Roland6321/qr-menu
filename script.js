@@ -56,17 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCategories);
     });
 
-    // Place the new button functionalities here, ensuring they're properly integrated within the site's navigation logic
-    document.querySelector('.return-to-cart-btn').addEventListener('click', function() {
-        document.getElementById('paymentSection').style.display = 'none';
-        document.getElementById('cartSection').style.display = 'block';
-    });
-    
-    document.querySelector('.proceed-to-payment-btn').addEventListener('click', function() {
-        document.getElementById('cartSection').style.display = 'none';
-        document.getElementById('paymentSection').style.display = 'block';
-    });
-
     document.addEventListener('click', function(e) {
         if (e.target && e.target.classList.contains('add-to-cart')) {
             const itemName = document.querySelector('.menu-item-name').innerText;
