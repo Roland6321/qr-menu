@@ -366,6 +366,10 @@ background-color: #dfa55e; /* Darker orange background on hover */
   /* Add more styles to match your design */
 }
 
+#cartSection{
+  background-color: #F5F5F5
+}
+
 #cartSection h2 {
   margin-left: 10px;
 }
