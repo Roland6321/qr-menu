@@ -101,55 +101,63 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayCartItems() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartItemsContainer = document.getElementById('cartItems');
-        if (cartItemsContainer) {
-            cartItemsContainer.innerHTML = '';
+        cartItemsContainer.innerHTML = '';
     
-            cart.forEach((item, index) => {
-                let itemElement = document.createElement('div');
-                itemElement.innerHTML = `
-                    <h3>${item.name}</h3>
-                    <p>Price: $${item.price}</p>
-                    <p>Quantity: ${item.quantity}</p>
-                    <p>Extras: ${item.extraIngredients.map(extra => extra.name + " ($" + extra.dataCost.toFixed(2) + ")").join(', ')}</p>
-                    <p>Comments: ${item.comments}</p>
-                    <button class="remove-item" data-index="${index}">Remove item</button>
-                `;
-                cartItemsContainer.appendChild(itemElement);
-            });
-    
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
-            } else {
-                calculateAndDisplayTotalCost(cart);
-            }
+        cart.forEach((item, index) => {
+            let itemElement = document.createElement('div');
+            itemElement.innerHTML = `
+                <h3>${item.name}</h3>
+                <p>Price: $${item.price}</p>
+                <p>Quantity: ${item.quantity}</p>
+                <p>Extras: ${item.extraIngredients.map(extra => extra.name + " ($" + extra.dataCost.toFixed(2) + ")").join(', ')}</p>
+                <p>Comments: ${item.comments}</p>
+                <button class="remove-item" data-index="${index}">Remove item</button>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+        });
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
+            calculateAndDisplayTotalCost(cart);
         }
+
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', function() {
+                removeFromCart(parseInt(this.getAttribute('data-index')));
+            });
+        });
+    }
+
+    function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        displayCartItems(); // Refresh the displayed cart items
     }
 
     function calculateAndDisplayTotalCost(cart) {
         let totalCost = 0;
         cart.forEach(item => {
             let itemTotal = item.price * item.quantity;
-            let extrasTotal = item.extraIngredients.reduce((total, extra) => {
-                return total + (extra.dataCost * item.quantity);
-            }, 0);
+            let extrasTotal = item.extraIngredients.reduce((total, extra) => total + (extra.dataCost * item.quantity), 0);
             itemTotal += extrasTotal;
             totalCost += itemTotal;
         });
 
         let totalCostContainer = document.getElementById('totalCounter');
-        let totalSumCounter = document.getElementById('totalSumCounter');
-
         if (totalCostContainer) {
             totalCostContainer.innerText = `$${totalCost.toFixed(2)}`;
         }
 
+        let totalSumCounter = document.getElementById('totalSumCounter');
         if (totalSumCounter) {
             totalSumCounter.innerText = `Total: $${totalCost.toFixed(2)}`;
         }
     }
 
     window.onpageshow = function(event) {
-        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+        if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
             calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
         }
     };
@@ -166,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('paymentSection').style.display = 'block';
     });
 });
+
 
 
 
