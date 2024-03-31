@@ -177,12 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Ensure this code block is within the DOMContentLoaded listener
-    document.querySelector('.return-to-cart-btn').addEventListener('click', function() {
-        document.getElementById('paymentSection').style.display = 'none';
-        document.getElementById('cartSection').style.display = 'block';
-    });
-
     // Add the new functionality here, just before the closing of the DOMContentLoaded listener
     document.querySelector('.proceed-to-payment-btn').addEventListener('click', function() {
         document.getElementById('cartSection').style.display = 'none';
