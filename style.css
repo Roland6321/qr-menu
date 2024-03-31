@@ -388,3 +388,11 @@ background-color: #dfa55e; /* Darker orange background on hover */
   width: 100%;
 }
 
+#totalSumCounter {
+  padding: 10px;
+  background-color: transparent;
+  border: #333;
+  margin-bottom: 10px;
+  text-align: center; /* Example alignment */
+}
+
