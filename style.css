@@ -340,7 +340,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
   margin-right: 20px; /* This will apply only to .cart-btn within .custom-header-menu-item */
 }
 
-.home-btn:hover, .cart-btn:hover, .return-btn:hover {
+.home-btn:hover, .cart-btn:hover, .return-btn:hover, .return-to-cart-btn:hover {
   background-color: #0056b3; /* Darker shade for hover effect */
 }
 
