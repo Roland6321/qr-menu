@@ -361,7 +361,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
 }
 
 /* New styles for Cart Section */
-#cartItems, #cartItems h2  {
+#cartItems, .cartItems h2  {
   margin: 10px;
   padding: 0px;
   /* Add more styles to match your design */
