@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Clear the cart by setting it to an empty array
+    localStorage.setItem('cart', JSON.stringify([]));
+
+    // Your existing initialization code follows
     const startButton = document.getElementById('startButton');
     const categories = document.getElementById('categories');
     const categoryButtons = document.querySelectorAll('.category-btn');
