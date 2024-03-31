@@ -326,7 +326,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
   background-color: #f5f5f5; /* Example background color, adjust as needed */
 }
 
-.home-btn, .cart-btn, .return-btn {
+.home-btn, .cart-btn, .return-btn, .return-to-cart-btn {
   padding: 10px 20px;
   font-size: 16px;
   color: white;
