@@ -102,14 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartItemsContainer = document.getElementById('cartItems');
         cartItemsContainer.innerHTML = '';
-    
+        
         cart.forEach((item, index) => {
             let itemElement = document.createElement('div');
             itemElement.innerHTML = `
                 <h3>${item.name}</h3>
                 <p>Price: $${item.price}</p>
                 <p>Quantity: ${item.quantity}</p>
-                <p>Extras: ${item.extraIngredients.map(extra => extra.name + " ($" + extra.dataCost.toFixed(2) + ")").join(', ')}</p>
+                <p>Extras: ${item.extraIngredients.map(extra => extra.name).join(', ')}</p> <!-- Updated line -->
                 <p>Comments: ${item.comments}</p>
                 <button class="remove-item" data-index="${index}">Remove item</button>
             `;
