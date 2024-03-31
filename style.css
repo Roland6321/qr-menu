@@ -388,17 +388,20 @@ background-color: #dfa55e; /* Darker orange background on hover */
   margin: 0 auto; /* Centers the button */
   cursor: pointer;
   border-radius: 4px;
-  width: 98%; /* Width is necessary for margin: auto to work */
+  width: 99%; /* Width is necessary for margin: auto to work */
 }
 
 #totalSumCounter {
   padding: 10px;
   background-color: transparent;
-  margin: 10px auto; /* Applies margin top and bottom as 10px, left and right as auto */
-  text-align: center; /* Keeps the text centered inside the container */
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
   border: 1px solid #ccc; /* Thin grey border */
+  /* Optionally, add more styles for better appearance */
   border-radius: 5px; /* Adds rounded corners */
   color: #333; /* Text color */
   font-size: 16px; /* Adjust text size as needed */
-  width: 98%; /* Define a width for centering to take effect */
 }
