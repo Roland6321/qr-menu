@@ -381,14 +381,14 @@ background-color: #dfa55e; /* Darker orange background on hover */
   border: none;
   color: white;
   padding: 15px 32px;
-  text-align: center;
+  text-align: center; /* Aligns text inside the button */
   text-decoration: none;
-  display: inline-block;
+  display: block; /* Changed from inline-block to block */
   font-size: 16px;
-  margin: 0px;
+  margin: 0 auto; /* Centers the button */
   cursor: pointer;
   border-radius: 4px;
-  width: 95%;
+  width: 95%; /* Width is necessary for margin: auto to work */
 }
 
 #totalSumCounter {
