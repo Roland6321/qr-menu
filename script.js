@@ -177,12 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Add the new functionality here, just before the closing of the DOMContentLoaded listener
-    document.querySelector('.proceed-to-payment-btn').addEventListener('click', function() {
-        document.getElementById('cartSection').style.display = 'none';
-         document.getElementById('paymentSection').style.display = 'block';
-    });
-
     // Ensures the counter is immediately updated on page load.
     calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
 });
