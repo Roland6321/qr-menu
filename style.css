@@ -379,10 +379,6 @@ background-color: #dfa55e; /* Darker orange background on hover */
   background-color: #F5F5F5,
 }
 
-#cartSection h2 {
-  margin-left: 10px;
-}
-
 #cartItems p {
   color: #333;
   /* Additional styling for cart items */
