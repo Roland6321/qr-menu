@@ -31,9 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function setActiveStep(activeStepNumber) {
+        // Query only once here and pass the result to the function
         const steps = document.querySelectorAll('.step-indicator');
         steps.forEach((step, index) => {
+            // Remove all classes first
             step.classList.remove('active-step', 'completed-step', 'upcoming-step');
+            // Then add the appropriate class based on the index
             if (index < activeStepNumber) {
                 step.classList.add('completed-step');
             } else if (index === activeStepNumber) {
