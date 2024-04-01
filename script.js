@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToCategoriesButtons = document.querySelectorAll('.backToCategories');
     const counterContainer = document.querySelector('.order-total-counter');
     const urlParams = new URLSearchParams(window.location.search);
+    const progressIndicators = document.querySelectorAll('.step-indicator');
 
     function toggleCounterDisplay(show) {
         if (counterContainer) {
@@ -22,11 +23,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const isMainPage = startButton !== null && categories !== null;
     toggleCounterDisplay(!isMainPage);
 
+    // New progress indicator logic
+    const pageIdentifiers = {
+        'cartSection': 1,
+        'paymentSection': 2,
+        'paymentMethodSection': 3
+    };
+
+    function setActiveStep(activeStepNumber) {
+        progressIndicators.forEach((indicator, index) => {
+            indicator.className = 'step-indicator'; // Reset all classes
+            if (index < activeStepNumber - 1) {
+                indicator.classList.add('completed-step');
+            } else if (index === activeStepNumber - 1) {
+                indicator.classList.add('active-step');
+            } else {
+                indicator.classList.add('upcoming-step');
+            }
+        });
+    }
+
+    // Set the initial active step based on the current section displayed
+    for (const section in pageIdentifiers) {
+        if (document.getElementById(section)) {
+            setActiveStep(pageIdentifiers[section]);
+            break;
+        }
+    }
+
     function showCategories() {
         if (categories) categories.style.display = 'block';
         menuItemsSections.forEach(item => item.style.display = 'none');
         if (document.getElementById('startMenu')) document.getElementById('startMenu').style.display = 'none';
         if (document.getElementById('cartSection')) document.getElementById('cartSection').style.display = 'none';
+        setActiveStep(0); // Reset progress indicators
         toggleCounterDisplay(true);
     }
 
@@ -42,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (categories) categories.style.display = 'none';
         menuItemsSections.forEach(item => item.style.display = 'none');
         document.getElementById('cartSection').style.display = 'block';
+        setActiveStep(1); // Set cart as active step
         displayCartItems();
     }
 
@@ -156,18 +187,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // New logic for navigating to Page 6
-    const confirmButton = document.querySelector('.confirm-payment-info'); // Assuming you add this class to your Confirm button in HTML
-    confirmButton.addEventListener('click', () => {
-        document.getElementById('paymentSection').style.display = 'none';
-        document.getElementById('paymentMethodSection').style.display = 'block';
-    });
+    // New event listener for the Confirm button on the Contact info page (Page 5)
+    const confirmButton = document.querySelector('.confirm-payment-info');
+    if (confirmButton) {
+        confirmButton.addEventListener('click', () => {
+            document.getElementById('paymentSection').style.display = 'none';
+            document.getElementById('paymentMethodSection').style.display = 'block';
+            setActiveStep(3); // Set payment method as active step
+        });
+    }
 
-    // Logic for back button on Page 6 to return to Page 5
-    document.querySelector('.back-to-contact-info').addEventListener('click', () => {
-        document.getElementById('paymentMethodSection').style.display = 'none';
-        document.getElementById('paymentSection').style.display = 'block';
-    });
+    // Logic for back button on Payment Method page (Page 6) to return to Contact info (Page 5)
+    const backButton = document.querySelector('.back-to-contact-info');
+    if (backButton) {
+        backButton.addEventListener('click', () => {
+            document.getElementById('paymentMethodSection').style.display = 'none';
+            document.getElementById('paymentSection').style.display = 'block';
+            setActiveStep(2); // Set contact info as active step
+        });
+    }
+
+    // ... Additional logic for 'return-to-cart-btn' and 'proceed-to-payment-btn' ...
 
     window.onpageshow = function(event) {
         if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
@@ -180,13 +220,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.return-to-cart-btn').addEventListener('click', function() {
         document.getElementById('paymentSection').style.display = 'none';
         document.getElementById('cartSection').style.display = 'block';
+        setActiveStep(1); // Return to cart as active step
     });
 
     document.querySelector('.proceed-to-payment-btn').addEventListener('click', function() {
         document.getElementById('cartSection').style.display = 'none';
         document.getElementById('paymentSection').style.display = 'block';
+        setActiveStep(2); // Proceed to contact info as active step
     });
 });
+
 
 
 
