@@ -31,14 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function setActiveStep(activeStepNumber) {
-        progressIndicators.forEach((indicator, index) => {
-            indicator.className = 'step-indicator'; // Reset all classes
-            if (index < activeStepNumber - 1) {
-                indicator.classList.add('completed-step');
-            } else if (index === activeStepNumber - 1) {
-                indicator.classList.add('active-step');
+        const steps = document.querySelectorAll('.step-indicator');
+        steps.forEach((step, index) => {
+            step.classList.remove('active-step', 'completed-step', 'upcoming-step');
+            if (index < activeStepNumber) {
+                step.classList.add('completed-step');
+            } else if (index === activeStepNumber) {
+                step.classList.add('active-step');
             } else {
-                indicator.classList.add('upcoming-step');
+                step.classList.add('upcoming-step');
             }
         });
     }
@@ -226,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.proceed-to-payment-btn').addEventListener('click', function() {
         document.getElementById('cartSection').style.display = 'none';
         document.getElementById('paymentSection').style.display = 'block';
-        setActiveStep(2); // Proceed to contact info as active step
+        setActiveStep(2); // Update to the current step number
     });
 });
 

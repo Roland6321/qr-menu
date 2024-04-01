@@ -329,6 +329,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
 }
 
 .custom-header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -435,14 +436,14 @@ background-color: #dfa55e; /* Darker orange background on hover */
   display: flex;
   justify-content: center;
   gap: 10px; /* spacing between rectangles */
-  margin-bottom: 20px; /* spacing from the header */
+  padding: 0 20px; /* padding on the sides */
+  margin-top: 20px; /* spacing from the header buttons */
 }
 
 .step-indicator {
-  width: 30px; /* width of the rectangle */
+  flex-grow: 1; /* Each indicator will grow equally to fill the container */
   height: 10px; /* height of the rectangle */
   border-radius: 5px;
-  background-color: #d3d3d3; /* default color for upcoming step */
 }
 
 .completed-step {
