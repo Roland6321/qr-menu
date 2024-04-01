@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3>${item.name}</h3>
                 <p>Price: $${item.price}</p>
                 <p>Quantity: ${item.quantity}</p>
-                <p>Extras: ${item.extraIngredients.map(extra => extra.name).join(', ')}</p> <!-- Updated line -->
+                <p>Extras: ${item.extraIngredients.map(extra => extra.name).join(', ')}</p>
                 <p>Comments: ${item.comments}</p>
                 <button class="remove-item" data-index="${index}">Remove item</button>
             `;
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
-        displayCartItems(); // Refresh the displayed cart items
+        displayCartItems();
     }
 
     function calculateAndDisplayTotalCost(cart) {
@@ -156,6 +156,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // New logic for navigating to Page 6
+    const confirmButton = document.querySelector('.confirm-payment-info'); // Assuming you add this class to your Confirm button in HTML
+    confirmButton.addEventListener('click', () => {
+        document.getElementById('paymentSection').style.display = 'none';
+        document.getElementById('paymentMethodSection').style.display = 'block';
+    });
+
+    // Logic for back button on Page 6 to return to Page 5
+    document.querySelector('.back-to-contact-info').addEventListener('click', () => {
+        document.getElementById('paymentMethodSection').style.display = 'none';
+        document.getElementById('paymentSection').style.display = 'block';
+    });
+
     window.onpageshow = function(event) {
         if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
             calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
@@ -174,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('paymentSection').style.display = 'block';
     });
 });
+
 
 
 
