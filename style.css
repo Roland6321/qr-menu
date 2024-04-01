@@ -385,7 +385,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
 }
 
 /* Style for the Proceed to Payment button */
-.proceed-to-payment-btn {
+.proceed-to-payment-btn, .confirm-payment-info {
   background-color: #ff8410; 
   color: white;
   padding: 15px 32px;
