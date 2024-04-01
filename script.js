@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         backButton.addEventListener('click', () => {
             document.getElementById('paymentMethodSection').style.display = 'none';
             document.getElementById('paymentSection').style.display = 'block';
-            setActiveStep(2); // Set contact info as active step
+            setActiveStep(0); // Set contact info as active step
         });
     }
 
