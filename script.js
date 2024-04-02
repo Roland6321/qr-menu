@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.push(itemDetails);
         localStorage.setItem('cart', JSON.stringify(cart));
         alert('Item added to cart!');
-        calculateAndDisplayTotalCost(cart);
+        calculateAndDisplayTotalCost();
     }
 
     if (urlParams.get('showCart') === 'true') {
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
         } else {
-            calculateAndDisplayTotalCost(cart);
+            calculateAndDisplayTotalCost();
         }
 
         document.querySelectorAll('.remove-item').forEach(button => {
@@ -136,7 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
         displayCartItems();
     }
 
-    function calculateAndDisplayTotalCost(cart) {
+    function calculateAndDisplayTotalCost() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let totalCost = 0;
         cart.forEach(item => {
             let itemTotal = item.price * item.quantity;
@@ -156,37 +157,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // New logic for navigating to Page 6
-    const confirmButton = document.querySelector('.confirm-payment-info'); // Assuming you add this class to your Confirm button in HTML
-    confirmButton.addEventListener('click', () => {
-        document.getElementById('paymentSection').style.display = 'none';
-        document.getElementById('paymentMethodSection').style.display = 'block';
-    });
+    // Ensure counter updates when the page fully loads and on navigating back/forward
+    window.onload = calculateAndDisplayTotalCost;
+    window.onpageshow = function(event) {
+        if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+            calculateAndDisplayTotalCost();
+        }
+    };
 
-    // Logic for back button on Page 6 to return to Page 5
-    document.querySelector('.back-to-contact-info').addEventListener('click', () => {
+    const confirmButton = document.querySelector('.confirm-payment-info');
+    if (confirmButton) {
+        confirmButton.addEventListener('click', () => {
+            document.getElementById('paymentSection').style.display = 'none';
+            document.getElementById('paymentMethodSection').style.display = 'block';
+        });
+    }
+
+    document.querySelector('.back-to-contact-info')?.addEventListener('click', () => {
         document.getElementById('paymentMethodSection').style.display = 'none';
         document.getElementById('paymentSection').style.display = 'block';
     });
 
-    window.onpageshow = function(event) {
-        if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
-            calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
-        }
-    };
-
-    calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
-
-    document.querySelector('.return-to-cart-btn').addEventListener('click', function() {
+    document.querySelector('.return-to-cart-btn')?.addEventListener('click', function() {
         document.getElementById('paymentSection').style.display = 'none';
         document.getElementById('cartSection').style.display = 'block';
     });
 
-    document.querySelector('.proceed-to-payment-btn').addEventListener('click', function() {
+    document.querySelector('.proceed-to-payment-btn')?.addEventListener('click', function() {
         document.getElementById('cartSection').style.display = 'none';
         document.getElementById('paymentSection').style.display = 'block';
     });
 });
+
 
 
 
