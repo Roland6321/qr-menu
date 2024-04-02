@@ -91,7 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.push(itemDetails);
         localStorage.setItem('cart', JSON.stringify(cart));
         alert('Item added to cart!');
-        calculateAndDisplayTotalCost(cart);
+        // Update total counter whenever an item is added
+        calculateAndDisplayTotalCost();
     }
 
     if (urlParams.get('showCart') === 'true') {
@@ -119,7 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
         } else {
-            calculateAndDisplayTotalCost(cart);
+            // Ensure cart display is updated when showing the cart
+            calculateAndDisplayTotalCost();
         }
 
         document.querySelectorAll('.remove-item').forEach(button => {
@@ -133,10 +135,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.splice(index, 1);
         localStorage.setItem('cart', JSON.stringify(cart));
+        // Update total counter whenever an item is removed
+        calculateAndDisplayTotalCost();
         displayCartItems();
     }
 
-    function calculateAndDisplayTotalCost(cart) {
+    function calculateAndDisplayTotalCost() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let totalCost = 0;
         cart.forEach(item => {
             let itemTotal = item.price * item.quantity;
@@ -156,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // New logic for navigating to Page 6
+        // New logic for navigating to Page 6
     const confirmButton = document.querySelector('.confirm-payment-info'); // Assuming you add this class to your Confirm button in HTML
     confirmButton.addEventListener('click', () => {
         document.getElementById('paymentSection').style.display = 'none';
@@ -175,7 +180,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
+    // Ensure total cost is updated on page show to handle back navigation
+    window.onpageshow = function(event) {
+        if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+            calculateAndDisplayTotalCost();
+        }
+    };
+
+    // Initial call to ensure total cost is updated when page is loaded
+    calculateAndDisplayTotalCost();
 
     document.querySelector('.return-to-cart-btn').addEventListener('click', function() {
         document.getElementById('paymentSection').style.display = 'none';
@@ -187,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('paymentSection').style.display = 'block';
     });
 });
+
 
 
 
