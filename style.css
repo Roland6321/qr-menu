@@ -431,6 +431,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
   background-color: #dfa55e;
 }
 
+/* Existing styles for progress and step indicators */
 .progress-indicator {
   display: flex;
   justify-content: center;
@@ -445,16 +446,17 @@ background-color: #dfa55e; /* Darker orange background on hover */
   background-color: #d3d3d3; /* default color for upcoming step */
 }
 
-.completed-step {
-  background-color: #4CAF50; /* green color for completed step */
+/* New styles for specific steps based on their IDs */
+#step1 {
+  background-color: #4CAF50; /* green for step 1 */
 }
 
-.active-step {
-  background-color: #FFA500; /* orange color for active step */
+#step2 {
+  background-color: #FFA500; /* orange for step 2 */
 }
 
-.upcoming-step {
-  background-color: #d3d3d3; /* grey color for upcoming steps */
+#step3 {
+  background-color: #d3d3d3; /* grey for step 3, already defined but can be reiterated if you want to emphasize it or if it changes in future */
 }
 
 
