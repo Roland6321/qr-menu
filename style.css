@@ -436,12 +436,12 @@ background-color: #dfa55e; /* Darker orange background on hover */
   display: flex;
   justify-content: center;
   gap: 10px; /* spacing between rectangles */
-  margin-bottom: 20px; /* spacing from the header */
-  width: 80vw; /* Set width to 80% of the viewport width */
+  margin-top: 30px;
+  margin-bottom: 30px; /* spacing from the header */
 }
 
 .step-indicator {
-  width: 30px; /* width of the rectangle */
+  width: 70px; /* width of the rectangle */
   height: 10px; /* height of the rectangle */
   border-radius: 5px;
   background-color: #d3d3d3; /* default color for upcoming step */
