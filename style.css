@@ -437,6 +437,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
   justify-content: center;
   gap: 10px; /* spacing between rectangles */
   margin-bottom: 20px; /* spacing from the header */
+  width: 80vw; /* Set width to 80% of the viewport width */
 }
 
 .step-indicator {
