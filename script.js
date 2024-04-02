@@ -1,10 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Session-based logic for clearing the cart
-    if (!sessionStorage.getItem('sessionTimestamp')) {
-        localStorage.setItem('cart', JSON.stringify([]));
-        sessionStorage.setItem('sessionTimestamp', new Date().getTime());
-    }
-
     const startButton = document.getElementById('startButton');
     const categories = document.getElementById('categories');
     const categoryButtons = document.querySelectorAll('.category-btn');
@@ -13,14 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const counterContainer = document.querySelector('.order-total-counter');
     const urlParams = new URLSearchParams(window.location.search);
 
+    // Adjusted function to toggle the display of the counter based on page context.
     function toggleCounterDisplay(show) {
-        if (counterContainer) {
+        if (counterContainer) { // Check if the container exists to avoid null reference errors.
             counterContainer.style.display = show ? 'block' : 'none';
         }
     }
 
+    // Determine if we are on a main page that requires the counter to be hidden initially.
     const isMainPage = startButton !== null && categories !== null;
-    toggleCounterDisplay(!isMainPage);
+    toggleCounterDisplay(!isMainPage); // Show the counter on individual menu item pages by default.
 
     function showCategories() {
         if (categories) categories.style.display = 'block';
@@ -42,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (categories) categories.style.display = 'none';
         menuItemsSections.forEach(item => item.style.display = 'none');
         document.getElementById('cartSection').style.display = 'block';
-        displayCartItems();
+        displayCartItems(); // Ensure cart items are displayed whenever the cart is shown.
     }
 
     if (startButton) startButton.addEventListener('click', showCategories);
@@ -68,10 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const comments = document.querySelector('#comment').value;
             let extraIngredients = [];
             document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
-                extraIngredients.push({
-                    name: checkbox.nextElementSibling.innerText,
-                    dataCost: parseFloat(checkbox.getAttribute('data-cost'))
-                });
+                extraIngredients.push(checkbox.nextElementSibling.innerText);
             });
 
             const itemDetails = {
@@ -91,44 +84,49 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.push(itemDetails);
         localStorage.setItem('cart', JSON.stringify(cart));
         alert('Item added to cart!');
-        calculateAndDisplayTotalCost(cart);
+        calculateAndDisplayTotalCost(cart); // Recalculate the total cost after adding an item
     }
+    
 
     if (urlParams.get('showCart') === 'true') {
         showCart();
+        displayCartItems();
     }
 
     function displayCartItems() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let cartItemsContainer = document.getElementById('cartItems');
-        cartItemsContainer.innerHTML = '';
-        
-        cart.forEach((item, index) => {
-            let itemElement = document.createElement('div');
-            itemElement.innerHTML = `
-                <h3>${item.name}</h3>
-                <p>Price: $${item.price}</p>
-                <p>Quantity: ${item.quantity}</p>
-                <p>Extras: ${item.extraIngredients.map(extra => extra.name).join(', ')}</p>
-                <p>Comments: ${item.comments}</p>
-                <button class="remove-item" data-index="${index}">Remove item</button>
-            `;
-            cartItemsContainer.appendChild(itemElement);
-        });
-
-        if (cart.length === 0) {
-            cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
-        } else {
-            calculateAndDisplayTotalCost(cart);
+        if (cartItemsContainer) {
+            cartItemsContainer.innerHTML = '';
+    
+            cart.forEach((item, index) => {
+                let itemElement = document.createElement('div');
+                itemElement.innerHTML = `
+                    <h3>${item.name}</h3>
+                    <p>Price: $${item.price}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                    <p>Extras: ${item.extraIngredients.join(', ')}</p>
+                    <p>Comments: ${item.comments}</p>
+                    <button class="remove-item" data-index="${index}">Remove item</button>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
+    
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                calculateAndDisplayTotalCost(cart);
+                displaySumTotal(); // Call to display the sum total on the Cart page
+            }
         }
-
+    
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', function() {
                 removeFromCart(parseInt(this.getAttribute('data-index')));
             });
         });
     }
-
+    
     function displaySumTotal() {
         let totalCost = document.getElementById('totalCounter').innerText; // Get the total cost
         let cartSection = document.getElementById('cartSection');
@@ -156,9 +154,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function calculateAndDisplayTotalCost(cart) {
         let totalCost = 0;
+
         cart.forEach(item => {
             let itemTotal = item.price * item.quantity;
-            let extrasTotal = item.extraIngredients.reduce((total, extra) => total + (extra.dataCost * item.quantity), 0);
+            let extrasTotal = item.extraIngredients.length * 0.5; // Assuming each extra ingredient costs $0.5
             itemTotal += extrasTotal;
             totalCost += itemTotal;
         });
@@ -167,43 +166,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (totalCostContainer) {
             totalCostContainer.innerText = `$${totalCost.toFixed(2)}`;
         }
-
-        let totalSumCounter = document.getElementById('totalSumCounter');
-        if (totalSumCounter) {
-            totalSumCounter.innerText = `Total: $${totalCost.toFixed(2)}`;
-        }
     }
 
-    // New logic for navigating to Page 6
-    const confirmButton = document.querySelector('.confirm-payment-info'); // Assuming you add this class to your Confirm button in HTML
-    confirmButton.addEventListener('click', () => {
-        document.getElementById('paymentSection').style.display = 'none';
-        document.getElementById('paymentMethodSection').style.display = 'block';
-    });
-
-    // Logic for back button on Page 6 to return to Page 5
-    document.querySelector('.back-to-contact-info').addEventListener('click', () => {
-        document.getElementById('paymentMethodSection').style.display = 'none';
-        document.getElementById('paymentSection').style.display = 'block';
-    });
-
+    // This new section is added just before the closing of the DOMContentLoaded event listener
+    // It ensures the counter is immediately updated on page load, including when coming back from another page
     window.onpageshow = function(event) {
+        // This checks if the page is loaded from cache (a back/forward navigation)
         if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
             calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
         }
     };
 
+    // Ensures the counter is immediately updated on page load.
     calculateAndDisplayTotalCost(JSON.parse(localStorage.getItem('cart')) || []);
-
-    document.querySelector('.return-to-cart-btn').addEventListener('click', function() {
-        document.getElementById('paymentSection').style.display = 'none';
-        document.getElementById('cartSection').style.display = 'block';
-    });
-
-    document.querySelector('.proceed-to-payment-btn').addEventListener('click', function() {
-        document.getElementById('cartSection').style.display = 'none';
-        document.getElementById('paymentSection').style.display = 'block';
-    });
 });
 
 
