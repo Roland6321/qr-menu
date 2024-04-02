@@ -151,6 +151,11 @@ body, html {
   /* ...other styles... */
 }
 
+.menu-item {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+
 #menuitemlist h2 {
   text-align: center;
   width: 100%;
