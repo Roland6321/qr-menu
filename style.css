@@ -473,16 +473,33 @@ background-color: #dfa55e; /* Darker orange background on hover */
   gap: 45px; /* This creates a gap between the flex items */
 }
 
-/* Button styles */
 .eat-inside-btn, .take-away-btn {
-  width: 130px;
-  height: 100px;
+  width: 110px;
+  height: auto; /* Adjust height as needed to fit content */
+  padding: 10px; /* Add some padding for spacing */
+  display: flex;
+  flex-direction: column; /* Stack the img and text vertically */
+  align-items: center; /* Center-align the flex items */
+  justify-content: center; /* Center content vertically */
+  text-align: center; /* Center-align the text */
   background-color: #ddd; /* Neutral color for non-selected state */
-  /* Other styles */
-  border: none; /* Optional: Removes the border */
-  cursor: pointer; /* Optional: Changes cursor to pointer on hover */
+  border: none;
+  cursor: pointer;
   margin-bottom: 30px;
   border-radius: 10px;
+}
+
+.eat-inside-btn img, .take-away-btn img {
+  display: block;  /* Makes the image a block-level element */
+  margin: 0 auto;  /* Centers the image horizontally */
+  width: 50px;    /* Adjust the width as necessary */
+  height: auto;   /* Maintain aspect ratio */
+}
+
+.button-container img {
+  max-width: 40px; /* Maximum width for the icons */
+  max-height: 40px; /* Maximum height for the icons */
+  margin-bottom: 5px; /* Space between the icon and the text */
 }
 
 /* Selected button style */
