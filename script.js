@@ -19,29 +19,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const nameInput = document.getElementById('name');
     const phoneInput = document.getElementById('phone');
     const tableNumberInput = document.getElementById('tableNumber');
-
-        // Initialize one of the buttons as selected, for example, dineInButton
-        dineInButton.classList.add('selected');
+    
+    // Dining option button event listeners
+    dineInButton.addEventListener('click', function() {
+        enableContactForm(false);
+        localStorage.setItem('diningOption', 'dineIn');
+        this.classList.add('selected');
+        takeAwayButton.classList.remove('selected');
         takeAwayButton.classList.add('not-selected');
-    
-        // Dining option button event listeners
-        dineInButton.addEventListener('click', () => {
-            enableContactForm(false);
-            localStorage.setItem('diningOption', 'dineIn');
-            dineInButton.classList.add('selected');
-            takeAwayButton.classList.remove('selected');
-            takeAwayButton.classList.add('not-selected');
-            dineInButton.classList.remove('not-selected');
-        });
-    
-        takeAwayButton.addEventListener('click', () => {
-            enableContactForm(true);
-            localStorage.setItem('diningOption', 'takeAway');
-            takeAwayButton.classList.add('selected');
-            dineInButton.classList.remove('selected');
-            dineInButton.classList.add('not-selected');
-            takeAwayButton.classList.remove('not-selected');
-        });
+        this.classList.remove('not-selected');
+    });
+
+    takeAwayButton.addEventListener('click', function() {
+        enableContactForm(true);
+        localStorage.setItem('diningOption', 'takeAway');
+        this.classList.add('selected');
+        dineInButton.classList.remove('selected');
+        dineInButton.classList.add('not-selected');
+        this.classList.remove('not-selected');
+    });
+
+    // Ensure both buttons start in the not-selected state
+    dineInButton.classList.add('not-selected');
+    takeAwayButton.classList.add('not-selected');
     
     // Function to enable the contact form fields
     function enableContactForm(excludeTableNumber = false) {
