@@ -12,36 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToCategoriesButtons = document.querySelectorAll('.backToCategories');
     const counterContainer = document.querySelector('.order-total-counter');
     const urlParams = new URLSearchParams(window.location.search);
-
-    // New dining options and contact form variables
-    const dineInButton = document.getElementById('dineInOption');
-    const takeAwayButton = document.getElementById('takeAwayOption');
-    const nameInput = document.getElementById('name');
-    const phoneInput = document.getElementById('phone');
-    const tableNumberInput = document.getElementById('tableNumber');
-    
-    // Dining option button event listeners
-    dineInButton.addEventListener('click', function() {
-        enableContactForm(false);
-        localStorage.setItem('diningOption', 'dineIn');
-        this.classList.add('selected');
-        takeAwayButton.classList.remove('selected');
-        takeAwayButton.classList.add('not-selected');
-        this.classList.remove('not-selected');
-    });
-
-    takeAwayButton.addEventListener('click', function() {
-        enableContactForm(true);
-        localStorage.setItem('diningOption', 'takeAway');
-        this.classList.add('selected');
-        dineInButton.classList.remove('selected');
-        dineInButton.classList.add('not-selected');
-        this.classList.remove('not-selected');
-    });
-
-    // Ensure both buttons start in the not-selected state
-    dineInButton.classList.add('not-selected');
-    takeAwayButton.classList.add('not-selected');
     
     // Function to enable the contact form fields
     function enableContactForm(excludeTableNumber = false) {
