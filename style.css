@@ -529,12 +529,12 @@ background-color: #dfa55e; /* Darker orange background on hover */
   box-sizing: border-box;
   background: transparent;
   border: none;
-  border-bottom: 2px solid #a3a3a3; /* Or change this color too, if you'd like */
+  border-bottom: 2px solid orange; /* Or change this color too, if you'd like */
 }
 
 #contactInfoForm input:focus {
   outline: none; /* Remove the default focus outline */
-  border-bottom: 2px solid orange; /* Change the bottom border color on focus, adjust as needed */
+  border-bottom: 2px solid #4CAF50; /* Change the bottom border color on focus, adjust as needed */
 }
 
 .confirm-payment-info {
@@ -544,7 +544,13 @@ background-color: #dfa55e; /* Darker orange background on hover */
   cursor: pointer; /* Change the cursor to pointer to indicate it's clickable */
 }
 
-.input-description {
+.input-description1 {
+  color: #757575; /* Light grey */
+  margin: 5px 0; /* Example margin */
+  /* Add more styles as needed */
+}
+
+.input-description2 {
   color: #757575; /* Light grey */
   margin: 5px 0; /* Example margin */
   /* Add more styles as needed */
