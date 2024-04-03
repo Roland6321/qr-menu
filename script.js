@@ -165,6 +165,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Define the contact form fields and buttons
+    const dineInButton = document.getElementById('dineInOption');
+    const takeAwayButton = document.getElementById('takeAwayOption');
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const tableNumberInput = document.getElementById('tableNumber');
+
+    // Initialize buttons to not-selected state
+    dineInButton.classList.add('not-selected');
+    takeAwayButton.classList.add('not-selected');
+
+    // Function to enable the contact form fields
+    function enableContactForm(excludeTableNumber) {
+        nameInput.disabled = false;
+        phoneInput.disabled = false;
+        confirmButton.disabled = false; // Assume confirmButton is correctly selected
+        tableNumberInput.disabled = excludeTableNumber ? true : false;
+    }
+
+    // Event listeners for dine in and take away buttons
+    dineInButton.addEventListener('click', function() {
+        enableContactForm(false);
+        localStorage.setItem('diningOption', 'dineIn');
+        this.classList.add('selected');
+        this.classList.remove('not-selected');
+        takeAwayButton.classList.remove('selected');
+        takeAwayButton.classList.add('not-selected');
+    });
+
+    takeAwayButton.addEventListener('click', function() {
+        enableContactForm(true);
+        localStorage.setItem('diningOption', 'takeAway');
+        this.classList.add('selected');
+        this.classList.remove('not-selected');
+        dineInButton.classList.remove('selected');
+        dineInButton.classList.add('not-selected');
+    });
+
     const confirmButton = document.querySelector('.confirm-payment-info');
     if (confirmButton) {
         confirmButton.addEventListener('click', () => {
