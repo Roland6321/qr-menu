@@ -465,23 +465,40 @@ background-color: #dfa55e; /* Darker orange background on hover */
   background-color: #d3d3d3; /* grey for step 3, already defined but can be reiterated if you want to emphasize it or if it changes in future */
 }
 
-/* Style for the buttons */
-.eat-inside-btn, .take-away-btn {
-  width: 130px;
-  height: 100px;
-  display: inline-block; /* This makes the buttons sit in a line */
-  margin: 0 22.5px; /* Half of 45px on each side to create the gap */
-  background-color: #FFA500;
-}
-
-/* Style to create space between the buttons */
-.eat-inside-btn {
-  margin-bottom: 45px; /* 45px gap between the buttons */
-}
-
 /* Container style to center the buttons together */
 .button-container {
   text-align: center; /* This centers the buttons horizontally */
+}
+
+/* Selected button style */
+.selected {
+  background-color: orange; /* Or your range color */
+  color: white; /* Adjust text color as needed */
+}
+
+/* Not-selected button style */
+.not-selected {
+  background-color: #ffd9b3; /* Lighter orange for a faded look */
+  color: #666; /* Adjust text color as needed */
+}
+
+/* Default button style */
+.eat-inside-btn, .take-away-btn {
+  width: 130px;
+  height: 100px;
+  display: inline-block;
+  margin: 0 22.5px;
+  background-color: #ffd9b3; /* Default to not-selected state */
+  color: #666; /* Adjust text color as needed */
+  /* Other styles... */
+}
+
+/* On page load, you can set one of them to be selected if you like */
+/* For example, if 'Eat Inside' is the default option */
+.eat-inside-btn {
+  background-color: orange; /* Or your range color */
+  color: white;
+  margin-bottom: 45px; /* 45px gap between the buttons */
 }
 
 
