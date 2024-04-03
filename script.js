@@ -13,6 +13,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const counterContainer = document.querySelector('.order-total-counter');
     const urlParams = new URLSearchParams(window.location.search);
 
+    // New dining options and contact form variables
+    const dineInButton = document.getElementById('dineInOption');
+    const takeAwayButton = document.getElementById('takeAwayOption');
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const tableNumberInput = document.getElementById('tableNumber');
+    
+    // Function to enable the contact form fields
+    function enableContactForm(excludeTableNumber = false) {
+        nameInput.disabled = false;
+        phoneInput.disabled = false;
+        confirmButton.disabled = false; // Enable confirm button when an option is selected
+        if (!excludeTableNumber) {
+            tableNumberInput.disabled = false;
+        } else {
+            tableNumberInput.disabled = true; // Ensure table number is disabled for take-away
+        }
+    }
+
+    // Dining option button event listeners
+    if (dineInButton && takeAwayButton) {
+        dineInButton.addEventListener('click', () => {
+            enableContactForm(false);
+            localStorage.setItem('diningOption', 'dineIn');
+        });
+
+        takeAwayButton.addEventListener('click', () => {
+            enableContactForm(true);
+            localStorage.setItem('diningOption', 'takeAway');
+        });
+    }
+
+    // Contact form event listener for input changes
+    document.getElementById('contactInfoForm')?.addEventListener('input', () => {
+        localStorage.setItem('customerName', nameInput.value);
+        localStorage.setItem('customerPhone', phoneInput.value);
+        if (!tableNumberInput.disabled) {
+            localStorage.setItem('tableNumber', tableNumberInput.value);
+        }
+    });
+
     function toggleCounterDisplay(show) {
         if (counterContainer) {
             counterContainer.style.display = show ? 'block' : 'none';
