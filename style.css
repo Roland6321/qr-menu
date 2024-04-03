@@ -481,6 +481,8 @@ background-color: #dfa55e; /* Darker orange background on hover */
   /* Other styles */
   border: none; /* Optional: Removes the border */
   cursor: pointer; /* Optional: Changes cursor to pointer on hover */
+  margin-bottom: 30px;
+  border-radius: 10px;
 }
 
 /* Selected button style */
