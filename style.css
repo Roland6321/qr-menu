@@ -545,15 +545,17 @@ background-color: #dfa55e; /* Darker orange background on hover */
 }
 
 .input-description1 {
-  color: #757575; /* Light grey */
+  color: #565656; /* Light grey */
   margin: 5px 0; /* Example margin */
-  /* Add more styles as needed */
+  padding-top: 20px;
+  font-size: 27px;
+  font-weight: bold;
 }
 
 .input-description2 {
-  color: #757575; /* Light grey */
+  color: #c6c6c6; /* Light grey */
   margin: 5px 0; /* Example margin */
-  /* Add more styles as needed */
+  font-size: 12px;
 }
 
 
