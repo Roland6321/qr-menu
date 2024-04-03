@@ -469,8 +469,9 @@ background-color: #dfa55e; /* Darker orange background on hover */
 .eat-inside-btn, .take-away-btn {
   width: 130px;
   height: 100px;
-  margin: 0 auto; /* This centers the buttons */
-  display: block; /* This allows margin: auto to work for horizontal centering */
+  display: inline-block; /* This makes the buttons sit in a line */
+  margin: 0 22.5px; /* Half of 45px on each side to create the gap */
+  background-color: #FFA500;
 }
 
 /* Style to create space between the buttons */
