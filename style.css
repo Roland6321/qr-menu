@@ -465,4 +465,22 @@ background-color: #dfa55e; /* Darker orange background on hover */
   background-color: #d3d3d3; /* grey for step 3, already defined but can be reiterated if you want to emphasize it or if it changes in future */
 }
 
+/* Style for the buttons */
+.eat-inside-btn, .take-away-btn {
+  width: 130px;
+  height: 100px;
+  margin: 0 auto; /* This centers the buttons */
+  display: block; /* This allows margin: auto to work for horizontal centering */
+}
+
+/* Style to create space between the buttons */
+.eat-inside-btn {
+  margin-bottom: 45px; /* 45px gap between the buttons */
+}
+
+/* Container style to center the buttons together */
+.button-container {
+  text-align: center; /* This centers the buttons horizontally */
+}
+
 
