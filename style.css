@@ -514,4 +514,26 @@ background-color: #dfa55e; /* Darker orange background on hover */
   color: grey;
 }
 
+#contactInfoForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw; /* 60% of the viewport width */
+  margin: 0 auto; /* Center the form horizontally */
+}
+
+#contactInfoForm input {
+  width: 100%; /* Make the input fields take up the full width of the form container */
+  margin: 10px 0; /* Add some vertical space between the input fields */
+  padding: 10px; /* Add some padding inside the input fields for better readability */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.confirm-payment-info {
+  margin-top: 20px; /* Add some space above the confirm button */
+  padding: 10px 20px; /* Adjust padding as needed */
+  width: auto; /* Auto width based on content, adjust as needed */
+  cursor: pointer; /* Change the cursor to pointer to indicate it's clickable */
+}
+
 
