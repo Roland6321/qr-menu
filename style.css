@@ -590,4 +590,57 @@ background-color: #dfa55e; /* Darker orange background on hover */
   font-size: 12px;
 }
 
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 15px; /* Adjust the gap between buttons */
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.payment-icon {
+  width: 30%;
+  margin-right: 10px; /* Separation between icon and text */
+}
+
+.payment-option span {
+  flex-grow: 1;
+}
+
+/* Individual icon size adjustments */
+#apple-pay .payment-icon {
+  width: 60px; /* Example size, adjust as needed */
+  height: auto;
+}
+
+#google-pay .payment-icon {
+  width: 60px; /* Example size, adjust as needed */
+  height: auto;
+}
+
+#mobile-pay .payment-icon {
+  width: 60px; /* Example size, adjust as needed */
+  height: auto;
+}
+
+#card-payment .payment-icon {
+  width: 60px; /* Example size, adjust as needed */
+  height: auto;
+}
+
+.payment-option span {
+  flex-grow: 1;
+}
+
 

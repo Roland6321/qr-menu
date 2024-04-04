@@ -225,6 +225,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('cartSection').style.display = 'none';
         document.getElementById('paymentSection').style.display = 'block';
     });
+
+     // PAGE 6 FOR THE API INTEGRATION 
+     // Placeholder for future payment processing logic
+    document.querySelectorAll('.payment-option').forEach(button => {
+        button.addEventListener('click', (e) => {
+            // Placeholder for future payment processing logic
+            console.log(`${e.target.textContent.trim()} payment option selected.`);
+        });
+    });
+    
 });
 
 
