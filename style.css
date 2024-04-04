@@ -578,4 +578,16 @@ background-color: #dfa55e; /* Darker orange background on hover */
   /* Other styles for .add-to-cart */
 }
 
+#paymentMethodSection h2 {
+  text-align: center; /* Align text to the left */
+  color: grey; /* Light grey */
+  font-size: 2rem;
+}
+
+#paymentMethodSection p {
+  text-align: center; /* Align text to the left */
+  color: gray; /* Light grey */
+  font-size: 12px;
+}
+
 
