@@ -550,12 +550,16 @@ background-color: #dfa55e; /* Darker orange background on hover */
   padding-top: 20px;
   font-size: 27px;
   font-weight: bold;
+  text-align: left; /* Align text to the left */
+  width: 100%; /* Ensure full width to respect text alignment */
 }
 
 .input-description2 {
   color: #c6c6c6; /* Light grey */
   margin: 5px 0; /* Example margin */
   font-size: 12px;
+  text-align: left; /* Align text to the left */
+  width: 100%; /* Ensure full width to respect text alignment */
 }
 
 
