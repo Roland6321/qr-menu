@@ -562,4 +562,10 @@ background-color: #dfa55e; /* Darker orange background on hover */
   width: 100%; /* Ensure full width to respect text alignment */
 }
 
+#paymentSection h2 {
+  text-align: center; /* Align text to the left */
+  color: grey; /* Light grey */
+  font-size: 2rem;
+}
+
 
