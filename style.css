@@ -588,6 +588,7 @@ background-color: #dfa55e; /* Darker orange background on hover */
   text-align: center; /* Align text to the left */
   color: gray; /* Light grey */
   font-size: 12px;
+  margin-bottom: 25px;
 }
 
 .payment-methods {
@@ -601,46 +602,50 @@ background-color: #dfa55e; /* Darker orange background on hover */
 .payment-option {
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* Ensure items start from the left */
   width: 100%;
   border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 10px;
-  margin-bottom: 15px; /* Adjust the gap between buttons */
+  margin-bottom: 25px; /* Adjust the gap between buttons */
   background-color: transparent;
   cursor: pointer;
 }
 
 .payment-icon {
-  width: 30%;
   margin-right: 10px; /* Separation between icon and text */
+  /* Removed the width: 30%; from here to control size individually below */
 }
 
 .payment-option span {
   flex-grow: 1;
+  text-align: right; /* Align text to the right */
+  display: flex;
+  align-items: center; /* This ensures vertical centering of text */
+  justify-content: flex-end; /* Aligns text content to the right */
+  color: gray;
+  font-size: 15px;
 }
 
 /* Individual icon size adjustments */
 #apple-pay .payment-icon {
-  width: 60px; /* Example size, adjust as needed */
-  height: auto;
+  width: 60px;
+  height: 25px;
 }
 
 #google-pay .payment-icon {
-  width: 60px; /* Example size, adjust as needed */
-  height: auto;
+  width: 60px;
+  height: 25px;
 }
 
 #mobile-pay .payment-icon {
-  width: 60px; /* Example size, adjust as needed */
-  height: auto;
+  width: 40px;
+  height: 25px;
 }
 
 #card-payment .payment-icon {
-  width: 60px; /* Example size, adjust as needed */
-  height: auto;
-}
-
-.payment-option span {
-  flex-grow: 1;
+  width: 35px;
+  height: 25px;
 }
 
 
