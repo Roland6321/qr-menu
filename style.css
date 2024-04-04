@@ -568,4 +568,14 @@ background-color: #dfa55e; /* Darker orange background on hover */
   font-size: 2rem;
 }
 
+  /* Gap at the bottom of the pages */
+#paymentSection, #cartSection, #categories, #menuitemlist{
+  padding-bottom: 70px; 
+}
+
+.add-to-cart {
+  margin-bottom: 70px; /* Adjust the value as needed */
+  /* Other styles for .add-to-cart */
+}
+
 
