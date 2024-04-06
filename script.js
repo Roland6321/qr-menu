@@ -61,10 +61,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('quantity-btn')) {
+            const quantityDisplay = document.querySelector('.quantity-value');
+            let quantity = parseInt(quantityDisplay.textContent, 10);
+
+            if (e.target.classList.contains('increase') && quantityDisplay) {
+                quantityDisplay.textContent = quantity + 1;
+            } else if (e.target.classList.contains('decrease') && quantity > 1 && quantityDisplay) {
+                quantityDisplay.textContent = quantity - 1;
+            }
+        }
+
         if (e.target && e.target.classList.contains('add-to-cart')) {
             const itemName = document.querySelector('.menu-item-name').innerText;
             const itemPrice = parseFloat(document.querySelector('.price-value').getAttribute('data-price'));
-            const quantity = parseInt(document.querySelector('#quantity').value || 1);
+            // Adjusted to use the new quantity selector
+            const quantityDisplay = document.querySelector('.quantity-value');
+            const quantity = parseInt(quantityDisplay.textContent, 10);
             const comments = document.querySelector('#comment').value;
             let extraIngredients = [];
             document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
@@ -234,8 +247,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(`${e.target.textContent.trim()} payment option selected.`);
         });
     });
-    
 });
+
 
 
 
