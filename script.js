@@ -1,7 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Session-based logic for clearing the cart
+    // Session-based logic for clearing the cart and other details
     if (!sessionStorage.getItem('sessionTimestamp')) {
         localStorage.setItem('cart', JSON.stringify([]));
+        localStorage.removeItem('orderComment');
+        localStorage.removeItem('customerName');
+        localStorage.removeItem('tableNumber');
+        localStorage.removeItem('customerPhone');
+        localStorage.removeItem('diningOption');
         sessionStorage.setItem('sessionTimestamp', new Date().getTime());
     }
 
@@ -65,9 +70,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const quantityDisplay = document.querySelector('.quantity-value');
             let quantity = parseInt(quantityDisplay.textContent, 10);
 
-            if (e.target.classList.contains('increase') && quantityDisplay) {
+            if (e.target.classList.contains('increase')) {
                 quantityDisplay.textContent = quantity + 1;
-            } else if (e.target.classList.contains('decrease') && quantity > 1 && quantityDisplay) {
+            } else if (e.target.classList.contains('decrease') && quantity > 1) {
                 quantityDisplay.textContent = quantity - 1;
             }
         }
@@ -75,10 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target && e.target.classList.contains('add-to-cart')) {
             const itemName = document.querySelector('.menu-item-name').innerText;
             const itemPrice = parseFloat(document.querySelector('.price-value').getAttribute('data-price'));
-            // Adjusted to use the new quantity selector
             const quantityDisplay = document.querySelector('.quantity-value');
             const quantity = parseInt(quantityDisplay.textContent, 10);
-            const comments = document.querySelector('#comment').value;
             let extraIngredients = [];
             document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
                 extraIngredients.push({
@@ -91,8 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: itemName,
                 price: itemPrice,
                 quantity: quantity,
-                extraIngredients: extraIngredients,
-                comments: comments
+                extraIngredients: extraIngredients
             };
 
             addToCart(itemDetails);
@@ -123,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Price: $${item.price}</p>
                 <p>Quantity: ${item.quantity}</p>
                 <p>Extras: ${item.extraIngredients.map(extra => extra.name).join(', ')}</p>
-                <p>Comments: ${item.comments}</p>
                 <button class="remove-item" data-index="${index}">Remove item</button>
             `;
             cartItemsContainer.appendChild(itemElement);
@@ -197,6 +198,19 @@ document.addEventListener('DOMContentLoaded', () => {
         tableNumberInput.disabled = excludeTableNumber ? true : false;
     }
 
+    // Event listeners for saving customer details on input change
+    nameInput.addEventListener('change', function() {
+        localStorage.setItem('customerName', this.value);
+    });
+
+    phoneInput.addEventListener('change', function() {
+        localStorage.setItem('customerPhone', this.value);
+    });
+
+    tableNumberInput.addEventListener('change', function() {
+        localStorage.setItem('tableNumber', this.value);
+    });
+
     // Event listeners for dine in and take away buttons
     dineInButton.addEventListener('click', function() {
         enableContactForm(false);
@@ -234,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('cartSection').style.display = 'block';
     });
 
+    // Proceed to payment button
     document.querySelector('.proceed-to-payment-btn')?.addEventListener('click', function() {
         // Save the comment to localStorage
         const orderComment = document.getElementById('orderComment').value;
@@ -244,7 +259,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('paymentSection').style.display = 'block';
     });
     
-
      // PAGE 6 FOR THE API INTEGRATION 
      // Placeholder for future payment processing logic
     document.querySelectorAll('.payment-option').forEach(button => {
