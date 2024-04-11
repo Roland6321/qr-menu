@@ -90,11 +90,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
 
+            let removedIngredients = [];
+            document.querySelectorAll('.remove-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
+                removedIngredients.push(checkbox.nextElementSibling.innerText);
+            });
+
             const itemDetails = {
                 name: itemName,
                 price: itemPrice,
                 quantity: quantity,
-                extraIngredients: extraIngredients
+                extraIngredients: extraIngredients,
+                removedIngredients: removedIngredients 
             };
 
             addToCart(itemDetails);
@@ -125,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Price: $${item.price}</p>
                 <p>Quantity: ${item.quantity}</p>
                 <p>Extras: ${item.extraIngredients.map(extra => extra.name).join(', ')}</p>
+                <p>Removed: ${item.removedIngredients.join(', ')}</p> 
                 <button class="remove-item" data-index="${index}">Remove item</button>
             `;
             cartItemsContainer.appendChild(itemElement);
