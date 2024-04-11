@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!sessionStorage.getItem('sessionTimestamp')) {
         localStorage.setItem('cart', JSON.stringify([]));
         localStorage.removeItem('orderComment');
+        localStorage.removeItem('customerName');
+        localStorage.removeItem('tableNumber');
+        localStorage.removeItem('customerPhone');
+        localStorage.removeItem('diningOption');
         sessionStorage.setItem('sessionTimestamp', new Date().getTime());
     }
 
