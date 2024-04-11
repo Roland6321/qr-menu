@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function showPopup(item) {
         const popupContainer = document.getElementById('popupContainer');
-        let extras = item.extraIngredients.map(ingredient => `${ingredient.name} ($${ingredient.dataCost})`).join(', ');
+        let extras = item.extraIngredients.map(ingredient => ingredient.name).join(', ');
         let removed = item.removedIngredients.join(', ');
     
         // Dynamically set the popup content
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Extras: ${extras}</p>
                 <p>Removed: ${removed}</p>
                 <button id="undoButton">Undo</button>
-                <button id="closePopupButton">Close</button>
+                <button id="closePopupButton">Ok</button>
             </div>
         `;
         popupContainer.style.display = 'block';
