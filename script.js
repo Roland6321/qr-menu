@@ -2,11 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Session-based logic for clearing the cart
     if (!sessionStorage.getItem('sessionTimestamp')) {
         localStorage.setItem('cart', JSON.stringify([]));
-        localStorage.removeItem('orderComment');
-        localStorage.removeItem('customerName');
-        localStorage.removeItem('tableNumber');
-        localStorage.removeItem('customerPhone');
-        localStorage.removeItem('diningOption');
         sessionStorage.setItem('sessionTimestamp', new Date().getTime());
     }
 
@@ -83,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Adjusted to use the new quantity selector
             const quantityDisplay = document.querySelector('.quantity-value');
             const quantity = parseInt(quantityDisplay.textContent, 10);
+            const comments = document.querySelector('#comment').value;
             let extraIngredients = [];
             document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
                 extraIngredients.push({
@@ -96,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 price: itemPrice,
                 quantity: quantity,
                 extraIngredients: extraIngredients,
+                comments: comments
             };
 
             addToCart(itemDetails);
@@ -246,6 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('cartSection').style.display = 'none';
         document.getElementById('paymentSection').style.display = 'block';
     });
+    
 
      // PAGE 6 FOR THE API INTEGRATION 
      // Placeholder for future payment processing logic
@@ -256,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
 
 
 
