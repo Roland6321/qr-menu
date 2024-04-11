@@ -111,7 +111,24 @@ document.addEventListener('DOMContentLoaded', () => {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.push(itemDetails);
         localStorage.setItem('cart', JSON.stringify(cart));
-        alert('Item added to cart!');
+    
+        // Creating a detailed message
+        let message = `Item added to cart!\n\n`;
+        message += `Name: ${itemDetails.name}\n`;
+        message += `Quantity: ${itemDetails.quantity}\n`;
+    
+        if (itemDetails.extraIngredients && itemDetails.extraIngredients.length > 0) {
+            let extras = itemDetails.extraIngredients.map(ingredient => `${ingredient.name} (+$${ingredient.dataCost})`).join(', ');
+            message += `Extra Ingredients: ${extras}\n`;
+        }
+    
+        if (itemDetails.removedIngredients && itemDetails.removedIngredients.length > 0) {
+            let removed = itemDetails.removedIngredients.join(', ');
+            message += `Removed Ingredients: ${removed}\n`;
+        }
+    
+        alert(message);
+    
         calculateAndDisplayTotalCost();
     }
 
