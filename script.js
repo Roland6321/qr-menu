@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToCategoriesButtons = document.querySelectorAll('.backToCategories');
     const counterContainer = document.querySelector('.order-total-counter');
     const urlParams = new URLSearchParams(window.location.search);
+    const orderTotalCounter = document.querySelector('.order-total-counter');
+    if (orderTotalCounter) {
+        orderTotalCounter.addEventListener('click', () => {
+            window.location.href = 'index.html?showCart=true';
+        });
+    }
 
     function toggleCounterDisplay(show) {
         if (counterContainer) {
