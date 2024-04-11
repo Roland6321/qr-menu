@@ -67,48 +67,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('quantity-btn')) {
-            const quantityDisplay = e.target.closest('.menu-item, .menu-item-details').querySelector('.quantity-value');
+            const quantityDisplay = document.querySelector('.quantity-value');
             let quantity = parseInt(quantityDisplay.textContent, 10);
-    
+
             if (e.target.classList.contains('increase')) {
                 quantityDisplay.textContent = quantity + 1;
             } else if (e.target.classList.contains('decrease') && quantity > 1) {
                 quantityDisplay.textContent = quantity - 1;
             }
         }
-    
+
         if (e.target && e.target.classList.contains('add-to-cart')) {
-            const menuItemElement = e.target.closest('.menu-item, .menu-item-details');
-            const itemName = menuItemElement.querySelector('.menu-item-name').innerText;
-            const itemPrice = parseFloat(menuItemElement.querySelector('.price-value').getAttribute('data-price'));
-            const quantityDisplay = menuItemElement.querySelector('.quantity-value');
+            const itemName = document.querySelector('.menu-item-name').innerText;
+            const itemPrice = parseFloat(document.querySelector('.price-value').getAttribute('data-price'));
+            const quantityDisplay = document.querySelector('.quantity-value');
             const quantity = parseInt(quantityDisplay.textContent, 10);
-    
             let extraIngredients = [];
-            menuItemElement.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
+            document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
                 extraIngredients.push({
                     name: checkbox.nextElementSibling.innerText,
                     dataCost: parseFloat(checkbox.getAttribute('data-cost'))
                 });
             });
-    
-            let removedIngredients = [];
-            menuItemElement.querySelectorAll('.remove-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
-                removedIngredients.push(checkbox.nextElementSibling.innerText);
-            });
-    
+
             const itemDetails = {
                 name: itemName,
                 price: itemPrice,
                 quantity: quantity,
-                extraIngredients: extraIngredients,
-                removedIngredients: removedIngredients
+                extraIngredients: extraIngredients
             };
-    
+
             addToCart(itemDetails);
         }
     });
-    
+
     function addToCart(itemDetails) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.push(itemDetails);
@@ -133,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>Price: $${item.price}</p>
                 <p>Quantity: ${item.quantity}</p>
                 <p>Extras: ${item.extraIngredients.map(extra => extra.name).join(', ')}</p>
-                <p>Removed: ${item.removedIngredients.join(', ')}</p>  // Display removed ingredients
                 <button class="remove-item" data-index="${index}">Remove item</button>
             `;
             cartItemsContainer.appendChild(itemElement);
