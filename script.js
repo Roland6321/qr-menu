@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Adjusted to use the new quantity selector
             const quantityDisplay = document.querySelector('.quantity-value');
             const quantity = parseInt(quantityDisplay.textContent, 10);
-            const comments = document.querySelector('#comment').value;
             let extraIngredients = [];
             document.querySelectorAll('.extra-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
                 extraIngredients.push({
@@ -92,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 price: itemPrice,
                 quantity: quantity,
                 extraIngredients: extraIngredients,
-                comments: comments
             };
 
             addToCart(itemDetails);
@@ -235,6 +233,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.querySelector('.proceed-to-payment-btn')?.addEventListener('click', function() {
+        // Save the comment to localStorage
+        const orderComment = document.getElementById('orderComment').value;
+        localStorage.setItem('orderComment', orderComment);
+    
+        // Proceed to the payment section
         document.getElementById('cartSection').style.display = 'none';
         document.getElementById('paymentSection').style.display = 'block';
     });
