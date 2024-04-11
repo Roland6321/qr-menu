@@ -693,3 +693,27 @@ background-color: #dfa55e; /* Darker orange background on hover */
   text-align: center;
 }
 
+#popupContainer {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000; /* Ensure it's above other content */
+  width: 80%;
+  max-width: 400px;
+}
+
+#popupContainer .popup {
+  text-align: center;
+}
+
+#popupContainer .popup button {
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+

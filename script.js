@@ -111,9 +111,53 @@ document.addEventListener('DOMContentLoaded', () => {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cart.push(itemDetails);
         localStorage.setItem('cart', JSON.stringify(cart));
-        alert('Item added to cart!');
+        // Replace the generic alert with a custom popup
+        showPopup(itemDetails);
         calculateAndDisplayTotalCost();
     }
+    
+    function showPopup(item) {
+        const popupContainer = document.getElementById('popupContainer');
+        let extras = item.extraIngredients.map(ingredient => `${ingredient.name} ($${ingredient.dataCost})`).join(', ');
+        let removed = item.removedIngredients.join(', ');
+    
+        // Dynamically set the popup content
+        popupContainer.innerHTML = `
+            <div class="popup">
+                <h2>Item Added!</h2>
+                <p>Name: ${item.name}</p>
+                <p>Quantity: ${item.quantity}</p>
+                <p>Extras: ${extras}</p>
+                <p>Removed: ${removed}</p>
+                <button id="undoButton">Undo</button>
+                <button id="closePopupButton">Close</button>
+            </div>
+        `;
+        popupContainer.style.display = 'block';
+    
+        // Add event listener to the Undo button
+        document.getElementById('undoButton').addEventListener('click', () => undoAddition());
+    
+        // Correctly add event listener to the Close button after it's been created
+        document.getElementById('closePopupButton').addEventListener('click', () => closePopup());
+    }
+    
+    function undoAddition() {
+        let cart = JSON.parse(localStorage.getItem('cart'));
+        cart.pop(); // Remove the last added item
+        localStorage.setItem('cart', JSON.stringify(cart));
+        document.getElementById('popupContainer').style.display = 'none';
+        calculateAndDisplayTotalCost();
+        if(window.location.search.includes('showCart=true')) {
+            displayCartItems();
+        }
+    }
+    
+    function closePopup() {
+        const popupContainer = document.getElementById('popupContainer');
+        popupContainer.style.display = 'none'; // Hide the popup
+    }
+    
 
     if (urlParams.get('showCart') === 'true') {
         showCart();
