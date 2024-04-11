@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Session-based logic for clearing the cart
     if (!sessionStorage.getItem('sessionTimestamp')) {
         localStorage.setItem('cart', JSON.stringify([]));
+        localStorage.removeItem('orderComment');
         sessionStorage.setItem('sessionTimestamp', new Date().getTime());
     }
 
