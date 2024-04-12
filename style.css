@@ -261,15 +261,20 @@ background-color: #dfa55e; /* Darker orange background on hover */
   background-color: #dfa55e; /* Darker orange background on hover */
   }
 
-  .menu-item-name, .ingredients, .extra-ingredients-section, .extra-ingredients-title, .quantity-section, .comment-section, .menu-item-price {
+  .menu-item-name, .ingredients, .extra-ingredients-section, .extra-ingredients-title, .quantity-section, .comment-section, .menu-item-price, .remove-ingredients-title, .remove-ingredients-section {
     padding-left: 10px;
+}
+
+.extra-ingredients-section h2, .remove-ingredients-section h2 {
+  font-size: 1rem;
+  color: #ff8410;
 }
 
 .quantity-section {
   padding-bottom: 15px; /* Adds space below the quantity section */
 }
 
-.extra-ingredients-section div {
+.extra-ingredients-section div, .remove-ingredients-section div {
   padding-bottom: 15px; /* Adds space below each ingredient checkbox */
 }
 
