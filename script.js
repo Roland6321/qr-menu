@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem('orderComment');
         localStorage.removeItem('customerName');
         localStorage.removeItem('tableNumber');
+        localStorage.removeItem('customerEmail');
         localStorage.removeItem('customerPhone');
         localStorage.removeItem('diningOption');
         sessionStorage.setItem('sessionTimestamp', new Date().getTime());
@@ -240,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dineInButton = document.getElementById('dineInOption');
     const takeAwayButton = document.getElementById('takeAwayOption');
     const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
     const phoneInput = document.getElementById('phone');
     const tableNumberInput = document.getElementById('tableNumber');
 
@@ -253,11 +255,16 @@ document.addEventListener('DOMContentLoaded', () => {
         phoneInput.disabled = false;
         confirmButton.disabled = false; // Assume confirmButton is correctly selected
         tableNumberInput.disabled = excludeTableNumber ? true : false;
+        emailInput.disabled = false;
     }
 
     // Event listeners for saving customer details on input change
     nameInput.addEventListener('change', function() {
         localStorage.setItem('customerName', this.value);
+    });
+
+    emailInput.addEventListener('change', function() {
+        localStorage.setItem('customerEmail', this.value);
     });
 
     phoneInput.addEventListener('change', function() {
