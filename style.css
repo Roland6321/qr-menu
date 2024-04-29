@@ -732,4 +732,13 @@ background-color: #dfa55e; /* Darker orange background on hover */
   margin: 5px;
 }
 
+.menu-item-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns items to the left */
+}
 
+.menu-item-price label {
+  margin-bottom: 10px; /* Spacing between each option */
+  text-align: left; /* Ensures text within the label is left-aligned */
+}
