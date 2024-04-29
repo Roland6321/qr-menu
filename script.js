@@ -72,6 +72,15 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', showCategories);
     });
 
+    document.querySelectorAll('.price-option').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const itemPrice = parseFloat(this.getAttribute('data-price'));
+            const quantityDisplay = document.querySelector('.quantity-value');
+            const quantity = parseInt(quantityDisplay.textContent, 10);
+            calculateAndDisplayTotalCost(itemPrice, quantity);
+        });
+    });
+
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('quantity-btn')) {
             const quantityDisplay = document.querySelector('.quantity-value');
@@ -86,7 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (e.target && e.target.classList.contains('add-to-cart')) {
             const itemName = document.querySelector('.menu-item-name').innerText;
-            const itemPrice = parseFloat(document.querySelector('.price-value').getAttribute('data-price'));
+            const selectedPriceRadio = document.querySelector('.price-value:checked'); // Adjust this line
+            const itemPrice = parseFloat(selectedPriceRadio.getAttribute('data-price')); // Adjust this line
             const quantityDisplay = document.querySelector('.quantity-value');
             const quantity = parseInt(quantityDisplay.textContent, 10);
             let extraIngredients = [];
@@ -96,20 +106,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     dataCost: parseFloat(checkbox.getAttribute('data-cost'))
                 });
             });
-
+    
             let removedIngredients = [];
             document.querySelectorAll('.remove-ingredients-section input[type=checkbox]:checked').forEach(checkbox => {
                 removedIngredients.push(checkbox.nextElementSibling.innerText);
             });
-
+    
             const itemDetails = {
                 name: itemName,
                 price: itemPrice,
                 quantity: quantity,
                 extraIngredients: extraIngredients,
-                removedIngredients: removedIngredients 
+                removedIngredients: removedIngredients
             };
-
+    
             addToCart(itemDetails);
         }
     });
@@ -332,10 +342,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
-
-
-
 
 
 
