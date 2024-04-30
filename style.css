@@ -741,4 +741,11 @@ background-color: #dfa55e; /* Darker orange background on hover */
 .menu-item-price label {
   margin-bottom: 10px; /* Spacing between each option */
   text-align: left; /* Ensures text within the label is left-aligned */
+  color: #ff8410; /* Changes the text color to black */
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.menu-item-price input[type="radio"] {
+  accent-color: black; /* Changes the color of the radio button itself */
 }
